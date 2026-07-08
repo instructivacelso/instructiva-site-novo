@@ -27,6 +27,8 @@ body{ background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; fo
 a{ color:inherit; text-decoration:none; }
 img,svg{ display:block; max-width:100%; }
 .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+.pcb-bg{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+.pcb-bg svg{ width:100%; height:100%; }
 h1,h2,h3{ font-family:'Space Grotesk',sans-serif; letter-spacing:-0.01em; }
 .eyebrow{ font-family:'JetBrains Mono',monospace; font-weight:600; font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--copper); display:flex; align-items:center; gap:10px; }
 .eyebrow::before{ content:""; width:16px; height:1px; background:var(--copper); display:inline-block; }
