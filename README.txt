@@ -1,42 +1,47 @@
-ESCOLA INSTRUCTIVA — SITE V3 (IDENTIDADE PRETO + LARANJA + POPUP DE SAIDA)
-============================================================================
+ESCOLA INSTRUCTIVA — SITE FINAL (19 CURSOS + LINKS REAIS + AREA DO ALUNO)
+==========================================================================
 
-Novidade desta versao: POPUP DE SAIDA (captura de leads)
-- Aparece quando o visitante move o mouse pra sair da pagina (desktop) ou
-  troca de aba / minimiza o app (celular)
-- So aparece 1 vez por sessao (nao fica incomodando)
-- So arma depois de 6 segundos na pagina (nao dispara sem querer)
-- Pede: nome, email, telefone e se a pessoa ja e tecnico ou esta comecando
-- Os dados sao salvos de verdade no servidor, num arquivo leads.json
-  (mesmo esquema de banco JSON que voces ja usam nos outros projetos)
+O que mudou nesta versao:
+- Ficaram SOMENTE os 19 cursos que voce confirmou (os outros 16 foram
+  removidos do catalogo e das paginas individuais)
+- Categorias que ficaram sem nenhum curso tambem foram removidas dos
+  filtros do catalogo
+- Todos os 19 cursos tem o link REAL de checkout (Greenn) no botao
+  "Comprar agora" - nao tem mais nenhum botao morto
+- Os valores de parcelamento em 12x sao os valores REAIS do checkout
+  (com juros), nao mais um calculo simples
+- O botao "Area do aluno" (no menu de cima e no rodape) agora leva
+  direto pra plataforma de aulas de verdade (Cademi)
 
-Como ver os leads capturados:
-- Acesse SEU-SITE.up.railway.app/api/leads?senha=SUA_SENHA no navegador
-- Isso mostra a lista de leads em JSON
-- IMPORTANTE: troque a senha padrao antes de usar de verdade! No Railway,
-  va em Settings -> Variables -> New Variable, crie uma chamada LEADS_SECRET
-  e coloque a senha que quiser. Sem isso, a senha padrao e "troque-esta-senha"
-  (ou seja, qualquer um que souber disso consegue ver os leads).
+Cursos mantidos (19):
+1. Especialista em Manutenção em Televisores LED e LCD
+2. Especialista em Manutenção em Fontes Chaveadas
+3. Livro: Análise e Procedimentos + Videoaulas
+4. Especialista em Manutenção em Tecnologias Inverter
+5. Manutenção, Reparo + Instalação de Ar Condicionado
+6. Especialista em Reparo em Placas Eletrônicas (EMAC)
+7. Manuseio de Osciloscópio
+8. Livro: Eletrônica de Potência - Retificadores
+9. Livro: Eletrônica de Potência - Semicondutores
+10. Livro: Eletrônica de Potência - Conversores CC-CC
+11. Livro de Exercícios - Análise de Circuitos e Defeitos
+12. Eletrônica Inicial - Analógica
+13. Especialista em Manutenção em Amplificadores de Áudio
+14. Especialista em Manutenção em Inversores de Frequência e Softstarter
+15. Especialista em Manutenção de Inversores Solares
+16. Especialista em Manutenção em Esteira de Academias
+17. Especialista em Equipamentos Odontológicos - Estéticos
+18. Livro: Retificador PFC Monofásico + Videoaulas
+19. Livro: Fontes Chaveadas Topologia Flyback + Videoaulas
 
-O que mudou da v2:
-- Visual totalmente reformulado pra bater com a identidade visual real da marca:
-  preto e laranja, tipografia grossa em caixa alta, rotulos estilo "// LABEL"
-- Cards de curso agora sao "posteres": capa grande escura com o nome do curso
-  em destaque, numeracao e categoria, ao inves de card branco pequeno
-- Mantém tudo que ja funcionava da v2: preco + parcelamento + garantia +
-  botao fixo de compra + filtro e busca no catalogo
-
-O que ainda falta plugar:
-1. Botao "Comprar agora" ainda nao tem link real de checkout da Hotmart
-2. Foto de verdade do Prof. Celso (hoje so um circulo com as iniciais "CM")
-3. Depoimentos reais de alunos (os de agora sao exemplo)
-4. Os posteres dos cursos sao so tipografia (sem foto)
-5. Revisar os precos (herdados do catalogo anterior)
-6. Colocar senha no /api/leads antes de divulgar o site (ver aviso acima)
-7. Integrar os leads capturados com a IA SDR / WhatsApp (combinado pra depois)
+O que ainda falta:
+1. Foto de verdade do Prof. Celso (hoje so um circulo com as iniciais "CM")
+2. Depoimentos reais de alunos (os de agora sao exemplo)
+3. Fotos/capas de cada curso (os posteres sao so tipografia por enquanto)
+4. Colocar senha no /api/leads antes de divulgar o site (ver server.js)
+5. Integrar os leads capturados no popup com a IA SDR / WhatsApp
 
 Como publicar (Railway):
 1. Substitua TODOS os arquivos do seu repositorio GitHub por estes
 2. Commit e push
 3. O Railway detecta a mudanca sozinho e atualiza o site em menos de 1 minuto
-
