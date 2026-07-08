@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cursos — Escola Instructiva</title>
 <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
 <header>
@@ -13,17 +12,17 @@
     <nav>
       <a class="logo" href="index.html">
         <img class="mark" src="assets/img/logo-instructiva.png" alt="Escola Instructiva">
-        Escola <b>Instructiva</b>
+        Escola Instructiva
       </a>
       <div class="nav-links">
         <a href="cursos.html" class="active">Cursos</a>
         <a href="index.html#professor">Quem somos</a>
-        <a href="index.html#comunidade">Comunidade</a>
+        <a href="index.html#depoimentos">Depoimentos</a>
         <a href="index.html#faq">Dúvidas</a>
       </div>
       <div class="nav-actions">
-        <a href="#" class="btn btn-ghost btn-sm">Área do aluno</a>
-        <a href="cursos.html" class="btn btn-copper btn-sm">Ver cursos</a>
+        <a href="#" class="btn btn-outline btn-sm">Área do aluno</a>
+        <a href="cursos.html" class="btn btn-cta btn-sm">Ver cursos</a>
       </div>
     </nav>
   </div>
@@ -32,203 +31,298 @@
 <section>
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">Catálogo completo</div>
-      <h1>35 cursos, 14 especializações.</h1>
-      <p>Escolha por categoria ou role a página inteira — cada curso tem sua própria ficha com o que você vai dominar e o investimento.</p>
+      <div class="eyebrow"><i class="dot"></i>Catálogo completo</div>
+      <h2>35 cursos, 14 especializações.</h2>
+      <p>Filtre por categoria ou busque pelo nome. Cada curso tem preço, parcelamento e garantia de 7 dias.</p>
     </div>
-    <div class="filters">
-      <a href="#televisores">Televisores</a><a href="#fontes-chaveadas">Fontes Chaveadas</a><a href="#tecnologias-inverter">Tecnologias Inverter</a><a href="#eletronica">Eletrônica</a><a href="#amplificadores">Amplificadores</a><a href="#programacao">Programação</a><a href="#industria">Indústria</a><a href="#inversor-solar">Inversor Solar</a><a href="#academia">Academia</a><a href="#nobreak">Nobreak</a><a href="#games">Games</a><a href="#eletrodomestico">Eletrodoméstico</a><a href="#odonto-medico">Odonto Médico</a><a href="#reballing">Reballing</a>
+    <div class="search-box"><input type="text" id="searchInput" placeholder="Buscar curso por nome..."></div>
+    <div class="filters" id="filterBar">
+      <button class="active" data-filter="all">Todos</button><button data-filter="Televisores">Televisores</button><button data-filter="Fontes Chaveadas">Fontes Chaveadas</button><button data-filter="Tecnologias Inverter">Tecnologias Inverter</button><button data-filter="Eletrônica">Eletrônica</button><button data-filter="Amplificadores">Amplificadores</button><button data-filter="Programação">Programação</button><button data-filter="Indústria">Indústria</button><button data-filter="Inversor Solar">Inversor Solar</button><button data-filter="Academia">Academia</button><button data-filter="Nobreak">Nobreak</button><button data-filter="Games">Games</button><button data-filter="Eletrodoméstico">Eletrodoméstico</button><button data-filter="Odonto Médico">Odonto Médico</button><button data-filter="Reballing">Reballing</button>
     </div>
-    <h2 id="televisores" style="font-size:16px; margin:36px 0 16px; color:var(--copper); font-family:JetBrains Mono, monospace; letter-spacing:.08em; text-transform:uppercase;">Televisores</h2><div class="course-grid">
-<a class="course-card" href="cursos/tecnicas-de-manutencao-em-fontes-de-tv.html">
-      <div class="cat-tag">Televisores</div>
-      <h3>Técnicas de Manutenção em Fontes de TV</h3>
-      <div class="meta"><span class="price">R$ 697,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/especialista-em-manutencao-em-televisores-led-e-lcd.html">
-      <div class="cat-tag">Televisores</div>
-      <h3>Especialista em Manutenção em Televisores LED e LCD</h3>
-      <div class="meta"><span class="price">R$ 1.497,00</span><span class="go">Ver curso →</span></div>
-    </a>
-</div><h2 id="fontes-chaveadas" style="font-size:16px; margin:36px 0 16px; color:var(--copper); font-family:JetBrains Mono, monospace; letter-spacing:.08em; text-transform:uppercase;">Fontes Chaveadas</h2><div class="course-grid">
-<a class="course-card" href="cursos/especialista-em-manutencao-em-fontes-chaveadas.html">
-      <div class="cat-tag">Fontes Chaveadas</div>
-      <h3>Especialista em Manutenção em Fontes Chaveadas</h3>
-      <div class="meta"><span class="price">R$ 1.497,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/reparos-na-pratica-de-fontes-chaveadas.html">
-      <div class="cat-tag">Fontes Chaveadas</div>
-      <h3>Reparos na Prática de Fontes Chaveadas</h3>
-      <div class="meta"><span class="price">R$ 997,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/livro-fontes-chaveadas-topologia-flyback-videoaulas.html">
-      <div class="cat-tag">Fontes Chaveadas</div>
-      <h3>Livro: Fontes Chaveadas Topologia Flyback + Videoaulas</h3>
-      <div class="meta"><span class="price">R$ 397,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/livro-retificador-pfc-monofasico-videoaulas.html">
-      <div class="cat-tag">Fontes Chaveadas</div>
-      <h3>Livro: Retificador PFC Monofásico + Videoaulas</h3>
-      <div class="meta"><span class="price">R$ 397,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/livro-analise-e-procedimentos-videoaulas.html">
-      <div class="cat-tag">Fontes Chaveadas</div>
-      <h3>Livro: Análise e Procedimentos + Videoaulas</h3>
-      <div class="meta"><span class="price">R$ 397,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/20-dicas-tecnicas-de-reparo-em-fontes-chaveadas.html">
+    <div class="course-grid" id="courseGrid">
+      <a class="course-card" href="cursos/20-dicas-tecnicas-de-reparo-em-fontes-chaveadas.html" data-cat="Fontes Chaveadas" data-title="20 dicas técnicas de reparo em fontes chaveadas">
       <div class="cat-tag">Fontes Chaveadas</div>
       <h3>20 Dicas Técnicas de Reparo em Fontes Chaveadas</h3>
-      <div class="meta"><span class="price">R$ 197,00</span><span class="go">Ver curso →</span></div>
-    </a>
-</div><h2 id="tecnologias-inverter" style="font-size:16px; margin:36px 0 16px; color:var(--copper); font-family:JetBrains Mono, monospace; letter-spacing:.08em; text-transform:uppercase;">Tecnologias Inverter</h2><div class="course-grid">
-<a class="course-card" href="cursos/especialista-em-manutencao-em-tecnologias-inverter.html">
-      <div class="cat-tag">Tecnologias Inverter</div>
-      <h3>Especialista em Manutenção em Tecnologias Inverter</h3>
-      <div class="meta"><span class="price">R$ 1.697,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/especialista-em-manutencao-de-placas-de-ar-inverter.html">
-      <div class="cat-tag">Tecnologias Inverter</div>
-      <h3>Especialista em Manutenção de Placas de Ar Inverter</h3>
-      <div class="meta"><span class="price">R$ 997,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/manutencao-reparo-instalacao-de-ar-condicionado.html">
-      <div class="cat-tag">Tecnologias Inverter</div>
-      <h3>Manutenção, Reparo + Instalação de Ar Condicionado</h3>
-      <div class="meta"><span class="price">R$ 997,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/manutencao-em-maquinas-inversoras-de-solda.html">
-      <div class="cat-tag">Tecnologias Inverter</div>
-      <h3>Manutenção em Máquinas Inversoras de Solda</h3>
-      <div class="meta"><span class="price">R$ 997,00</span><span class="go">Ver curso →</span></div>
-    </a>
-</div><h2 id="eletronica" style="font-size:16px; margin:36px 0 16px; color:var(--copper); font-family:JetBrains Mono, monospace; letter-spacing:.08em; text-transform:uppercase;">Eletrônica</h2><div class="course-grid">
-<a class="course-card" href="cursos/especialista-em-reparo-em-placas-eletronicas-emac.html">
-      <div class="cat-tag">Eletrônica</div>
-      <h3>Especialista em Reparo em Placas Eletrônicas (EMAC)</h3>
-      <div class="meta"><span class="price">R$ 1.497,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/especialista-em-eletronica-de-potencia.html">
-      <div class="cat-tag">Eletrônica</div>
-      <h3>Especialista em Eletrônica de Potência</h3>
-      <div class="meta"><span class="price">R$ 1.297,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/eletronica-inicial-analogica.html">
-      <div class="cat-tag">Eletrônica</div>
-      <h3>Eletrônica Inicial — Analógica</h3>
-      <div class="meta"><span class="price">R$ 497,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/eletronica-digital.html">
-      <div class="cat-tag">Eletrônica</div>
-      <h3>Eletrônica Digital</h3>
-      <div class="meta"><span class="price">R$ 497,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/manuseio-de-osciloscopio.html">
-      <div class="cat-tag">Eletrônica</div>
-      <h3>Manuseio de Osciloscópio</h3>
-      <div class="meta"><span class="price">R$ 497,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/livro-eletronica-de-potencia-retificadores.html">
-      <div class="cat-tag">Eletrônica</div>
-      <h3>Livro: Eletrônica de Potência — Retificadores</h3>
-      <div class="meta"><span class="price">R$ 397,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/livro-eletronica-de-potencia-semicondutores.html">
-      <div class="cat-tag">Eletrônica</div>
-      <h3>Livro: Eletrônica de Potência — Semicondutores</h3>
-      <div class="meta"><span class="price">R$ 397,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/livro-eletronica-de-potencia-conversores-cc-cc.html">
-      <div class="cat-tag">Eletrônica</div>
-      <h3>Livro: Eletrônica de Potência — Conversores CC-CC</h3>
-      <div class="meta"><span class="price">R$ 397,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/livro-de-exercicios-analise-de-circuitos-e-defeitos.html">
-      <div class="cat-tag">Eletrônica</div>
-      <h3>Livro de Exercícios — Análise de Circuitos e Defeitos</h3>
-      <div class="meta"><span class="price">R$ 397,00</span><span class="go">Ver curso →</span></div>
-    </a>
-</div><h2 id="amplificadores" style="font-size:16px; margin:36px 0 16px; color:var(--copper); font-family:JetBrains Mono, monospace; letter-spacing:.08em; text-transform:uppercase;">Amplificadores</h2><div class="course-grid">
-<a class="course-card" href="cursos/especialista-em-manutencao-em-amplificadores-de-audio.html">
-      <div class="cat-tag">Amplificadores</div>
-      <h3>Especialista em Manutenção em Amplificadores de Áudio</h3>
-      <div class="meta"><span class="price">R$ 1.497,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/modulos-de-potencia-class-d-e-fontes-automotivas.html">
-      <div class="cat-tag">Amplificadores</div>
-      <h3>Módulos de Potência Class-D e Fontes Automotivas</h3>
-      <div class="meta"><span class="price">R$ 497,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/manutencao-de-amplificadores-de-audio-classe-ab.html">
-      <div class="cat-tag">Amplificadores</div>
-      <h3>Manutenção de Amplificadores de Áudio — Classe AB</h3>
-      <div class="meta"><span class="price">R$ 497,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/manutencao-de-amplificadores-de-audio-classe-h.html">
-      <div class="cat-tag">Amplificadores</div>
-      <h3>Manutenção de Amplificadores de Áudio — Classe H</h3>
-      <div class="meta"><span class="price">R$ 497,00</span><span class="go">Ver curso →</span></div>
-    </a>
-</div><h2 id="programacao" style="font-size:16px; margin:36px 0 16px; color:var(--copper); font-family:JetBrains Mono, monospace; letter-spacing:.08em; text-transform:uppercase;">Programação</h2><div class="course-grid">
-<a class="course-card" href="cursos/curso-avancado-de-programacao-e-leitura-de-memorias-flash-e-eeprom.html">
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 197,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/curso-avancado-de-programacao-e-leitura-de-memorias-flash-e-eeprom.html" data-cat="Programação" data-title="curso avançado de programação e leitura de memórias flash e eeprom">
       <div class="cat-tag">Programação</div>
       <h3>Curso Avançado de Programação e Leitura de Memórias Flash e EEPROM</h3>
-      <div class="meta"><span class="price">R$ 697,00</span><span class="go">Ver curso →</span></div>
-    </a>
-<a class="course-card" href="cursos/internet-das-coisas-iot-esp32.html">
-      <div class="cat-tag">Programação</div>
-      <h3>Internet das Coisas (IoT) — ESP32</h3>
-      <div class="meta"><span class="price">R$ 697,00</span><span class="go">Ver curso →</span></div>
-    </a>
-</div><h2 id="industria" style="font-size:16px; margin:36px 0 16px; color:var(--copper); font-family:JetBrains Mono, monospace; letter-spacing:.08em; text-transform:uppercase;">Indústria</h2><div class="course-grid">
-<a class="course-card" href="cursos/especialista-em-manutencao-em-inversores-de-frequencia-e-softstarter.html">
-      <div class="cat-tag">Indústria</div>
-      <h3>Especialista em Manutenção em Inversores de Frequência e Softstarter</h3>
-      <div class="meta"><span class="price">R$ 1.697,00</span><span class="go">Ver curso →</span></div>
-    </a>
-</div><h2 id="inversor-solar" style="font-size:16px; margin:36px 0 16px; color:var(--copper); font-family:JetBrains Mono, monospace; letter-spacing:.08em; text-transform:uppercase;">Inversor Solar</h2><div class="course-grid">
-<a class="course-card" href="cursos/especialista-em-manutencao-de-inversores-solares.html">
-      <div class="cat-tag">Inversor Solar</div>
-      <h3>Especialista em Manutenção de Inversores Solares</h3>
-      <div class="meta"><span class="price">R$ 1.697,00</span><span class="go">Ver curso →</span></div>
-    </a>
-</div><h2 id="academia" style="font-size:16px; margin:36px 0 16px; color:var(--copper); font-family:JetBrains Mono, monospace; letter-spacing:.08em; text-transform:uppercase;">Academia</h2><div class="course-grid">
-<a class="course-card" href="cursos/especialista-em-manutencao-em-esteira-de-academias.html">
-      <div class="cat-tag">Academia</div>
-      <h3>Especialista em Manutenção em Esteira de Academias</h3>
-      <div class="meta"><span class="price">R$ 1.697,00</span><span class="go">Ver curso →</span></div>
-    </a>
-</div><h2 id="nobreak" style="font-size:16px; margin:36px 0 16px; color:var(--copper); font-family:JetBrains Mono, monospace; letter-spacing:.08em; text-transform:uppercase;">Nobreak</h2><div class="course-grid">
-<a class="course-card" href="cursos/tecnicas-de-manutencao-em-nobreaks.html">
-      <div class="cat-tag">Nobreak</div>
-      <h3>Técnicas de Manutenção em Nobreaks</h3>
-      <div class="meta"><span class="price">R$ 697,00</span><span class="go">Ver curso →</span></div>
-    </a>
-</div><h2 id="games" style="font-size:16px; margin:36px 0 16px; color:var(--copper); font-family:JetBrains Mono, monospace; letter-spacing:.08em; text-transform:uppercase;">Games</h2><div class="course-grid">
-<a class="course-card" href="cursos/manutencao-de-fontes-de-video-games.html">
-      <div class="cat-tag">Games</div>
-      <h3>Manutenção de Fontes de Vídeo Games</h3>
-      <div class="meta"><span class="price">R$ 697,00</span><span class="go">Ver curso →</span></div>
-    </a>
-</div><h2 id="eletrodomestico" style="font-size:16px; margin:36px 0 16px; color:var(--copper); font-family:JetBrains Mono, monospace; letter-spacing:.08em; text-transform:uppercase;">Eletrodoméstico</h2><div class="course-grid">
-<a class="course-card" href="cursos/especialista-em-manutencao-de-forno-micro-ondas.html">
-      <div class="cat-tag">Eletrodoméstico</div>
-      <h3>Especialista em Manutenção de Forno Micro-ondas</h3>
-      <div class="meta"><span class="price">R$ 697,00</span><span class="go">Ver curso →</span></div>
-    </a>
-</div><h2 id="odonto-medico" style="font-size:16px; margin:36px 0 16px; color:var(--copper); font-family:JetBrains Mono, monospace; letter-spacing:.08em; text-transform:uppercase;">Odonto Médico</h2><div class="course-grid">
-<a class="course-card" href="cursos/especialista-em-equipamentos-odontologicos-esteticos.html">
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 697,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/eletronica-digital.html" data-cat="Eletrônica" data-title="eletrônica digital">
+      <div class="cat-tag">Eletrônica</div>
+      <h3>Eletrônica Digital</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 497,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/eletronica-inicial-analogica.html" data-cat="Eletrônica" data-title="eletrônica inicial — analógica">
+      <div class="cat-tag">Eletrônica</div>
+      <h3>Eletrônica Inicial — Analógica</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 497,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/especialista-em-eletronica-de-potencia.html" data-cat="Eletrônica" data-title="especialista em eletrônica de potência">
+      <div class="cat-tag">Eletrônica</div>
+      <h3>Especialista em Eletrônica de Potência</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 1.297,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/especialista-em-equipamentos-odontologicos-esteticos.html" data-cat="Odonto Médico" data-title="especialista em equipamentos odontológicos — estéticos">
       <div class="cat-tag">Odonto Médico</div>
       <h3>Especialista em Equipamentos Odontológicos — Estéticos</h3>
-      <div class="meta"><span class="price">R$ 2.497,00</span><span class="go">Ver curso →</span></div>
-    </a>
-</div><h2 id="reballing" style="font-size:16px; margin:36px 0 16px; color:var(--copper); font-family:JetBrains Mono, monospace; letter-spacing:.08em; text-transform:uppercase;">Reballing</h2><div class="course-grid">
-<a class="course-card" href="cursos/tecnicas-de-reballing-solda.html">
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 2.497,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/especialista-em-manutencao-de-forno-micro-ondas.html" data-cat="Eletrodoméstico" data-title="especialista em manutenção de forno micro-ondas">
+      <div class="cat-tag">Eletrodoméstico</div>
+      <h3>Especialista em Manutenção de Forno Micro-ondas</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 697,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/especialista-em-manutencao-de-inversores-solares.html" data-cat="Inversor Solar" data-title="especialista em manutenção de inversores solares">
+      <div class="cat-tag">Inversor Solar</div>
+      <h3>Especialista em Manutenção de Inversores Solares</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 1.697,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/especialista-em-manutencao-de-placas-de-ar-inverter.html" data-cat="Tecnologias Inverter" data-title="especialista em manutenção de placas de ar inverter">
+      <div class="cat-tag">Tecnologias Inverter</div>
+      <h3>Especialista em Manutenção de Placas de Ar Inverter</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 997,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/especialista-em-manutencao-em-amplificadores-de-audio.html" data-cat="Amplificadores" data-title="especialista em manutenção em amplificadores de áudio">
+      <div class="cat-tag">Amplificadores</div>
+      <h3>Especialista em Manutenção em Amplificadores de Áudio</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 1.497,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/especialista-em-manutencao-em-esteira-de-academias.html" data-cat="Academia" data-title="especialista em manutenção em esteira de academias">
+      <div class="cat-tag">Academia</div>
+      <h3>Especialista em Manutenção em Esteira de Academias</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 1.697,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/especialista-em-manutencao-em-fontes-chaveadas.html" data-cat="Fontes Chaveadas" data-title="especialista em manutenção em fontes chaveadas">
+      <div class="cat-tag">Fontes Chaveadas</div>
+      <h3>Especialista em Manutenção em Fontes Chaveadas</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 1.497,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/especialista-em-manutencao-em-inversores-de-frequencia-e-softstarter.html" data-cat="Indústria" data-title="especialista em manutenção em inversores de frequência e softstarter">
+      <div class="cat-tag">Indústria</div>
+      <h3>Especialista em Manutenção em Inversores de Frequência e Softstarter</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 1.697,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/especialista-em-manutencao-em-tecnologias-inverter.html" data-cat="Tecnologias Inverter" data-title="especialista em manutenção em tecnologias inverter">
+      <div class="cat-tag">Tecnologias Inverter</div>
+      <h3>Especialista em Manutenção em Tecnologias Inverter</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 1.697,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/especialista-em-manutencao-em-televisores-led-e-lcd.html" data-cat="Televisores" data-title="especialista em manutenção em televisores led e lcd">
+      <div class="cat-tag">Televisores</div>
+      <h3>Especialista em Manutenção em Televisores LED e LCD</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 1.497,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/especialista-em-reparo-em-placas-eletronicas-emac.html" data-cat="Eletrônica" data-title="especialista em reparo em placas eletrônicas (emac)">
+      <div class="cat-tag">Eletrônica</div>
+      <h3>Especialista em Reparo em Placas Eletrônicas (EMAC)</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 1.497,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/internet-das-coisas-iot-esp32.html" data-cat="Programação" data-title="internet das coisas (iot) — esp32">
+      <div class="cat-tag">Programação</div>
+      <h3>Internet das Coisas (IoT) — ESP32</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 697,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/livro-analise-e-procedimentos-videoaulas.html" data-cat="Fontes Chaveadas" data-title="livro: análise e procedimentos + videoaulas">
+      <div class="cat-tag">Fontes Chaveadas</div>
+      <h3>Livro: Análise e Procedimentos + Videoaulas</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 397,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/livro-de-exercicios-analise-de-circuitos-e-defeitos.html" data-cat="Eletrônica" data-title="livro de exercícios — análise de circuitos e defeitos">
+      <div class="cat-tag">Eletrônica</div>
+      <h3>Livro de Exercícios — Análise de Circuitos e Defeitos</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 397,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/livro-eletronica-de-potencia-conversores-cc-cc.html" data-cat="Eletrônica" data-title="livro: eletrônica de potência — conversores cc-cc">
+      <div class="cat-tag">Eletrônica</div>
+      <h3>Livro: Eletrônica de Potência — Conversores CC-CC</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 397,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/livro-eletronica-de-potencia-retificadores.html" data-cat="Eletrônica" data-title="livro: eletrônica de potência — retificadores">
+      <div class="cat-tag">Eletrônica</div>
+      <h3>Livro: Eletrônica de Potência — Retificadores</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 397,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/livro-eletronica-de-potencia-semicondutores.html" data-cat="Eletrônica" data-title="livro: eletrônica de potência — semicondutores">
+      <div class="cat-tag">Eletrônica</div>
+      <h3>Livro: Eletrônica de Potência — Semicondutores</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 397,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/livro-fontes-chaveadas-topologia-flyback-videoaulas.html" data-cat="Fontes Chaveadas" data-title="livro: fontes chaveadas topologia flyback + videoaulas">
+      <div class="cat-tag">Fontes Chaveadas</div>
+      <h3>Livro: Fontes Chaveadas Topologia Flyback + Videoaulas</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 397,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/livro-retificador-pfc-monofasico-videoaulas.html" data-cat="Fontes Chaveadas" data-title="livro: retificador pfc monofásico + videoaulas">
+      <div class="cat-tag">Fontes Chaveadas</div>
+      <h3>Livro: Retificador PFC Monofásico + Videoaulas</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 397,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/manuseio-de-osciloscopio.html" data-cat="Eletrônica" data-title="manuseio de osciloscópio">
+      <div class="cat-tag">Eletrônica</div>
+      <h3>Manuseio de Osciloscópio</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 497,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/manutencao-de-amplificadores-de-audio-classe-ab.html" data-cat="Amplificadores" data-title="manutenção de amplificadores de áudio — classe ab">
+      <div class="cat-tag">Amplificadores</div>
+      <h3>Manutenção de Amplificadores de Áudio — Classe AB</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 497,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/manutencao-de-amplificadores-de-audio-classe-h.html" data-cat="Amplificadores" data-title="manutenção de amplificadores de áudio — classe h">
+      <div class="cat-tag">Amplificadores</div>
+      <h3>Manutenção de Amplificadores de Áudio — Classe H</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 497,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/manutencao-de-fontes-de-video-games.html" data-cat="Games" data-title="manutenção de fontes de vídeo games">
+      <div class="cat-tag">Games</div>
+      <h3>Manutenção de Fontes de Vídeo Games</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 697,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/manutencao-em-maquinas-inversoras-de-solda.html" data-cat="Tecnologias Inverter" data-title="manutenção em máquinas inversoras de solda">
+      <div class="cat-tag">Tecnologias Inverter</div>
+      <h3>Manutenção em Máquinas Inversoras de Solda</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 997,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/manutencao-reparo-instalacao-de-ar-condicionado.html" data-cat="Tecnologias Inverter" data-title="manutenção, reparo + instalação de ar condicionado">
+      <div class="cat-tag">Tecnologias Inverter</div>
+      <h3>Manutenção, Reparo + Instalação de Ar Condicionado</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 997,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/modulos-de-potencia-class-d-e-fontes-automotivas.html" data-cat="Amplificadores" data-title="módulos de potência class-d e fontes automotivas">
+      <div class="cat-tag">Amplificadores</div>
+      <h3>Módulos de Potência Class-D e Fontes Automotivas</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 497,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/reparos-na-pratica-de-fontes-chaveadas.html" data-cat="Fontes Chaveadas" data-title="reparos na prática de fontes chaveadas">
+      <div class="cat-tag">Fontes Chaveadas</div>
+      <h3>Reparos na Prática de Fontes Chaveadas</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 997,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/tecnicas-de-manutencao-em-fontes-de-tv.html" data-cat="Televisores" data-title="técnicas de manutenção em fontes de tv">
+      <div class="cat-tag">Televisores</div>
+      <h3>Técnicas de Manutenção em Fontes de TV</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 697,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/tecnicas-de-manutencao-em-nobreaks.html" data-cat="Nobreak" data-title="técnicas de manutenção em nobreaks">
+      <div class="cat-tag">Nobreak</div>
+      <h3>Técnicas de Manutenção em Nobreaks</h3>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 697,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
+    </a><a class="course-card" href="cursos/tecnicas-de-reballing-solda.html" data-cat="Reballing" data-title="técnicas de reballing — solda">
       <div class="cat-tag">Reballing</div>
       <h3>Técnicas de Reballing — Solda</h3>
-      <div class="meta"><span class="price">R$ 497,00</span><span class="go">Ver curso →</span></div>
+      <div class="stars">★★★★★</div>
+      <div class="row">
+        <div class="price-mini"><span>a partir de</span>R$ 497,00</div>
+        <span class="btn btn-cta btn-sm">Ver curso</span>
+      </div>
     </a>
-</div>
+    </div>
+    <p id="emptyState" style="display:none; text-align:center; color:var(--muted); padding:40px 0;">Nenhum curso encontrado com esse filtro.</p>
   </div>
 </section>
 <footer>
@@ -237,21 +331,21 @@
       <div class="foot-col">
         <a class="logo" href="index.html" style="margin-bottom:16px;">
           <img class="mark" src="assets/img/logo-instructiva.png" alt="Escola Instructiva">
-          Escola <b>Instructiva</b>
+          Escola Instructiva
         </a>
         <p style="font-size:13.5px; color:var(--muted-2); max-width:260px; line-height:1.6;">Ensino técnico de eletrônica e manutenção. Sete anos formando quem conserta de verdade.</p>
       </div>
       <div class="foot-col">
         <h4>Cursos</h4>
-        <a href="cursos.html#televisores">Televisores</a>
-        <a href="cursos.html#fontes-chaveadas">Fontes chaveadas</a>
-        <a href="cursos.html#tecnologias-inverter">Tecnologias Inverter</a>
-        <a href="cursos.html#eletronica">Placas eletrônicas</a>
+        <a href="cursos.html">Televisores</a>
+        <a href="cursos.html">Fontes chaveadas</a>
+        <a href="cursos.html">Tecnologias Inverter</a>
+        <a href="cursos.html">Placas eletrônicas</a>
       </div>
       <div class="foot-col">
         <h4>Empresa</h4>
         <a href="index.html#professor">Quem somos</a>
-        <a href="index.html#comunidade">Comunidade</a>
+        <a href="index.html#depoimentos">Depoimentos</a>
         <a href="#">Contato</a>
       </div>
       <div class="foot-col">
@@ -263,10 +357,39 @@
     </div>
     <div class="foot-bottom">
       <p>© 2026 Escola Instructiva · Todos os direitos reservados</p>
-      <p class="mono" style="font-size:10.5px; letter-spacing:.05em;">PLACA: INSTRUCTIVA-WEB · REV. 03</p>
     </div>
   </div>
 </footer>
+<script>
+  var grid = document.getElementById('courseGrid');
+  var cards = Array.from(grid.children);
+  var filterBar = document.getElementById('filterBar');
+  var searchInput = document.getElementById('searchInput');
+  var emptyState = document.getElementById('emptyState');
+  var activeFilter = 'all';
+
+  function applyFilters(){
+    var q = searchInput.value.trim().toLowerCase();
+    var visibleCount = 0;
+    cards.forEach(function(card){
+      var matchesCat = (activeFilter === 'all') || (card.dataset.cat === activeFilter);
+      var matchesSearch = !q || card.dataset.title.indexOf(q) !== -1;
+      var show = matchesCat && matchesSearch;
+      card.style.display = show ? '' : 'none';
+      if(show) visibleCount++;
+    });
+    emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  filterBar.addEventListener('click', function(e){
+    if(e.target.tagName !== 'BUTTON') return;
+    activeFilter = e.target.dataset.filter;
+    Array.from(filterBar.children).forEach(function(b){ b.classList.remove('active'); });
+    e.target.classList.add('active');
+    applyFilters();
+  });
+  searchInput.addEventListener('input', applyFilters);
+</script>
 
 </body>
 </html>
