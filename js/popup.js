@@ -138,7 +138,21 @@
     } catch (e) {}
   }
 
+  // conta a visita uma unica vez por sessao, assim que a pagina carrega,
+  // independente do popup aparecer ou nao (mede visitantes reais do site)
+  var VISIT_KEY = 'instructiva_visit_counted';
+  function countVisitOnce() {
+    try {
+      if (sessionStorage.getItem(VISIT_KEY) === '1') return;
+      sessionStorage.setItem(VISIT_KEY, '1');
+    } catch (e) {}
+    try {
+      fetch('/api/visit', { method: 'POST', keepalive: true }).catch(function () {});
+    } catch (e) {}
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
+    countVisitOnce();
     if (alreadyShownThisSession()) return;
     var overlay = buildPopup();
     setupPopup(overlay);

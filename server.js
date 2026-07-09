@@ -23,10 +23,22 @@ function writeLeads(leads) {
 
 function readStats() {
   try {
-    return JSON.parse(fs.readFileSync(STATS_FILE, 'utf8'));
+    var s = JSON.parse(fs.readFileSync(STATS_FILE, 'utf8'));
+    if (typeof s.popupViews !== 'number') s.popupViews = 0;
+    if (!s.visits || typeof s.visits !== 'object') s.visits = { total: 0, byDay: {} };
+    if (typeof s.visits.total !== 'number') s.visits.total = 0;
+    if (!s.visits.byDay || typeof s.visits.byDay !== 'object') s.visits.byDay = {};
+    return s;
   } catch (e) {
-    return { popupViews: 0 };
+    return { popupViews: 0, visits: { total: 0, byDay: {} } };
   }
+}
+
+// data no fuso de Brasilia (YYYY-MM-DD) pra agrupar visitas por dia
+function brDateKey() {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/Sao_Paulo', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(new Date());
 }
 
 function writeStats(stats) {
@@ -70,6 +82,17 @@ app.post('/api/popup-view', (req, res) => {
   res.json({ ok: true });
 });
 
+// conta uma visita (uma vez por sessao, disparado em toda pagina pelo popup.js)
+// mesmo que a pessoa nao preencha nada, essa visita e contabilizada
+app.post('/api/visit', (req, res) => {
+  const stats = readStats();
+  const day = brDateKey();
+  stats.visits.total = (stats.visits.total || 0) + 1;
+  stats.visits.byDay[day] = (stats.visits.byDay[day] || 0) + 1;
+  writeStats(stats);
+  res.json({ ok: true });
+});
+
 // senha simples pra ver os leads - troque isso direto no Railway em
 // Settings -> Variables, criando uma variavel chamada LEADS_SECRET
 const LEADS_SECRET = process.env.LEADS_SECRET || 'troque-esta-senha';
@@ -89,7 +112,7 @@ app.get('/api/dashboard', (req, res) => {
   }
   const leads = readLeads();
   const stats = readStats();
-  res.json({ ok: true, leads, popupViews: stats.popupViews || 0 });
+  res.json({ ok: true, leads, popupViews: stats.popupViews || 0, visits: stats.visits || { total: 0, byDay: {} } });
 });
 
 // fallback: qualquer rota desconhecida cai na home

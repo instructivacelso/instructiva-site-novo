@@ -142,10 +142,10 @@
   </div>
 
   <div class="kpis">
-    <div class="kpi"><div class="label">Total de leads</div><div class="value" id="kpiTotal">—</div><div class="sub">contatos capturados</div></div>
-    <div class="kpi"><div class="label">Hoje</div><div class="value" id="kpiHoje">—</div><div class="sub">nas últimas 24h (Brasília)</div></div>
-    <div class="kpi"><div class="label">Últimos 7 dias</div><div class="value" id="kpiSemana">—</div><div class="sub">contatos recentes</div></div>
-    <div class="kpi"><div class="label">Conversão do popup</div><div class="value" id="kpiConv">—</div><div class="sub" id="kpiConvSub">views × preenchidos</div></div>
+    <div class="kpi"><div class="label">Visitantes</div><div class="value" id="kpiVisit">—</div><div class="sub" id="kpiVisitSub">total de visitas ao site</div></div>
+    <div class="kpi"><div class="label">Leads capturados</div><div class="value" id="kpiTotal">—</div><div class="sub" id="kpiTotalSub">contatos do popup</div></div>
+    <div class="kpi"><div class="label">Conversão</div><div class="value" id="kpiConv">—</div><div class="sub" id="kpiConvSub">de visitante para lead</div></div>
+    <div class="kpi"><div class="label">Popup exibido</div><div class="value" id="kpiPopup">—</div><div class="sub">vezes que apareceu</div></div>
   </div>
 
   <div class="filters">
@@ -192,6 +192,7 @@
   var SENHA_KEY = 'instructiva_painel_senha';
   var allLeads = [];
   var popupViews = 0;
+  var visits = { total: 0, byDay: {} };
   var sortKey = 'createdAt';
   var sortDir = -1; // -1 desc, 1 asc
 
@@ -241,6 +242,8 @@
       .then(function(data){
         allLeads = (data.leads || []).slice();
         popupViews = data.popupViews || 0;
+        visits = data.visits || { total: 0, byDay: {} };
+        if (!visits.byDay) visits.byDay = {};
         try{ sessionStorage.setItem(SENHA_KEY, senha); }catch(e){}
         loginView.classList.add('hidden');
         panelView.classList.remove('hidden');
@@ -257,25 +260,40 @@
   }
 
   // ---------- KPIs ----------
+  function brDayKey(date){
+    return new Intl.DateTimeFormat('en-CA', { timeZone:'America/Sao_Paulo', year:'numeric', month:'2-digit', day:'2-digit' }).format(date);
+  }
+  function sumVisits(days){
+    var sum = 0, now = Date.now();
+    for(var i=0;i<days;i++){ var k = brDayKey(new Date(now - i*86400000)); sum += (visits.byDay||{})[k] || 0; }
+    return sum;
+  }
   function computeKpis(){
     var now = Date.now();
     var d1 = 24*3600*1000, d7 = 7*d1;
-    var hoje = 0, semana = 0;
+    var leadsHoje = 0, leadsSemana = 0;
     allLeads.forEach(function(l){
       var t = new Date(l.createdAt).getTime();
-      if(now - t <= d1) hoje++;
-      if(now - t <= d7) semana++;
+      if(now - t <= d1) leadsHoje++;
+      if(now - t <= d7) leadsSemana++;
     });
+    var totalVisit = (visits && visits.total) || 0;
+    var visitHoje = (visits.byDay||{})[brDayKey(new Date())] || 0;
+    var visit7 = sumVisits(7);
+
+    document.getElementById('kpiVisit').textContent = totalVisit;
+    document.getElementById('kpiVisitSub').textContent = visitHoje + ' hoje · ' + visit7 + ' em 7 dias';
     document.getElementById('kpiTotal').textContent = allLeads.length;
-    document.getElementById('kpiHoje').textContent = hoje;
-    document.getElementById('kpiSemana').textContent = semana;
-    if(popupViews > 0){
-      var conv = (allLeads.length / popupViews) * 100;
+    document.getElementById('kpiTotalSub').textContent = leadsHoje + ' hoje · ' + leadsSemana + ' em 7 dias';
+    document.getElementById('kpiPopup').textContent = popupViews;
+
+    if(totalVisit > 0){
+      var conv = (allLeads.length / totalVisit) * 100;
       document.getElementById('kpiConv').textContent = conv.toFixed(1) + '%';
-      document.getElementById('kpiConvSub').textContent = popupViews + ' views · ' + allLeads.length + ' preenchidos';
+      document.getElementById('kpiConvSub').textContent = allLeads.length + ' leads · ' + totalVisit + ' visitantes';
     } else {
       document.getElementById('kpiConv').textContent = '—';
-      document.getElementById('kpiConvSub').textContent = 'sem dados de views ainda';
+      document.getElementById('kpiConvSub').textContent = 'sem visitas registradas ainda';
     }
   }
 
