@@ -213,13 +213,8 @@
     '.aluno-title{font-family:"Manrope",sans-serif;font-weight:800;font-size:21px;color:#0B0B0B;margin:0 0 4px;letter-spacing:-.01em;}' +
     '.aluno-sub{font-family:"Inter",sans-serif;font-size:13.5px;color:#6B6B66;margin:0 0 20px;}' +
     '.aluno-list{display:flex;flex-direction:column;gap:10px;}' +
-    '.aluno-item{display:flex;align-items:center;gap:14px;width:100%;text-align:left;text-decoration:none;background:#fff;border:1px solid #E6E6E1;border-radius:8px;padding:14px 16px;cursor:pointer;transition:.15s;}' +
-    '.aluno-item:hover{border-color:#F97316;background:#FFF7F1;transform:translateY(-1px);}' +
-    '.aluno-ic{width:38px;height:38px;flex:0 0 auto;border-radius:8px;background:#0B0B0B;color:#F97316;display:flex;align-items:center;justify-content:center;font-family:"Manrope",sans-serif;font-weight:800;font-size:16px;}' +
-    '.aluno-txt{flex:1;min-width:0;}' +
-    '.aluno-nm{font-family:"Manrope",sans-serif;font-weight:700;font-size:15.5px;color:#0B0B0B;line-height:1.2;}' +
-    '.aluno-ds{font-family:"Inter",sans-serif;font-size:12.5px;color:#8A8A85;margin-top:1px;}' +
-    '.aluno-arrow{color:#C24E08;font-size:18px;flex:0 0 auto;}';
+    '.aluno-item{display:flex;align-items:center;justify-content:center;width:100%;text-align:center;text-decoration:none;background:#fff;border:1px solid #E6E6E1;border-radius:8px;padding:18px 16px;cursor:pointer;transition:.15s;font-family:"Manrope",sans-serif;font-weight:700;font-size:17px;color:#0B0B0B;letter-spacing:-.01em;}' +
+    '.aluno-item:hover{border-color:#F97316;background:#FFF7F1;color:#C24E08;transform:translateY(-1px);}';
 
   function injectCss() {
     var s = document.createElement('style');
@@ -233,15 +228,7 @@
     overlay.id = 'alunoOverlay';
 
     var itemsHtml = PLATAFORMAS.map(function (p) {
-      var inicial = (p.nome || '?').charAt(0).toUpperCase();
-      return '<a class="aluno-item" href="' + p.url + '" target="_blank" rel="noopener">' +
-               '<span class="aluno-ic">' + inicial + '</span>' +
-               '<span class="aluno-txt">' +
-                 '<span class="aluno-nm">' + p.nome + '</span>' +
-                 '<span class="aluno-ds">' + (p.desc || '') + '</span>' +
-               '</span>' +
-               '<span class="aluno-arrow">&rarr;</span>' +
-             '</a>';
+      return '<a class="aluno-item" href="' + p.url + '" target="_blank" rel="noopener">' + p.nome + '</a>';
     }).join('');
 
     overlay.innerHTML =
