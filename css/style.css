@@ -364,3 +364,49 @@ footer{ padding:52px 0 28px; border-top:1px solid var(--line); background:var(--
 .campaign-banner a{ text-decoration:underline; white-space:nowrap; }
 .campaign-banner .tag{ font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.04em; background:rgba(0,0,0,.15); padding:3px 9px; border-radius:99px; text-transform:uppercase; }
 @keyframes bannerShift{ 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+
+/* ===== MEGA HERO DE CAMPANHA (entrada da home) ===== */
+.promo-mega-hero{
+  background:linear-gradient(135deg, #2A1608 0%, #0B0B0B 55%, #0B0B0B 100%);
+  border-bottom:2px solid var(--orange);
+  padding:44px 0;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.promo-mega-hero::before{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(ellipse 60% 100% at 50% 0%, rgba(249,115,22,0.18) 0%, transparent 70%);
+  pointer-events:none;
+}
+.promo-mega-hero .wrap{ position:relative; z-index:1; }
+.promo-mega-badge{
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--orange); color:#1A0D04;
+  font-family:'Inter',sans-serif; font-weight:800; font-size:13px;
+  padding:9px 20px; border-radius:99px; margin-bottom:22px;
+  text-transform:uppercase; letter-spacing:.02em;
+}
+.promo-mega-hero h2{
+  font-family:'Manrope',sans-serif; font-weight:800; font-size:clamp(24px,3.6vw,40px);
+  color:#fff; line-height:1.15; margin-bottom:14px; text-transform:none; max-width:800px; margin-left:auto; margin-right:auto;
+}
+.promo-mega-hero h2 em{ font-style:normal; color:var(--orange); }
+.promo-mega-hero > .wrap > p{
+  font-size:15.5px; color:#C7C7C1; max-width:620px; margin:0 auto 28px; line-height:1.55; font-family:'Inter',sans-serif;
+}
+.promo-mega-price{
+  display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;
+  margin-bottom:28px;
+}
+.promo-mega-price .de{ font-size:18px; color:#8A8A85; text-decoration:line-through; font-family:'Inter',sans-serif; }
+.promo-mega-price .arrow{ color:var(--orange); font-size:20px; }
+.promo-mega-price .por{ font-family:'Manrope',sans-serif; font-weight:800; font-size:42px; color:#fff; }
+.promo-mega-price .por small{ font-size:20px; color:#C7C7C1; font-weight:600; }
+.promo-mega-price .save{
+  font-family:'Inter',sans-serif; font-weight:700; font-size:13px; color:#5FD98A;
+  background:rgba(95,217,138,0.12); border:1px solid rgba(95,217,138,0.35);
+  padding:7px 14px; border-radius:8px;
+}
+@media (max-width:640px){ .promo-mega-price{ flex-direction:column; gap:10px; } }
+.promo-mega-cta{ font-size:16px; padding:17px 38px; }
