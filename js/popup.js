@@ -145,6 +145,9 @@
 
     setTimeout(function () { armed = true; }, ARM_DELAY_MS);
 
+    // tempo na pagina: mostra sozinho depois de 30s (se ja nao apareceu por outro gatilho)
+    setTimeout(function () { triggerPopup(overlay); }, 30000);
+
     // desktop: intencao de sair pelo topo da tela
     document.addEventListener('mouseleave', function (e) {
       if (!armed || e.clientY > 0) return;
