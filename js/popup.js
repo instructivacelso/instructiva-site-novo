@@ -132,6 +132,10 @@
     shown = true;
     markShown();
     overlay.classList.add('show');
+    // registra que o popup foi exibido (fire-and-forget, pra taxa de conversao)
+    try {
+      fetch('/api/popup-view', { method: 'POST', keepalive: true }).catch(function () {});
+    } catch (e) {}
   }
 
   document.addEventListener('DOMContentLoaded', function () {

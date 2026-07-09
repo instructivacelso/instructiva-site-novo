@@ -2,6 +2,10 @@
   "name": "instructiva-site",
   "version": "3.0.0",
   "private": true,
-  "scripts": { "start": "node server.js" },
-  "dependencies": { "express": "^4.19.2" }
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.22.2"
+  }
 }

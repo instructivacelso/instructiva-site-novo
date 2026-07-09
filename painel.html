@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel de Leads — Escola Instructiva</title>
+<link rel="icon" href="assets/img/favicon.ico">
+<style>
+  :root{
+    --black:#0B0B0B; --panel:#141414; --panel-2:#1C1C1C; --line:#2A2A2A;
+    --orange:#F97316; --orange-deep:#C24E08;
+    --text:#EDEDEA; --muted:#9A9A94; --muted-2:#6E6E68;
+    --green:#25D366;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    background:var(--black); color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:15px; line-height:1.5; min-height:100vh;
+  }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1200px; margin:0 auto; padding:28px 20px 60px; }
+
+  /* ---------- topo ---------- */
+  .top{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:26px; }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand .logo{ width:34px; height:34px; border-radius:8px; object-fit:contain; background:#fff; padding:3px; }
+  .brand h1{ font-size:18px; font-weight:800; letter-spacing:-.01em; }
+  .brand span{ color:var(--orange); }
+  .top-actions{ display:flex; gap:10px; }
+  .btn{
+    font-size:13.5px; font-weight:600; padding:9px 15px; border-radius:9px;
+    border:1px solid var(--line); background:var(--panel); color:var(--text);
+    cursor:pointer; transition:.15s; display:inline-flex; align-items:center; gap:7px;
+  }
+  .btn:hover{ border-color:var(--orange); }
+  .btn-primary{ background:var(--orange); border-color:var(--orange); color:#fff; }
+  .btn-primary:hover{ background:var(--orange-deep); border-color:var(--orange-deep); }
+
+  /* ---------- login ---------- */
+  .login{ max-width:380px; margin:12vh auto 0; background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:32px; }
+  .login h2{ font-size:20px; margin-bottom:6px; }
+  .login p{ color:var(--muted); font-size:14px; margin-bottom:20px; }
+  .login input{
+    width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--line);
+    background:var(--panel-2); color:var(--text); font-size:15px; margin-bottom:14px;
+  }
+  .login input:focus{ outline:none; border-color:var(--orange); }
+  .login .btn-primary{ width:100%; justify-content:center; padding:12px; }
+  .login .err{ color:#ff6b6b; font-size:13px; margin-top:10px; min-height:16px; }
+
+  /* ---------- KPIs ---------- */
+  .kpis{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:24px; }
+  .kpi{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 18px 16px; position:relative; overflow:hidden; }
+  .kpi::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--orange); }
+  .kpi .label{ font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-weight:600; }
+  .kpi .value{ font-size:30px; font-weight:800; margin-top:6px; letter-spacing:-.02em; }
+  .kpi .sub{ font-size:12.5px; color:var(--muted-2); margin-top:3px; }
+
+  /* ---------- filtros ---------- */
+  .filters{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+  .filters input[type=text]{
+    flex:1; min-width:220px; padding:10px 14px; border-radius:10px; border:1px solid var(--line);
+    background:var(--panel); color:var(--text); font-size:14px;
+  }
+  .filters input:focus, .filters select:focus{ outline:none; border-color:var(--orange); }
+  .filters select{
+    padding:10px 12px; border-radius:10px; border:1px solid var(--line);
+    background:var(--panel); color:var(--text); font-size:14px; cursor:pointer;
+  }
+  .count-line{ font-size:13px; color:var(--muted); margin-bottom:12px; }
+  .count-line b{ color:var(--text); }
+
+  /* ---------- tabela ---------- */
+  .table-wrap{ background:var(--panel); border:1px solid var(--line); border-radius:14px; overflow:auto; }
+  table{ width:100%; border-collapse:collapse; min-width:820px; }
+  th{
+    text-align:left; font-size:11.5px; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--muted); font-weight:700; padding:14px 16px; border-bottom:1px solid var(--line);
+    white-space:nowrap; cursor:pointer; user-select:none;
+  }
+  th:hover{ color:var(--text); }
+  th .arrow{ opacity:.5; font-size:10px; }
+  td{ padding:13px 16px; border-bottom:1px solid var(--line); font-size:14px; vertical-align:middle; }
+  tr:last-child td{ border-bottom:none; }
+  tr:hover td{ background:rgba(249,115,22,.04); }
+  .lead-name{ font-weight:700; }
+  .lead-date{ color:var(--muted); font-size:13px; white-space:nowrap; }
+  .lead-src{ color:var(--muted-2); font-size:12.5px; font-family:'JetBrains Mono',ui-monospace,monospace; }
+  .tag{ display:inline-block; font-size:11.5px; font-weight:600; padding:3px 9px; border-radius:100px; white-space:nowrap; }
+  .tag-tec{ background:rgba(249,115,22,.14); color:var(--orange); }
+  .tag-ini{ background:rgba(255,255,255,.08); color:var(--muted); }
+  .tag-na{ background:transparent; color:var(--muted-2); border:1px dashed var(--line); }
+  .acts{ display:flex; gap:7px; white-space:nowrap; }
+  .icon-btn{
+    width:32px; height:32px; border-radius:8px; border:1px solid var(--line);
+    background:var(--panel-2); display:inline-flex; align-items:center; justify-content:center;
+    cursor:pointer; transition:.15s; font-size:14px;
+  }
+  .icon-btn:hover{ border-color:var(--orange); transform:translateY(-1px); }
+  .icon-btn.wa:hover{ border-color:var(--green); }
+  .empty{ text-align:center; padding:50px 20px; color:var(--muted); }
+  .toast{
+    position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--orange); color:#fff; font-weight:600; font-size:13.5px; padding:11px 18px;
+    border-radius:10px; opacity:0; pointer-events:none; transition:.25s; z-index:50;
+  }
+  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  .hidden{ display:none !important; }
+
+  @media (max-width:720px){
+    .kpis{ grid-template-columns:repeat(2,1fr); }
+    .kpi .value{ font-size:26px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginView" class="login">
+  <h2>Painel de Leads</h2>
+  <p>Digite a senha de acesso para ver os contatos capturados no site.</p>
+  <input type="password" id="senhaInput" placeholder="Senha" autocomplete="current-password">
+  <button class="btn-primary btn" id="entrarBtn">Entrar</button>
+  <div class="err" id="loginErr"></div>
+</div>
+
+<!-- PAINEL -->
+<div id="panelView" class="wrap hidden">
+  <div class="top">
+    <div class="brand">
+      <img class="logo" src="assets/img/logo-instructiva.png" alt="">
+      <h1>Escola <span>Instructiva</span> — Leads</h1>
+    </div>
+    <div class="top-actions">
+      <button class="btn" id="exportBtn">⬇ Exportar CSV</button>
+      <button class="btn" id="refreshBtn">↻ Atualizar</button>
+      <button class="btn" id="logoutBtn">Sair</button>
+    </div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">Total de leads</div><div class="value" id="kpiTotal">—</div><div class="sub">contatos capturados</div></div>
+    <div class="kpi"><div class="label">Hoje</div><div class="value" id="kpiHoje">—</div><div class="sub">nas últimas 24h (Brasília)</div></div>
+    <div class="kpi"><div class="label">Últimos 7 dias</div><div class="value" id="kpiSemana">—</div><div class="sub">contatos recentes</div></div>
+    <div class="kpi"><div class="label">Conversão do popup</div><div class="value" id="kpiConv">—</div><div class="sub" id="kpiConvSub">views × preenchidos</div></div>
+  </div>
+
+  <div class="filters">
+    <input type="text" id="searchInput" placeholder="Buscar por nome, email ou telefone...">
+    <select id="periodSelect">
+      <option value="all">Todo o período</option>
+      <option value="today">Hoje</option>
+      <option value="7">Últimos 7 dias</option>
+      <option value="30">Últimos 30 dias</option>
+    </select>
+    <select id="techSelect">
+      <option value="all">Todos</option>
+      <option value="sim">Já são técnicos</option>
+      <option value="nao">Estão começando</option>
+      <option value="nao_informado">Não informado</option>
+    </select>
+  </div>
+
+  <div class="count-line" id="countLine"></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th data-sort="createdAt">Data <span class="arrow" id="ar-createdAt">▼</span></th>
+          <th data-sort="name">Nome <span class="arrow" id="ar-name"></span></th>
+          <th data-sort="email">Email <span class="arrow" id="ar-email"></span></th>
+          <th data-sort="phone">Telefone <span class="arrow" id="ar-phone"></span></th>
+          <th data-sort="isTechnician">Técnico? <span class="arrow" id="ar-isTechnician"></span></th>
+          <th data-sort="source">Origem <span class="arrow" id="ar-source"></span></th>
+          <th>Recuperar</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="empty hidden" id="emptyState">Nenhum lead encontrado com esse filtro.</div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var SENHA_KEY = 'instructiva_painel_senha';
+  var allLeads = [];
+  var popupViews = 0;
+  var sortKey = 'createdAt';
+  var sortDir = -1; // -1 desc, 1 asc
+
+  var loginView = document.getElementById('loginView');
+  var panelView = document.getElementById('panelView');
+
+  // ---------- helpers ----------
+  function fmtDate(iso){
+    try{
+      var d = new Date(iso);
+      return d.toLocaleString('pt-BR', { timeZone:'America/Sao_Paulo', day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' });
+    }catch(e){ return iso || '—'; }
+  }
+  function onlyDigits(s){ return (s||'').replace(/\D+/g,''); }
+  function waNumber(phone){
+    var d = onlyDigits(phone);
+    if(!d) return '';
+    if(d.length <= 11 && d.indexOf('55')!==0) d = '55'+d; // adiciona DDI Brasil se faltar
+    return d;
+  }
+  function sourcePage(src){
+    if(!src) return '—';
+    var s = src.replace('popup_saida_','');
+    if(s==='' || s==='/') return '/ (home)';
+    return s;
+  }
+  function techTag(v){
+    if(v==='sim') return '<span class="tag tag-tec">Já é técnico</span>';
+    if(v==='nao') return '<span class="tag tag-ini">Começando</span>';
+    return '<span class="tag tag-na">Não informado</span>';
+  }
+  function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function toast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(t._t); t._t = setTimeout(function(){ t.classList.remove('show'); }, 1800);
+  }
+
+  // ---------- carregar dados ----------
+  function load(senha){
+    document.getElementById('loginErr').textContent = 'Carregando...';
+    fetch('/api/dashboard?senha=' + encodeURIComponent(senha))
+      .then(function(r){
+        if(r.status===401) throw new Error('senha');
+        return r.json();
+      })
+      .then(function(data){
+        allLeads = (data.leads || []).slice();
+        popupViews = data.popupViews || 0;
+        try{ sessionStorage.setItem(SENHA_KEY, senha); }catch(e){}
+        loginView.classList.add('hidden');
+        panelView.classList.remove('hidden');
+        render();
+      })
+      .catch(function(err){
+        if(err.message==='senha'){
+          document.getElementById('loginErr').textContent = 'Senha incorreta.';
+          try{ sessionStorage.removeItem(SENHA_KEY); }catch(e){}
+        } else {
+          document.getElementById('loginErr').textContent = 'Erro ao carregar. Tente de novo.';
+        }
+      });
+  }
+
+  // ---------- KPIs ----------
+  function computeKpis(){
+    var now = Date.now();
+    var d1 = 24*3600*1000, d7 = 7*d1;
+    var hoje = 0, semana = 0;
+    allLeads.forEach(function(l){
+      var t = new Date(l.createdAt).getTime();
+      if(now - t <= d1) hoje++;
+      if(now - t <= d7) semana++;
+    });
+    document.getElementById('kpiTotal').textContent = allLeads.length;
+    document.getElementById('kpiHoje').textContent = hoje;
+    document.getElementById('kpiSemana').textContent = semana;
+    if(popupViews > 0){
+      var conv = (allLeads.length / popupViews) * 100;
+      document.getElementById('kpiConv').textContent = conv.toFixed(1) + '%';
+      document.getElementById('kpiConvSub').textContent = popupViews + ' views · ' + allLeads.length + ' preenchidos';
+    } else {
+      document.getElementById('kpiConv').textContent = '—';
+      document.getElementById('kpiConvSub').textContent = 'sem dados de views ainda';
+    }
+  }
+
+  // ---------- filtro + ordenação ----------
+  function getFiltered(){
+    var q = document.getElementById('searchInput').value.trim().toLowerCase();
+    var period = document.getElementById('periodSelect').value;
+    var tech = document.getElementById('techSelect').value;
+    var now = Date.now();
+    var cutoff = null;
+    if(period==='today') cutoff = now - 24*3600*1000;
+    else if(period==='7') cutoff = now - 7*24*3600*1000;
+    else if(period==='30') cutoff = now - 30*24*3600*1000;
+
+    var rows = allLeads.filter(function(l){
+      if(cutoff && new Date(l.createdAt).getTime() < cutoff) return false;
+      if(tech!=='all' && (l.isTechnician||'nao_informado')!==tech) return false;
+      if(q){
+        var hay = (l.name+' '+l.email+' '+l.phone).toLowerCase();
+        if(hay.indexOf(q)===-1) return false;
+      }
+      return true;
+    });
+
+    rows.sort(function(a,b){
+      var va = a[sortKey]||'', vb = b[sortKey]||'';
+      if(sortKey==='createdAt'){ va = new Date(a.createdAt).getTime()||0; vb = new Date(b.createdAt).getTime()||0; }
+      else { va = (''+va).toLowerCase(); vb = (''+vb).toLowerCase(); }
+      if(va<vb) return -1*sortDir;
+      if(va>vb) return 1*sortDir;
+      return 0;
+    });
+    return rows;
+  }
+
+  function render(){
+    computeKpis();
+    var rows = getFiltered();
+    var tbody = document.getElementById('tbody');
+    var empty = document.getElementById('emptyState');
+    document.getElementById('countLine').innerHTML = 'Mostrando <b>'+rows.length+'</b> de <b>'+allLeads.length+'</b> leads';
+
+    // setas de ordenação
+    ['createdAt','name','email','phone','isTechnician','source'].forEach(function(k){
+      var el = document.getElementById('ar-'+k);
+      if(el) el.textContent = (k===sortKey) ? (sortDir===-1?'▼':'▲') : '';
+    });
+
+    if(rows.length===0){ tbody.innerHTML=''; empty.classList.remove('hidden'); return; }
+    empty.classList.add('hidden');
+
+    var html = rows.map(function(l){
+      var wa = waNumber(l.phone);
+      var waMsg = encodeURIComponent('Olá ' + (l.name||'').split(' ')[0] + '! Aqui é da Escola Instructiva. Vi que você deixou seu contato no nosso site e queria te ajudar a escolher o curso certo pra você. Posso te explicar melhor?');
+      var waLink = wa ? 'https://wa.me/'+wa+'?text='+waMsg : '';
+      var mailLink = 'mailto:'+encodeURIComponent(l.email||'')+'?subject='+encodeURIComponent('Escola Instructiva — sobre seu interesse nos cursos');
+      return '<tr>'+
+        '<td class="lead-date">'+fmtDate(l.createdAt)+'</td>'+
+        '<td class="lead-name">'+escapeHtml(l.name)+'</td>'+
+        '<td>'+escapeHtml(l.email)+'</td>'+
+        '<td>'+escapeHtml(l.phone)+'</td>'+
+        '<td>'+techTag(l.isTechnician)+'</td>'+
+        '<td class="lead-src">'+escapeHtml(sourcePage(l.source))+'</td>'+
+        '<td><div class="acts">'+
+          (waLink ? '<a class="icon-btn wa" href="'+waLink+'" target="_blank" title="Chamar no WhatsApp">💬</a>' : '')+
+          '<a class="icon-btn" href="'+mailLink+'" title="Enviar email">✉</a>'+
+          '<button class="icon-btn" data-copy="'+escapeHtml(l.phone)+'" title="Copiar telefone">⧉</button>'+
+        '</div></td>'+
+      '</tr>';
+    }).join('');
+    tbody.innerHTML = html;
+
+    tbody.querySelectorAll('[data-copy]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var v = btn.getAttribute('data-copy');
+        navigator.clipboard.writeText(v).then(function(){ toast('Telefone copiado'); }).catch(function(){ toast('Copie manualmente: '+v); });
+      });
+    });
+  }
+
+  // ---------- CSV ----------
+  function exportCSV(){
+    var rows = getFiltered();
+    if(!rows.length){ toast('Nada pra exportar'); return; }
+    var head = ['Data','Nome','Email','Telefone','Tecnico','Origem'];
+    var lines = [head.join(';')];
+    rows.forEach(function(l){
+      var vals = [fmtDate(l.createdAt), l.name, l.email, l.phone, (l.isTechnician||''), sourcePage(l.source)];
+      lines.push(vals.map(function(v){ return '"'+String(v||'').replace(/"/g,'""')+'"'; }).join(';'));
+    });
+    var csv = '\ufeff' + lines.join('\r\n'); // BOM pra Excel abrir acentos certo
+    var blob = new Blob([csv], { type:'text/csv;charset=utf-8;' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'leads-instructiva-' + new Date().toISOString().slice(0,10) + '.csv';
+    a.click();
+    toast('CSV exportado');
+  }
+
+  // ---------- eventos ----------
+  document.getElementById('entrarBtn').addEventListener('click', function(){
+    var s = document.getElementById('senhaInput').value;
+    if(!s){ document.getElementById('loginErr').textContent='Digite a senha.'; return; }
+    load(s);
+  });
+  document.getElementById('senhaInput').addEventListener('keydown', function(e){
+    if(e.key==='Enter') document.getElementById('entrarBtn').click();
+  });
+  document.getElementById('searchInput').addEventListener('input', render);
+  document.getElementById('periodSelect').addEventListener('change', render);
+  document.getElementById('techSelect').addEventListener('change', render);
+  document.getElementById('refreshBtn').addEventListener('click', function(){
+    var s = sessionStorage.getItem(SENHA_KEY); if(s) load(s);
+  });
+  document.getElementById('exportBtn').addEventListener('click', exportCSV);
+  document.getElementById('logoutBtn').addEventListener('click', function(){
+    try{ sessionStorage.removeItem(SENHA_KEY); }catch(e){}
+    panelView.classList.add('hidden');
+    loginView.classList.remove('hidden');
+    document.getElementById('senhaInput').value='';
+    document.getElementById('loginErr').textContent='';
+  });
+  document.querySelectorAll('th[data-sort]').forEach(function(th){
+    th.addEventListener('click', function(){
+      var k = th.getAttribute('data-sort');
+      if(sortKey===k) sortDir *= -1; else { sortKey=k; sortDir = (k==='createdAt') ? -1 : 1; }
+      render();
+    });
+  });
+
+  // auto-login se já tem senha na sessão
+  var saved = null;
+  try{ saved = sessionStorage.getItem(SENHA_KEY); }catch(e){}
+  if(saved) load(saved);
+})();
+</script>
+</body>
+</html>

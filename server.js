@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3000;
 
 const DATA_DIR = process.env.RAILWAY_VOLUME_MOUNT_PATH || __dirname;
 const LEADS_FILE = path.join(DATA_DIR, 'leads.json');
+const STATS_FILE = path.join(DATA_DIR, 'stats.json');
 
 function readLeads() {
   try {
@@ -18,6 +19,18 @@ function readLeads() {
 
 function writeLeads(leads) {
   fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2));
+}
+
+function readStats() {
+  try {
+    return JSON.parse(fs.readFileSync(STATS_FILE, 'utf8'));
+  } catch (e) {
+    return { popupViews: 0 };
+  }
+}
+
+function writeStats(stats) {
+  fs.writeFileSync(STATS_FILE, JSON.stringify(stats, null, 2));
 }
 
 app.use(express.json());
@@ -48,6 +61,15 @@ app.post('/api/leads', (req, res) => {
   res.json({ ok: true });
 });
 
+// conta quantas vezes o popup apareceu (pra calcular taxa de conversao)
+// disparado pelo popup.js, sem senha (so incrementa um contador)
+app.post('/api/popup-view', (req, res) => {
+  const stats = readStats();
+  stats.popupViews = (stats.popupViews || 0) + 1;
+  writeStats(stats);
+  res.json({ ok: true });
+});
+
 // senha simples pra ver os leads - troque isso direto no Railway em
 // Settings -> Variables, criando uma variavel chamada LEADS_SECRET
 const LEADS_SECRET = process.env.LEADS_SECRET || 'troque-esta-senha';
@@ -58,6 +80,16 @@ app.get('/api/leads', (req, res) => {
     return res.status(401).json({ ok: false, error: 'Senha invalida. Use ?senha=SUA_SENHA na URL.' });
   }
   res.json(readLeads());
+});
+
+// dados do painel: leads + contador de views do popup (protegido por senha)
+app.get('/api/dashboard', (req, res) => {
+  if (req.query.senha !== LEADS_SECRET) {
+    return res.status(401).json({ ok: false, error: 'Senha invalida.' });
+  }
+  const leads = readLeads();
+  const stats = readStats();
+  res.json({ ok: true, leads, popupViews: stats.popupViews || 0 });
 });
 
 // fallback: qualquer rota desconhecida cai na home
