@@ -39,6 +39,12 @@ nav{ display:flex; align-items:center; justify-content:space-between; padding:16
 .nav-links a:hover, .nav-links a.active{ color:#fff; }
 .nav-actions{ display:flex; align-items:center; gap:12px; }
 @media (max-width:900px){ .nav-links{ display:none; } }
+@media (max-width:480px){
+  .nav-actions .btn-outline-dark{ display:none; }
+  nav{ gap:10px; }
+  .logo{ font-size:15px; }
+  .logo .mark{ width:26px; height:26px; }
+}
 
 .btn{ font-family:'Inter',sans-serif; font-weight:700; font-size:14.5px; padding:13px 24px; border-radius:2px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:8px; border:2px solid transparent; transition:all .15s ease; white-space:nowrap; }
 .btn-cta{ background:var(--orange); color:#0B0B0B; }
