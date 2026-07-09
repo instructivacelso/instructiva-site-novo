@@ -167,7 +167,7 @@ section{ padding:76px 0; position:relative; }
 @media (max-width:860px){ .prof{ grid-template-columns:1fr; gap:32px; } }
 .prof-frame{ aspect-ratio:4/5; background:var(--black); border-radius:16px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; box-shadow:0 30px 60px -30px rgba(0,0,0,.35); }
 .prof-frame::before{ content:none; }
-.prof-frame::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.7) 100%); }
+.prof-frame::after{ content:none; }
 .prof-frame .initials{ position:relative; font-family:'Manrope',sans-serif; font-weight:800; font-size:64px; color:var(--orange); }
 .prof-frame .tag{ position:relative; z-index:2; position:absolute; bottom:18px; left:18px; right:18px; font-size:11px; color:#D8D8D2; display:flex; justify-content:space-between; font-weight:700; text-transform:uppercase; letter-spacing:.02em; }
 .prof-copy .quote{ font-size:21px; line-height:1.45; color:var(--black); font-weight:800; margin-bottom:24px; font-family:'Manrope',sans-serif; }
