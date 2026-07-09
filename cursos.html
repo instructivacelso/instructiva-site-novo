@@ -404,6 +404,20 @@
     applyFilters();
   });
   searchInput.addEventListener('input', applyFilters);
+
+  // se a URL vier com ?cat=NomeDaCategoria, ja abre filtrado nela
+  var urlParams = new URLSearchParams(window.location.search);
+  var catParam = urlParams.get('cat');
+  if(catParam){
+    var matchBtn = Array.from(filterBar.children).find(function(b){ return b.dataset.filter === catParam; });
+    if(matchBtn){
+      activeFilter = catParam;
+      Array.from(filterBar.children).forEach(function(b){ b.classList.remove('active'); });
+      matchBtn.classList.add('active');
+      applyFilters();
+      matchBtn.scrollIntoView({block:'nearest', inline:'center'});
+    }
+  }
 </script>
 
 </body>
