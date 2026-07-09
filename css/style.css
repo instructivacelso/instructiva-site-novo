@@ -170,7 +170,10 @@ section{ padding:76px 0; position:relative; }
 .prof-frame::after{ content:none; }
 .prof-frame .initials{ position:relative; font-family:'Manrope',sans-serif; font-weight:800; font-size:64px; color:var(--orange); }
 .prof-frame .tag{ position:relative; z-index:2; position:absolute; bottom:18px; left:18px; right:18px; font-size:11px; color:#D8D8D2; display:flex; justify-content:space-between; font-weight:700; text-transform:uppercase; letter-spacing:.02em; }
-.prof-copy .quote{ font-size:21px; line-height:1.45; color:var(--black); font-weight:800; margin-bottom:24px; font-family:'Manrope',sans-serif; }
+.prof-copy .quote{ font-size:21px; line-height:1.45; color:var(--black); font-weight:800; margin-bottom:22px; font-family:'Manrope',sans-serif; }
+.prof-signature{ border-left:3px solid var(--orange); padding-left:14px; margin-bottom:30px; }
+.prof-signature strong{ display:block; font-family:'Manrope',sans-serif; font-weight:800; font-size:17px; color:var(--black); }
+.prof-signature span{ display:block; font-size:13.5px; color:var(--muted); margin-top:2px; }
 .prof-facts{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px 24px; }
 .prof-fact{ display:flex; gap:10px; align-items:flex-start; }
 .prof-fact .dot{ width:8px; height:8px; background:var(--orange); border-radius:50%; margin-top:6px; flex:0 0 auto; }
