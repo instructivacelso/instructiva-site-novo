@@ -30,7 +30,7 @@ h1,h2,h3{ font-family:'Manrope',sans-serif; letter-spacing:-0.02em; }
 /* ===== HEADER ===== */
 header{ position:sticky; top:0; z-index:50; background:var(--black); border-bottom:1px solid var(--line); }
 nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 0; }
-.logo{ display:flex; align-items:center; gap:10px; font-family:'Manrope',sans-serif; font-weight:800; font-size:19px; color:#fff; text-transform:lowercase; letter-spacing:-.01em; }
+.logo{ display:flex; align-items:center; gap:10px; font-family:'Manrope',sans-serif; font-weight:800; font-size:19px; color:#fff; letter-spacing:-.01em; }
 .logo .mark{ width:34px; height:34px; flex:0 0 auto; object-fit:contain; }
 .logo b{ color:var(--orange); font-weight:800; }
 .nav-links{ display:flex; align-items:center; gap:30px; }
