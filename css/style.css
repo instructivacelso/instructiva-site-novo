@@ -431,3 +431,7 @@ footer{ padding:52px 0 28px; border-top:1px solid var(--line); background:var(--
 
 .seal-graphic{ width:120px; height:120px; flex:0 0 auto; }
 .seal-graphic svg{ width:100%; height:100%; }
+
+.prof-caption{ text-align:center; margin-top:14px; }
+.prof-caption strong{ display:block; font-family:'Manrope',sans-serif; font-weight:800; font-size:16px; color:var(--black); }
+.prof-caption span{ display:block; font-size:13px; color:var(--muted); margin-top:2px; }
