@@ -286,8 +286,8 @@ footer{ padding:52px 0 28px; border-top:1px solid var(--line); background:var(--
   color:#fff; line-height:1.12; margin-bottom:14px; max-width:520px;
 }
 .promo-mega-hero h2 em{ font-style:normal; color:var(--orange); }
-.promo-hero-copy p{
-  font-size:15.5px; color:#D8D8D2; max-width:460px; margin-bottom:28px; line-height:1.55; font-family:'Inter',sans-serif;
+.promo-hero-copy p, .promo-mega-hero .wrap > p{
+  font-size:15.5px; color:#D8D8D2; max-width:620px; margin:0 0 28px; line-height:1.55; font-family:'Inter',sans-serif;
 }
 .promo-mega-cta{ font-size:16px; padding:17px 38px; }
 
