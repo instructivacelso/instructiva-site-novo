@@ -408,30 +408,45 @@
     <div class="seal-big">
       <svg viewBox="0 0 300 300" role="img" aria-label="Selo de garantia de 7 dias">
         <defs>
-          <path id="arcTop" d="M 40 150 A 110 110 0 0 1 260 150" fill="none"/>
-          <path id="arcBot" d="M 54 150 A 96 96 0 0 0 246 150" fill="none"/>
+          <path id="arcTop" d="M 46 150 A 104 104 0 0 1 254 150" fill="none"/>
+          <path id="arcBot" d="M 250 150 A 100 100 0 0 1 50 150" fill="none"/>
+          <linearGradient id="ringGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FBA45A"/>
+            <stop offset="0.5" stop-color="#F97316"/>
+            <stop offset="1" stop-color="#C24E08"/>
+          </linearGradient>
+          <radialGradient id="coreGrad" cx="50%" cy="42%" r="65%">
+            <stop offset="0" stop-color="#232323"/>
+            <stop offset="1" stop-color="#0B0B0B"/>
+          </radialGradient>
         </defs>
-        <!-- borda serrilhada (medalha) -->
-        <path d="M150.00 4.00 L158.89 14.29 L169.06 5.25 L176.53 16.61 L187.79 8.97 L193.72 21.22 L205.87 15.11 L210.15 28.03 L223.00 23.56 L225.56 36.92 L238.88 34.17 L239.67 47.75 L253.24 46.76 L252.25 60.33 L265.83 61.12 L263.08 74.44 L276.44 77.00 L271.97 89.85 L284.89 94.13 L278.78 106.28 L291.03 112.21 L283.39 123.47 L294.75 130.94 L285.71 141.11 L296.00 150.00 L285.71 158.89 L294.75 169.06 L283.39 176.53 L291.03 187.79 L278.78 193.72 L284.89 205.87 L271.97 210.15 L276.44 223.00 L263.08 225.56 L265.83 238.88 L252.25 239.67 L253.24 253.24 L239.67 252.25 L238.88 265.83 L225.56 263.08 L223.00 276.44 L210.15 271.97 L205.87 284.89 L193.72 278.78 L187.79 291.03 L176.53 283.39 L169.06 294.75 L158.89 285.71 L150.00 296.00 L141.11 285.71 L130.94 294.75 L123.47 283.39 L112.21 291.03 L106.28 278.78 L94.13 284.89 L89.85 271.97 L77.00 276.44 L74.44 263.08 L61.12 265.83 L60.33 252.25 L46.76 253.24 L47.75 239.67 L34.17 238.88 L36.92 225.56 L23.56 223.00 L28.03 210.15 L15.11 205.87 L21.22 193.72 L8.97 187.79 L16.61 176.53 L5.25 169.06 L14.29 158.89 L4.00 150.00 L14.29 141.11 L5.25 130.94 L16.61 123.47 L8.97 112.21 L21.22 106.28 L15.11 94.13 L28.03 89.85 L23.56 77.00 L36.92 74.44 L34.17 61.12 L47.75 60.33 L46.76 46.76 L60.33 47.75 L61.12 34.17 L74.44 36.92 L77.00 23.56 L89.85 28.03 L94.13 15.11 L106.28 21.22 L112.21 8.97 L123.47 16.61 L130.94 5.25 L141.11 14.29 Z" fill="var(--orange)"/>
-        <circle cx="150" cy="150" r="128" fill="#0B0B0B"/>
-        <circle cx="150" cy="150" r="120" fill="none" stroke="var(--orange)" stroke-width="2"/>
-        <circle cx="150" cy="150" r="112" fill="none" stroke="rgba(249,115,22,.35)" stroke-width="1" stroke-dasharray="2 4"/>
-        <!-- texto curvado -->
-        <text fill="#fff" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="13" letter-spacing="3">
+
+        <!-- borda serrilhada metálica -->
+        <path d="M150.00 4.00 L158.89 14.29 L169.06 5.25 L176.53 16.61 L187.79 8.97 L193.72 21.22 L205.87 15.11 L210.15 28.03 L223.00 23.56 L225.56 36.92 L238.88 34.17 L239.67 47.75 L253.24 46.76 L252.25 60.33 L265.83 61.12 L263.08 74.44 L276.44 77.00 L271.97 89.85 L284.89 94.13 L278.78 106.28 L291.03 112.21 L283.39 123.47 L294.75 130.94 L285.71 141.11 L296.00 150.00 L285.71 158.89 L294.75 169.06 L283.39 176.53 L291.03 187.79 L278.78 193.72 L284.89 205.87 L271.97 210.15 L276.44 223.00 L263.08 225.56 L265.83 238.88 L252.25 239.67 L253.24 253.24 L239.67 252.25 L238.88 265.83 L225.56 263.08 L223.00 276.44 L210.15 271.97 L205.87 284.89 L193.72 278.78 L187.79 291.03 L176.53 283.39 L169.06 294.75 L158.89 285.71 L150.00 296.00 L141.11 285.71 L130.94 294.75 L123.47 283.39 L112.21 291.03 L106.28 278.78 L94.13 284.89 L89.85 271.97 L77.00 276.44 L74.44 263.08 L61.12 265.83 L60.33 252.25 L46.76 253.24 L47.75 239.67 L34.17 238.88 L36.92 225.56 L23.56 223.00 L28.03 210.15 L15.11 205.87 L21.22 193.72 L8.97 187.79 L16.61 176.53 L5.25 169.06 L14.29 158.89 L4.00 150.00 L14.29 141.11 L5.25 130.94 L16.61 123.47 L8.97 112.21 L21.22 106.28 L15.11 94.13 L28.03 89.85 L23.56 77.00 L36.92 74.44 L34.17 61.12 L47.75 60.33 L46.76 46.76 L60.33 47.75 L61.12 34.17 L74.44 36.92 L77.00 23.56 L89.85 28.03 L94.13 15.11 L106.28 21.22 L112.21 8.97 L123.47 16.61 L130.94 5.25 L141.11 14.29 Z" fill="url(#ringGrad)"/>
+
+        <!-- anel externo de texto -->
+        <circle cx="150" cy="150" r="128" fill="url(#coreGrad)"/>
+        <!-- disco central -->
+        <circle cx="150" cy="150" r="98" fill="#0B0B0B" stroke="var(--orange)" stroke-width="1.5"/>
+        <circle cx="150" cy="150" r="92" fill="none" stroke="rgba(249,115,22,.4)" stroke-width="1" stroke-dasharray="1.5 4"/>
+
+        <!-- texto curvado topo -->
+        <text fill="#fff" font-family="'Manrope', sans-serif" font-weight="800" font-size="14" letter-spacing="2.5">
           <textPath href="#arcTop" startOffset="50%" text-anchor="middle">GARANTIA INCONDICIONAL</textPath>
         </text>
-        <text fill="var(--orange)" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="12" letter-spacing="3">
-          <textPath href="#arcBot" startOffset="50%" text-anchor="middle">SATISFAÇÃO TOTAL</textPath>
+        <!-- texto curvado base -->
+        <text fill="#fff" font-family="'Manrope', sans-serif" font-weight="800" font-size="14" letter-spacing="2.5">
+          <textPath href="#arcBot" startOffset="50%" text-anchor="middle">SATISFAÇÃO GARANTIDA</textPath>
         </text>
-        <!-- estrelinhas laterais -->
-        <text x="46" y="155" fill="var(--orange)" font-size="12" text-anchor="middle">★</text>
-        <text x="254" y="155" fill="var(--orange)" font-size="12" text-anchor="middle">★</text>
-        <!-- escudo com check -->
-        <path d="M150 96 l30 12 v22 c0 22 -14 36 -30 44 c-16 -8 -30 -22 -30 -44 v-22 z" fill="none" stroke="var(--orange)" stroke-width="2.5"/>
-        <path d="M138 150 l9 9 l17 -19" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <!-- destaque central -->
-        <text x="150" y="212" text-anchor="middle" fill="#fff" font-family="'Manrope', sans-serif" font-weight="800" font-size="34">7 DIAS</text>
-        <text x="150" y="230" text-anchor="middle" fill="var(--orange)" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="11" letter-spacing="2">100% DE VOLTA</text>
+
+        <!-- estrelas laterais -->
+        <text x="40" y="156" fill="var(--orange)" font-size="15" text-anchor="middle">★</text>
+        <text x="260" y="156" fill="var(--orange)" font-size="15" text-anchor="middle">★</text>
+
+        <!-- miolo empilhado -->
+        <text x="150" y="132" text-anchor="middle" fill="#fff" font-family="'Manrope', sans-serif" font-weight="700" font-size="17" letter-spacing="1">DINHEIRO</text>
+        <text x="150" y="150" text-anchor="middle" fill="#fff" font-family="'Manrope', sans-serif" font-weight="700" font-size="17" letter-spacing="1">DE VOLTA EM</text>
+        <text x="150" y="188" text-anchor="middle" fill="var(--orange)" font-family="'Manrope', sans-serif" font-weight="800" font-size="40" letter-spacing="0.5">7 DIAS</text>
       </svg>
     </div>
     <div class="guarantee-text">
