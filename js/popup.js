@@ -153,9 +153,20 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     countVisitOnce();
-    if (alreadyShownThisSession()) return;
+
+    // MODO DE TESTE: acessar a pagina com ?popup=teste na URL forca o popup
+    // a aparecer na hora, ignorando o timer e a trava de "uma vez por sessao".
+    // Serve pra voce conferir se a versao nova esta no ar de verdade.
+    var forceShow = /[?&]popup=teste(\b|&|$)/.test(window.location.search);
+
+    if (!forceShow && alreadyShownThisSession()) return;
     var overlay = buildPopup();
     setupPopup(overlay);
+
+    if (forceShow) {
+      overlay.classList.add('show');
+      return; // nao arma timer nem exit-intent; e so pra teste
+    }
 
     setTimeout(function () { armed = true; }, ARM_DELAY_MS);
 
