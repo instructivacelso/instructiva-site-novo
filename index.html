@@ -6,6 +6,7 @@
 <title>Escola Instructiva — Aprenda a consertar eletrônicos</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/popup.css">
+<link rel="stylesheet" href="css/course-sales.css">
 </head>
 <body>
 <header>
@@ -49,17 +50,17 @@
 
     <div class="hero-card">
       <div class="tag">Curso mais procurado</div>
-      <h3>Especialista em Manutenção em Fontes Chaveadas</h3>
+      <h3>Especialista em Manutenção de Inversores Solares</h3>
       <ul class="stack">
-        <li>Estrutura completa: primário, secundário, CIs e datasheets</li>
-        <li>Topologias Flyback, Push-Pull, Half/Full-Bridge, PFC e conversores ressonantes LLC</li>
-        <li>Retificadores síncronos e instrumentação aplicada</li>
+        <li>Inversores on-grid, off-grid, híbridos e controladores de carga PWM/MPPT</li>
+        <li>Diagnóstico, substituição de componentes e reparo completo</li>
+        <li>Onde encontrar componentes originais e como precificar o serviço</li>
       </ul>
       <div class="price-row">
-        <span class="price">R$ 1.497<span style="font-size:15px; color:#9A9A94; font-weight:600;">,00</span></span>
-        <span class="inst">ou 12x de R$ 149,50</span>
+        <span class="price">R$ 1.697<span style="font-size:15px; color:#9A9A94; font-weight:600;">,00</span></span>
+        <span class="inst">ou 12x de R$ 169,47</span>
       </div>
-      <a href="cursos/especialista-em-manutencao-em-fontes-chaveadas.html" class="btn btn-cta btn-block">Ver curso completo</a>
+      <a href="cursos/especialista-em-manutencao-de-inversores-solares.html" class="btn btn-cta btn-block">Ver curso completo</a>
     </div>
   </div>
 </section>
@@ -100,17 +101,17 @@
     <div class="offer-card">
       <div class="offer-main">
         <div class="offer-tag">Mais procurado</div>
-        <h3>Especialista em Manutenção em Fontes Chaveadas</h3>
-        <p class="offer-desc">Estrutura completa de fontes chaveadas: primário, secundário, topologias Flyback, PFC, conversores ressonantes LLC e retificadores síncronos.</p>
+        <h3>Especialista em Manutenção de Inversores Solares</h3>
+        <p class="offer-desc">On-grid, off-grid, híbridos e controladores de carga, com módulo bônus de eletrônica base e precificação de serviços.</p>
         <ul class="offer-list">
-          <li>Estrutura completa: primário, secundário, CIs e datasheets</li><li>Topologias Flyback, Push-Pull, Half/Full-Bridge, PFC e conversores ressonantes LLC</li><li>Retificadores síncronos e instrumentação aplicada</li><li>Bônus: curso de eletrônica base + 2 livros físicos com frete grátis</li>
+          <li>Inversores on-grid, off-grid, híbridos e controladores de carga PWM/MPPT</li><li>Diagnóstico, substituição de componentes e reparo completo</li><li>Onde encontrar componentes originais e como precificar o serviço</li><li>Bônus: curso completo de eletrônica analógica e digital</li>
         </ul>
       </div>
       <div class="offer-buy">
         <div class="lbl">Investimento único</div>
-        <div class="offer-price">R$ 1.497<span>,00</span></div>
-        <div class="offer-installments">ou 12x de R$ 149,50 no cartão</div>
-        <a href="https://payfast.greenn.com.br/gryr9cg/offer/dDE4EW?utm_term=SITE" class="btn btn-cta offer-cta" target="_blank" rel="noopener">Comprar agora</a>
+        <div class="offer-price">R$ 1.697<span>,00</span></div>
+        <div class="offer-installments">ou 12x de R$ 169,47 no cartão</div>
+        <a href="cursos/especialista-em-manutencao-de-inversores-solares.html" class="btn btn-cta offer-cta">Ver curso completo</a>
         <div class="offer-guarantee"><i></i>7 dias de garantia — não gostou, devolvemos tudo</div>
         <div class="offer-pay"><span>PIX</span><span>Boleto</span><span>Cartão</span></div>
       </div>
@@ -341,15 +342,15 @@
 </footer>
 <div class="sticky-cta" id="stickyCta">
   <div class="wrap sticky-inner">
-    <span class="sticky-copy"><strong>Especialista em Manutenção em Fontes Chaveadas</strong> — <span class="sticky-price">R$ 1.497,00</span></span>
-    <a href="#comprar" class="btn btn-cta btn-sm">Comprar agora</a>
+    <span class="sticky-copy"><strong>Especialista em Manutenção de Inversores Solares</strong> — <span class="sticky-price">R$ 1.697,00</span></span>
+    <a href="cursos/especialista-em-manutencao-de-inversores-solares.html" class="btn btn-cta btn-sm">Ver curso</a>
   </div>
 </div>
 <script>
   var stickyCta = document.getElementById('stickyCta');
-  var trigger = document.querySelector('.course-hero') || document.querySelector('.hero');
+  var trigger = document.querySelector('.hero');
   window.addEventListener('scroll', function(){
-    if(trigger && window.scrollY > trigger.offsetTop + 200){ stickyCta.classList.add('show'); }
+    if(trigger && window.scrollY > trigger.offsetTop + trigger.offsetHeight){ stickyCta.classList.add('show'); }
     else{ stickyCta.classList.remove('show'); }
   });
 </script>

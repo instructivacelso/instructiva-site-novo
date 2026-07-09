@@ -1,45 +1,33 @@
-ESCOLA INSTRUCTIVA — SITE FINAL (19 CURSOS + LINKS REAIS + AREA DO ALUNO)
-==========================================================================
+ESCOLA INSTRUCTIVA — SITE FINAL (PÁGINA DE VENDAS RICA + INVERSOR SOLAR EM DESTAQUE)
+======================================================================================
 
-O que mudou nesta versao:
-- Ficaram SOMENTE os 19 cursos que voce confirmou (os outros 16 foram
-  removidos do catalogo e das paginas individuais)
-- Categorias que ficaram sem nenhum curso tambem foram removidas dos
-  filtros do catalogo
-- Todos os 19 cursos tem o link REAL de checkout (Greenn) no botao
-  "Comprar agora" - nao tem mais nenhum botao morto
-- Os valores de parcelamento em 12x sao os valores REAIS do checkout
-  (com juros), nao mais um calculo simples
-- O botao "Area do aluno" (no menu de cima e no rodape) agora leva
-  direto pra plataforma de aulas de verdade (Cademi)
+Novidade desta versao: PAGINA DE CADA CURSO REFEITA (3 camadas de consciencia)
+Cada um dos 19 cursos agora tem uma pagina completa de vendas, no estilo que
+o CEO validou, com estas secoes:
+1. Barra fixa no topo com titulo + botao "Garantir acesso agora"
+2. Hero: headline + subheadline + card de preco (12x + a vista)
+3. "O que voce vai aprender" (bullets reais do curso)
+4. "Quem domina vs quem nao domina" (comparativo, baseado nos bullets reais)
+5. Citacoes do Prof. Celso Muniz (rascunho de marketing - REVISE antes de publicar,
+   sao frases que escrevi pra representar a filosofia da escola, nao falas
+   literalmente registradas do professor)
+6. "Erros comuns" - 6 padroes genericos e reais da profissao (sem estatistica
+   inventada - nao coloquei numero de mercado tipo "+80% dos equipamentos..."
+   porque eu nao tenho fonte real pra isso; se voce tiver dado de mercado
+   verdadeiro que queira usar, me manda que eu encaixo)
+7. Selo de garantia + cursos relacionados + FAQ + CTA final + botao fixo
 
-Cursos mantidos (19):
-1. Especialista em Manutenção em Televisores LED e LCD
-2. Especialista em Manutenção em Fontes Chaveadas
-3. Livro: Análise e Procedimentos + Videoaulas
-4. Especialista em Manutenção em Tecnologias Inverter
-5. Manutenção, Reparo + Instalação de Ar Condicionado
-6. Especialista em Reparo em Placas Eletrônicas (EMAC)
-7. Manuseio de Osciloscópio
-8. Livro: Eletrônica de Potência - Retificadores
-9. Livro: Eletrônica de Potência - Semicondutores
-10. Livro: Eletrônica de Potência - Conversores CC-CC
-11. Livro de Exercícios - Análise de Circuitos e Defeitos
-12. Eletrônica Inicial - Analógica
-13. Especialista em Manutenção em Amplificadores de Áudio
-14. Especialista em Manutenção em Inversores de Frequência e Softstarter
-15. Especialista em Manutenção de Inversores Solares
-16. Especialista em Manutenção em Esteira de Academias
-17. Especialista em Equipamentos Odontológicos - Estéticos
-18. Livro: Retificador PFC Monofásico + Videoaulas
-19. Livro: Fontes Chaveadas Topologia Flyback + Videoaulas
+O curso principal em destaque agora e o INVERSOR SOLAR (era Fontes Chaveadas)
 
 O que ainda falta:
-1. Foto de verdade do Prof. Celso (hoje so um circulo com as iniciais "CM")
-2. Depoimentos reais de alunos (os de agora sao exemplo)
-3. Fotos/capas de cada curso (os posteres sao so tipografia por enquanto)
-4. Colocar senha no /api/leads antes de divulgar o site (ver server.js)
-5. Integrar os leads capturados no popup com a IA SDR / WhatsApp
+1. Revisar as citacoes atribuidas ao Prof. Celso (sao rascunho, nao confirmadas)
+2. Foto de verdade do Prof. Celso (hoje so um circulo com as iniciais "CM")
+3. Depoimentos reais de alunos (os de agora sao exemplo)
+4. Fotos/capas de cada curso (os posteres sao so tipografia por enquanto)
+5. Colocar senha no /api/leads antes de divulgar o site (ver server.js)
+6. Integrar os leads capturados no popup com a IA SDR / WhatsApp
+7. Se quiser estatisticas de mercado reais (tipo "% de equipamentos com
+   tecnologia X no Brasil"), me manda a fonte que eu incluo nas paginas
 
 Como publicar (Railway):
 1. Substitua TODOS os arquivos do seu repositorio GitHub por estes

@@ -1,0 +1,67 @@
+.course-topbar{ background:var(--paper); border-bottom:1px solid var(--line); padding:14px 0; }
+.course-topbar .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.course-topbar .back{ font-size:14px; font-weight:600; color:var(--muted); display:flex; align-items:center; gap:6px; }
+.course-topbar .back:hover{ color:var(--orange-deep); }
+.course-topbar .mid-title{ font-size:15px; font-weight:700; color:var(--ink); text-align:center; flex:1; }
+@media (max-width:780px){ .course-topbar .mid-title{ display:none; } }
+
+.course-infobar{ background:var(--black); color:#fff; padding:16px 0; position:sticky; top:0; z-index:49; }
+.course-infobar .wrap{ display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+.course-infobar h2{ font-size:17px; color:#fff; margin-bottom:4px; text-transform:none; }
+.course-infobar .meta{ font-size:12.5px; color:#9A9A94; font-family:'JetBrains Mono',monospace; }
+
+.sales-hero{ padding:64px 0 56px; text-align:center; background:radial-gradient(ellipse at 50% 0%, #1a1a1a 0%, var(--black) 60%); color:#fff; }
+.sales-hero .badge-fire{ display:inline-flex; align-items:center; gap:8px; background:rgba(249,115,22,0.12); border:1px solid rgba(249,115,22,0.4); color:var(--orange); font-family:'JetBrains Mono',monospace; font-weight:700; font-size:12.5px; letter-spacing:.03em; padding:8px 18px; border-radius:99px; margin-bottom:28px; text-transform:uppercase; }
+.sales-hero h1{ font-size:clamp(30px,4.6vw,54px); font-weight:800; line-height:1.08; color:#fff; margin-bottom:20px; text-transform:none; }
+.sales-hero h1 em{ font-style:normal; color:var(--orange); }
+.sales-hero .sub{ font-size:17px; color:#C7C7C1; max-width:640px; margin:0 auto 40px; line-height:1.6; font-family:'Inter',sans-serif; }
+
+.price-panel{ max-width:480px; margin:0 auto; background:var(--black-2); border:1px solid rgba(255,255,255,.12); border-radius:8px; padding:36px 32px; text-align:center; }
+.price-panel .p-lbl{ font-size:13px; color:#9A9A94; margin-bottom:10px; font-family:'Inter',sans-serif; }
+.price-panel .p-inst{ font-size:14px; color:#9A9A94; margin-bottom:4px; }
+.price-panel .p-value{ font-family:'Manrope',sans-serif; font-weight:800; font-size:52px; color:#fff; line-height:1; margin-bottom:6px; }
+.price-panel .p-value sup{ font-size:22px; font-weight:700; vertical-align:12px; }
+.price-panel .p-under{ font-size:13px; color:var(--orange); font-weight:700; margin-bottom:6px; }
+.price-panel .p-alt{ font-size:13.5px; color:#9A9A94; margin-bottom:26px; }
+.price-panel .btn-cta{ width:100%; font-size:16px; padding:17px; margin-bottom:18px; }
+.price-panel .pay-row{ display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:22px; }
+.price-panel .pay-row span{ font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; color:#C7C7C1; border:1px solid rgba(255,255,255,.18); border-radius:2px; padding:6px 12px; text-transform:uppercase; }
+.price-panel .incl-list{ text-align:left; border-top:1px dashed rgba(255,255,255,.15); padding-top:20px; }
+.price-panel .incl-list div{ display:flex; align-items:flex-start; gap:10px; font-size:13.5px; color:#D8D8D2; margin-bottom:12px; font-family:'Inter',sans-serif; }
+.price-panel .incl-list div::before{ content:"✓"; color:var(--orange); font-weight:800; flex:0 0 auto; }
+
+.compare-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.1); border-radius:6px; overflow:hidden; }
+@media (max-width:780px){ .compare-wrap{ grid-template-columns:1fr; } }
+.compare-col{ background:var(--black); padding:28px 26px; }
+.compare-col h3{ font-size:16px; font-weight:800; margin-bottom:20px; display:flex; align-items:center; gap:8px; text-transform:none; }
+.compare-col.good h3{ color:#5FD98A; }
+.compare-col.bad h3{ color:#E8654F; }
+.compare-item{ padding:12px 0; border-bottom:1px solid rgba(255,255,255,.06); }
+.compare-item:last-child{ border-bottom:none; }
+.compare-item strong{ display:block; font-size:14px; margin-bottom:4px; font-family:'Inter',sans-serif; }
+.compare-col.good .compare-item strong{ color:#fff; }
+.compare-col.bad .compare-item strong{ color:#E8B0A5; }
+.compare-item p{ font-size:13px; color:#9A9A94; line-height:1.5; font-family:'Inter',sans-serif; }
+
+.quote-block{ background:linear-gradient(135deg, #1F1208 0%, #0B0B0B 100%); border:1px solid rgba(249,115,22,0.3); border-radius:8px; padding:40px 44px; text-align:center; margin-bottom:20px; }
+.quote-block p{ font-family:'Manrope',sans-serif; font-weight:800; font-size:clamp(20px,2.6vw,28px); color:#fff; line-height:1.35; margin-bottom:18px; }
+.quote-block p em{ font-style:normal; color:var(--orange); }
+.quote-block .who{ font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#9A9A94; letter-spacing:.04em; text-transform:uppercase; }
+.quote-row{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+@media (max-width:780px){ .quote-row{ grid-template-columns:1fr; } }
+.quote-sm{ background:var(--black-2); border:1px solid rgba(255,255,255,.1); border-radius:8px; padding:26px; }
+.quote-sm p{ font-family:'Manrope',sans-serif; font-weight:700; font-size:18px; color:#fff; line-height:1.35; margin-bottom:14px; }
+.quote-sm p em{ font-style:normal; color:var(--orange); }
+.quote-sm .who{ font-family:'JetBrains Mono',monospace; font-size:11px; color:#9A9A94; letter-spacing:.03em; text-transform:uppercase; }
+
+.errors-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media (max-width:780px){ .errors-grid{ grid-template-columns:1fr; } }
+.error-card{ background:var(--black-2); border-left:3px solid var(--orange); border-radius:0 6px 6px 0; padding:20px 22px; }
+.error-card .e-num{ font-family:'JetBrains Mono',monospace; font-weight:700; font-size:12px; color:var(--orange); margin-bottom:8px; }
+.error-card h4{ font-size:15.5px; font-weight:800; color:#fff; margin-bottom:8px; text-transform:none; }
+.error-card p{ font-size:13px; color:#9A9A94; line-height:1.55; font-family:'Inter',sans-serif; }
+
+.recap-stats{ display:flex; gap:40px; flex-wrap:wrap; margin:32px 0; }
+.recap-stats div{ min-width:100px; }
+.recap-stats .n{ font-family:'Manrope',sans-serif; font-weight:800; font-size:32px; color:#fff; line-height:1; }
+.recap-stats .l{ font-family:'JetBrains Mono',monospace; font-size:11px; color:#9A9A94; text-transform:uppercase; letter-spacing:.03em; margin-top:6px; }
