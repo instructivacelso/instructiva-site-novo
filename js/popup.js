@@ -188,3 +188,98 @@
     });
   });
 })();
+
+/* =======================================================================
+   ÁREA DO ALUNO — seletor de plataforma
+   Ao clicar em "Área do aluno", abre uma janelinha com as plataformas.
+   PARA ADICIONAR/EDITAR UMA PLATAFORMA: mexa só na lista PLATAFORMAS abaixo.
+   ======================================================================= */
+(function () {
+  // >>> LISTA DE PLATAFORMAS (nome que aparece + link de acesso do aluno) <<<
+  var PLATAFORMAS = [
+    { nome: 'Cademi',  desc: 'Cursos e livros digitais',        url: 'https://instructiva.cademi.com.br/auth/login?redirect=%2Foffice%2Fusuario%2Fperfil%2Fcompras%2F21549397' },
+    { nome: 'Hotmart', desc: 'Cursos comprados na Hotmart',     url: 'https://sso.hotmart.com/login' },
+    { nome: 'Nutror',  desc: 'Área de alunos Nutror',           url: 'https://my.nutror.com/alunos' }
+  ];
+
+  var CSS =
+    '.aluno-overlay{position:fixed;inset:0;z-index:210;background:rgba(11,11,11,.82);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s ease;}' +
+    '.aluno-overlay.show{opacity:1;pointer-events:auto;}' +
+    '.aluno-box{background:#FAFAF8;width:100%;max-width:420px;border-radius:6px;position:relative;padding:32px 28px 24px;border-top:4px solid #F97316;transform:translateY(10px) scale(.98);transition:transform .2s ease;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);}' +
+    '.aluno-overlay.show .aluno-box{transform:translateY(0) scale(1);}' +
+    '.aluno-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border:none;background:transparent;cursor:pointer;font-size:22px;color:#6B6B66;line-height:1;display:flex;align-items:center;justify-content:center;border-radius:6px;}' +
+    '.aluno-close:hover{background:rgba(0,0,0,.06);color:#0B0B0B;}' +
+    '.aluno-eyebrow{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#F97316;margin-bottom:6px;}' +
+    '.aluno-title{font-family:"Manrope",sans-serif;font-weight:800;font-size:21px;color:#0B0B0B;margin:0 0 4px;letter-spacing:-.01em;}' +
+    '.aluno-sub{font-family:"Inter",sans-serif;font-size:13.5px;color:#6B6B66;margin:0 0 20px;}' +
+    '.aluno-list{display:flex;flex-direction:column;gap:10px;}' +
+    '.aluno-item{display:flex;align-items:center;gap:14px;width:100%;text-align:left;text-decoration:none;background:#fff;border:1px solid #E6E6E1;border-radius:8px;padding:14px 16px;cursor:pointer;transition:.15s;}' +
+    '.aluno-item:hover{border-color:#F97316;background:#FFF7F1;transform:translateY(-1px);}' +
+    '.aluno-ic{width:38px;height:38px;flex:0 0 auto;border-radius:8px;background:#0B0B0B;color:#F97316;display:flex;align-items:center;justify-content:center;font-family:"Manrope",sans-serif;font-weight:800;font-size:16px;}' +
+    '.aluno-txt{flex:1;min-width:0;}' +
+    '.aluno-nm{font-family:"Manrope",sans-serif;font-weight:700;font-size:15.5px;color:#0B0B0B;line-height:1.2;}' +
+    '.aluno-ds{font-family:"Inter",sans-serif;font-size:12.5px;color:#8A8A85;margin-top:1px;}' +
+    '.aluno-arrow{color:#C24E08;font-size:18px;flex:0 0 auto;}';
+
+  function injectCss() {
+    var s = document.createElement('style');
+    s.textContent = CSS;
+    document.head.appendChild(s);
+  }
+
+  function buildModal() {
+    var overlay = document.createElement('div');
+    overlay.className = 'aluno-overlay';
+    overlay.id = 'alunoOverlay';
+
+    var itemsHtml = PLATAFORMAS.map(function (p) {
+      var inicial = (p.nome || '?').charAt(0).toUpperCase();
+      return '<a class="aluno-item" href="' + p.url + '" target="_blank" rel="noopener">' +
+               '<span class="aluno-ic">' + inicial + '</span>' +
+               '<span class="aluno-txt">' +
+                 '<span class="aluno-nm">' + p.nome + '</span>' +
+                 '<span class="aluno-ds">' + (p.desc || '') + '</span>' +
+               '</span>' +
+               '<span class="aluno-arrow">&rarr;</span>' +
+             '</a>';
+    }).join('');
+
+    overlay.innerHTML =
+      '<div class="aluno-box" role="dialog" aria-modal="true" aria-label="Área do aluno">' +
+        '<button class="aluno-close" id="alunoClose" aria-label="Fechar">&times;</button>' +
+        '<div class="aluno-eyebrow">Área do aluno</div>' +
+        '<h3 class="aluno-title">Escolha sua plataforma</h3>' +
+        '<p class="aluno-sub">Entre pela plataforma onde você comprou seu curso.</p>' +
+        '<div class="aluno-list">' + itemsHtml + '</div>' +
+      '</div>';
+
+    document.body.appendChild(overlay);
+
+    function hide() { overlay.classList.remove('show'); }
+    overlay.querySelector('#alunoClose').addEventListener('click', hide);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) hide(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+
+    return overlay;
+  }
+
+  function openModal(overlay) { overlay.classList.add('show'); }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    injectCss();
+    var overlay = buildModal();
+
+    // intercepta qualquer link "Área do aluno" (topo e rodapé) em todas as paginas
+    var anchors = Array.prototype.slice.call(document.querySelectorAll('a'));
+    anchors.forEach(function (a) {
+      var txt = (a.textContent || '').trim().toLowerCase();
+      var href = a.getAttribute('href') || '';
+      if (txt === 'área do aluno' || href.indexOf('cademi.com.br') !== -1) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          openModal(overlay);
+        });
+      }
+    });
+  });
+})();
