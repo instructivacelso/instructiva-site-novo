@@ -320,6 +320,35 @@ footer{ padding:52px 0 28px; border-top:1px solid var(--line); background:var(--
 }
 .promo-mega-cta{ font-size:16px; padding:17px 38px; }
 
+/* ===== Campanha Relâmpago (hero) ===== */
+.campanha-hero{ padding:48px 0; }
+.campanha-hero .campanha-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+.campanha-hero .campanha-art{ position:relative; }
+.campanha-hero .campanha-art img{
+  display:block; width:100%; max-width:520px; margin:0 auto; height:auto;
+  border-radius:20px; image-rendering:auto;
+  box-shadow:0 30px 70px -20px rgba(0,0,0,.7), 0 0 60px -20px rgba(249,115,22,.4);
+}
+.campanha-hero .campanha-cta-col{ max-width:460px; }
+.campanha-hero .campanha-eyebrow{ display:inline-flex; align-items:center; gap:8px; font-family:'Manrope',sans-serif; font-weight:800; font-size:16px; letter-spacing:1px; text-transform:uppercase; color:#fff; margin-bottom:16px; }
+.campanha-hero .campanha-eyebrow span{ color:#FFC107; font-size:20px; }
+.campanha-hero .campanha-eyebrow b{ color:var(--orange); }
+.campanha-hero .campanha-title{ font-family:'Manrope',sans-serif; font-weight:800; font-size:clamp(30px,3.8vw,46px); line-height:1.05; color:#fff; margin-bottom:20px; max-width:none; }
+.campanha-hero .campanha-title em{ font-style:normal; color:var(--orange); }
+.campanha-hero .campanha-urgency{ display:inline-flex; align-items:center; gap:8px; background:linear-gradient(90deg,#C1121F,#E23744); color:#fff; border-radius:100px; padding:12px 22px; font-family:'Manrope',sans-serif; font-weight:800; font-size:16px; letter-spacing:.3px; text-transform:uppercase; margin-bottom:22px; }
+.campanha-hero .campanha-urgency #cdHero{ font-variant-numeric:tabular-nums; min-width:82px; display:inline-block; }
+.campanha-hero .campanha-cta{ display:inline-flex; align-items:center; gap:12px; background:#25D366; color:#062b12; font-family:'Manrope',sans-serif; font-weight:800; font-size:20px; padding:20px 30px; border-radius:14px; text-decoration:none; box-shadow:0 16px 40px -12px rgba(37,211,102,.6); animation:pulseGreen 1.8s ease-in-out infinite; }
+.campanha-hero .campanha-cta:hover{ background:#1fbb59; transform:translateY(-1px); }
+@keyframes pulseGreen{ 0%,100%{ box-shadow:0 16px 40px -12px rgba(37,211,102,.55); } 50%{ box-shadow:0 16px 54px -6px rgba(37,211,102,.9); } }
+.campanha-hero .campanha-note{ margin-top:12px; font-size:13.5px; color:#9a9a9a; font-family:'Inter',sans-serif; }
+@media (max-width:820px){
+  .campanha-hero .campanha-wrap{ grid-template-columns:1fr; gap:26px; }
+  .campanha-hero .campanha-art img{ max-width:420px; }
+  .campanha-hero .campanha-cta-col{ max-width:none; text-align:center; }
+  .campanha-hero .campanha-cta{ width:100%; justify-content:center; }
+  .campanha-hero .campanha-urgency{ }
+}
+
 .whatsapp-float{
   position:fixed; bottom:24px; left:24px; z-index:150;
   display:flex; align-items:center; gap:10px;
