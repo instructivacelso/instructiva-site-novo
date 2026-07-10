@@ -38,8 +38,9 @@ nav{ display:flex; align-items:center; justify-content:space-between; padding:16
 .nav-actions{ display:flex; align-items:center; gap:12px; }
 @media (max-width:900px){ .nav-links{ display:none; } }
 @media (max-width:480px){
-  .nav-actions .btn-outline-dark{ display:none; }
-  nav{ gap:10px; }
+  .nav-actions{ gap:8px; }
+  .nav-actions .btn-sm{ padding:9px 12px; font-size:12.5px; }
+  nav{ gap:8px; }
   .logo{ font-size:15px; }
   .logo .mark{ width:26px; height:26px; }
 }
