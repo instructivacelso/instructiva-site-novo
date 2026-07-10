@@ -259,6 +259,8 @@
     // intercepta qualquer link "Área do aluno" (topo e rodapé) em todas as paginas
     var anchors = Array.prototype.slice.call(document.querySelectorAll('a'));
     anchors.forEach(function (a) {
+      // nao intercepta os links de dentro do proprio menu (senao a Cademi so reabriria o menu)
+      if (a.closest('.aluno-overlay')) return;
       var txt = (a.textContent || '').trim().toLowerCase();
       var href = a.getAttribute('href') || '';
       if (txt === 'área do aluno' || href.indexOf('cademi.com.br') !== -1) {
