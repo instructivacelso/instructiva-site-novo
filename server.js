@@ -65,8 +65,8 @@ app.use(express.static(path.join(__dirname)));
 app.post('/api/leads', (req, res) => {
   const { name, email, phone, isTechnician, source } = req.body || {};
 
-  if (!name || !email || !phone) {
-    return res.status(400).json({ ok: false, error: 'Nome, email e telefone sao obrigatorios.' });
+  if (!name || !phone) {
+    return res.status(400).json({ ok: false, error: 'Nome e WhatsApp sao obrigatorios.' });
   }
 
   const lead = {
@@ -82,7 +82,7 @@ app.post('/api/leads', (req, res) => {
   leads.push(lead);
   writeLeads(leads);
 
-  console.log('Novo lead capturado:', lead.email);
+  console.log('Novo lead capturado:', lead.name, lead.phone);
   res.json({ ok: true });
 });
 
