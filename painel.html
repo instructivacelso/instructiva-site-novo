@@ -109,6 +109,15 @@
   .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
 
   .hidden{ display:none !important; }
+  .tabs{ display:flex; gap:8px; margin-bottom:20px; border-bottom:1px solid var(--line); }
+  .tab{ background:transparent; border:none; color:var(--muted); font-family:'Manrope',sans-serif; font-weight:700; font-size:15px; padding:10px 18px; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; transition:.15s; }
+  .tab:hover{ color:var(--text); }
+  .tab.active{ color:var(--orange); border-bottom-color:var(--orange); }
+  .sale-status{ display:inline-block; padding:3px 10px; border-radius:100px; font-size:12px; font-weight:600; }
+  .sale-status.paid{ background:rgba(34,197,94,.14); color:#22C55E; }
+  .sale-status.refunded,.sale-status.chargedback{ background:rgba(239,68,68,.14); color:#EF4444; }
+  .sale-status.waiting_payment,.sale-status.desconhecido{ background:rgba(249,115,22,.14); color:var(--orange); }
+  .sale-val{ font-family:'Manrope',sans-serif; font-weight:700; color:var(--text); }
 
   @media (max-width:720px){
     .kpis{ grid-template-columns:repeat(2,1fr); }
@@ -141,6 +150,12 @@
     </div>
   </div>
 
+  <div class="tabs">
+    <button class="tab active" id="tabBtnLeads">Leads</button>
+    <button class="tab" id="tabBtnVendas">Vendas</button>
+  </div>
+
+  <div id="tabLeads">
   <div class="kpis">
     <div class="kpi"><div class="label">Visitantes</div><div class="value" id="kpiVisit">—</div><div class="sub" id="kpiVisitSub">total de visitas ao site</div></div>
     <div class="kpi"><div class="label">Leads capturados</div><div class="value" id="kpiTotal">—</div><div class="sub" id="kpiTotalSub">contatos do popup</div></div>
@@ -183,6 +198,28 @@
     </table>
     <div class="empty hidden" id="emptyState">Nenhum lead encontrado com esse filtro.</div>
   </div>
+  </div><!-- /tabLeads -->
+
+  <div id="tabVendas" class="hidden">
+    <div class="kpis">
+      <div class="kpi"><div class="label">Faturamento</div><div class="value" id="kpiFat">—</div><div class="sub" id="kpiFatSub">vendas pagas</div></div>
+      <div class="kpi"><div class="label">Vendas pagas</div><div class="value" id="kpiVendas">—</div><div class="sub">confirmadas</div></div>
+      <div class="kpi"><div class="label">Ticket médio</div><div class="value" id="kpiTicket">—</div><div class="sub">por venda paga</div></div>
+      <div class="kpi"><div class="label">Reembolsos</div><div class="value" id="kpiReemb">—</div><div class="sub">estornos e chargebacks</div></div>
+    </div>
+    <div class="count-line" id="countLineVendas"></div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Data</th><th>Produto</th><th>Cliente</th><th>Contato</th><th>Valor</th><th>Pgto</th><th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyVendas"></tbody>
+      </table>
+      <div class="empty hidden" id="emptyVendas">Nenhuma venda registrada ainda. Configure o webhook da Greenn (instruções com o desenvolvedor) para as vendas aparecerem aqui automaticamente.</div>
+    </div>
+  </div>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -191,6 +228,7 @@
 (function(){
   var SENHA_KEY = 'instructiva_painel_senha';
   var allLeads = [];
+  var allSales = [];
   var popupViews = 0;
   var visits = { total: 0, byDay: {} };
   var sortKey = 'createdAt';
@@ -241,6 +279,7 @@
       })
       .then(function(data){
         allLeads = (data.leads || []).slice();
+        allSales = (data.sales || []).slice();
         popupViews = data.popupViews || 0;
         visits = data.visits || { total: 0, byDay: {} };
         if (!visits.byDay) visits.byDay = {};
@@ -248,6 +287,7 @@
         loginView.classList.add('hidden');
         panelView.classList.remove('hidden');
         render();
+        renderSales();
       })
       .catch(function(err){
         if(err.message==='senha'){
@@ -423,6 +463,64 @@
       render();
     });
   });
+
+  // ---------- VENDAS ----------
+  function fmtMoney(v){
+    var n = parseFloat(v);
+    if(isNaN(n)) n = 0;
+    return 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits:2, maximumFractionDigits:2 });
+  }
+  function statusLabel(s){
+    var map = { paid:'Paga', refunded:'Reembolsada', chargedback:'Chargeback', waiting_payment:'Aguardando', desconhecido:'—' };
+    return map[s] || s;
+  }
+  function renderSales(){
+    var pagas = allSales.filter(function(s){ return s.status==='paid'; });
+    var reemb = allSales.filter(function(s){ return s.status==='refunded' || s.status==='chargedback'; });
+    var fat = pagas.reduce(function(acc,s){ var n=parseFloat(s.amount); return acc + (isNaN(n)?0:n); }, 0);
+    var ticket = pagas.length ? fat/pagas.length : 0;
+
+    document.getElementById('kpiFat').textContent = fmtMoney(fat);
+    document.getElementById('kpiFatSub').textContent = pagas.length + ' venda(s) paga(s)';
+    document.getElementById('kpiVendas').textContent = pagas.length;
+    document.getElementById('kpiTicket').textContent = pagas.length ? fmtMoney(ticket) : '—';
+    document.getElementById('kpiReemb').textContent = reemb.length;
+
+    var tbody = document.getElementById('tbodyVendas');
+    var empty = document.getElementById('emptyVendas');
+    document.getElementById('countLineVendas').innerHTML = 'Mostrando <b>'+allSales.length+'</b> venda(s) registrada(s)';
+
+    if(!allSales.length){ tbody.innerHTML=''; empty.classList.remove('hidden'); return; }
+    empty.classList.add('hidden');
+
+    tbody.innerHTML = allSales.map(function(s){
+      var contato = '';
+      if(s.email) contato += escapeHtml(s.email);
+      if(s.phone) contato += (contato?'<br>':'') + escapeHtml(s.phone);
+      return '<tr>' +
+        '<td class="lead-date">'+fmtDate(s.createdAt)+'</td>' +
+        '<td>'+escapeHtml(s.product||'—')+'</td>' +
+        '<td class="lead-name">'+escapeHtml(s.name||'—')+'</td>' +
+        '<td>'+(contato||'—')+'</td>' +
+        '<td class="sale-val">'+fmtMoney(s.amount)+'</td>' +
+        '<td>'+escapeHtml(s.method||'—')+'</td>' +
+        '<td><span class="sale-status '+(s.status||'desconhecido')+'">'+statusLabel(s.status)+'</span></td>' +
+      '</tr>';
+    }).join('');
+  }
+
+  // ---------- troca de abas ----------
+  function switchTab(which){
+    var isVendas = which==='vendas';
+    document.getElementById('tabLeads').classList.toggle('hidden', isVendas);
+    document.getElementById('tabVendas').classList.toggle('hidden', !isVendas);
+    document.getElementById('tabBtnLeads').classList.toggle('active', !isVendas);
+    document.getElementById('tabBtnVendas').classList.toggle('active', isVendas);
+    // o botao Exportar CSV so faz sentido na aba de leads
+    document.getElementById('exportBtn').style.display = isVendas ? 'none' : '';
+  }
+  document.getElementById('tabBtnLeads').addEventListener('click', function(){ switchTab('leads'); });
+  document.getElementById('tabBtnVendas').addEventListener('click', function(){ switchTab('vendas'); });
 
   // auto-login se já tem senha na sessão
   var saved = null;
