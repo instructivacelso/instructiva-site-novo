@@ -21,9 +21,9 @@
       '<div class="exit-popup" role="dialog" aria-modal="true" aria-labelledby="exitPopupTitle">' +
         '<button class="exit-popup-close" id="exitPopupClose" aria-label="Fechar">&times;</button>' +
         '<div class="form-body" id="exitPopupForm">' +
-          '<div class="ep-badge">⚡ Campanha Relâmpago · só até 22h</div>' +
-          '<h3 id="exitPopupTitle">Leve seu curso com <span>até 45% OFF</span></h3>' +
-          '<p class="sub">Deixe seu WhatsApp que um especialista te manda a condição especial agora — na hora, sem enrolação.</p>' +
+          '<div class="ep-badge">Atendimento no WhatsApp · grátis</div>' +
+          '<h3 id="exitPopupTitle">Não sabe <span>qual curso</span> escolher?</h3>' +
+          '<p class="sub">Deixe seu WhatsApp que um especialista da Instructiva te ajuda a escolher o curso certo pra você — sem compromisso.</p>' +
           '<div class="field">' +
             '<input type="text" id="epName" autocomplete="name" placeholder="Seu nome">' +
           '</div>' +
@@ -38,13 +38,13 @@
             '</div>' +
           '</div>' +
           '<p class="error-msg" id="epError"></p>' +
-          '<button class="submit-btn" id="epSubmit">' + waIcon + ' Quero minha condição agora</button>' +
+          '<button class="submit-btn" id="epSubmit">' + waIcon + ' Falar com um especialista</button>' +
           '<p class="fine-print">Resposta na hora · sem spam · seus dados protegidos</p>' +
         '</div>' +
         '<div class="success-state" id="exitPopupSuccess">' +
           '<div class="icon">&#10003;</div>' +
-          '<h3>Boa! Falta um passo</h3>' +
-          '<p>Toque no botão pra falar com um especialista agora e garantir seu desconto antes das 22h.</p>' +
+          '<h3>Recebemos seu contato!</h3>' +
+          '<p>Toque no botão pra falar agora com um especialista da Instructiva no WhatsApp.</p>' +
           '<a class="ep-wa-btn" id="epWaBtn" href="#" target="_blank" rel="noopener">' + waIcon + ' Abrir meu WhatsApp</a>' +
         '</div>' +
       '</div>';
@@ -104,7 +104,7 @@
         .then(function (res) {
           if (res && res.ok === false) { throw new Error(res.error || 'falha'); }
           // prepara o botao de WhatsApp do sucesso com o nome do lead
-          var msg = 'Olá! Me chamo ' + name + ' e quero garantir a condição de até 45% OFF da Campanha Relâmpago!';
+          var msg = 'Olá! Me chamo ' + name + ' e vim pelo site da Escola Instructiva. Queria uma ajuda pra escolher o curso certo pra mim.';
           waBtn.href = 'https://wa.me/5544998500211?text=' + encodeURIComponent(msg);
           formBody.classList.add('hide');
           successState.classList.add('show');
