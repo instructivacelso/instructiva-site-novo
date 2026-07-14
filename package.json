@@ -1,11 +1,21 @@
 {
-  "name": "instructiva-site",
-  "version": "3.0.0",
+  "name": "instructiva-crm-comercial",
+  "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "start": "node server.js"
+    "dev": "vite",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "postinstall": "vite build"
   },
   "dependencies": {
-    "express": "^4.22.2"
+    "@vitejs/plugin-react": "^4.3.1",
+    "express": "^4.19.2",
+    "mammoth": "^1.12.0",
+    "pdfjs-dist": "^4.0.379",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vite": "^5.4.2"
   }
 }
