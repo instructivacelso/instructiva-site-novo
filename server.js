@@ -9,6 +9,51 @@ const DATA_DIR = process.env.RAILWAY_VOLUME_MOUNT_PATH || __dirname;
 const LEADS_FILE = path.join(DATA_DIR, 'leads.json');
 const STATS_FILE = path.join(DATA_DIR, 'stats.json');
 const SALES_FILE = path.join(DATA_DIR, 'sales.json');
+const CONFIG_FILE = path.join(DATA_DIR, 'config.json');
+
+// configuracao padrao do site (o que a equipe edita pelo painel)
+function defaultConfig() {
+  return {
+    banner: { on: false, text: 'Matrículas abertas — fale com a gente!', buttonText: 'Falar agora', buttonLink: '', color: '#F97316' },
+    campaign: {
+      on: false,
+      topbar: 'Campanha Relâmpago · válida só hoje · encerra às 22h · sem prorrogação',
+      badge: 'Campanha Relâmpago',
+      title: 'Todo curso com até 45% OFF. Só até às 22h de hoje.',
+      highlight: 'até 45% OFF',
+      lead: 'Mais de 40 cursos técnicos pela menor condição que a Instructiva já praticou. Fale com um especialista e garanta antes que o relógio zere.',
+      tier1: '45%', tier1l: 'OFF no PIX',
+      tier2: '30%', tier2l: 'OFF cartão · 12x s/ juros',
+      tier3: '20%', tier3l: 'OFF boleto · com entrada',
+      countdownOn: true, endHour: 22,
+      ctaText: 'Garantir minha condição agora',
+      whatsapp: '5544997041114',
+      whatsappMsg: 'Olá! Vim pelo site e quero garantir a condição especial!'
+    },
+    popup: {
+      on: true,
+      badge: 'Atendimento no WhatsApp · grátis',
+      title: 'Não sabe qual curso escolher?',
+      highlight: 'qual curso',
+      sub: 'Deixe seu WhatsApp que um especialista da Instructiva te ajuda a escolher o curso certo pra você — sem compromisso.',
+      ctaText: 'Falar com um especialista',
+      whatsapp: '5544997041114'
+    }
+  };
+}
+function readConfig() {
+  try {
+    var saved = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'));
+    var def = defaultConfig();
+    // merge raso por seção pra nunca faltar campo
+    return {
+      banner: Object.assign(def.banner, saved.banner || {}),
+      campaign: Object.assign(def.campaign, saved.campaign || {}),
+      popup: Object.assign(def.popup, saved.popup || {})
+    };
+  } catch (e) { return defaultConfig(); }
+}
+function writeConfig(cfg) { fs.writeFileSync(CONFIG_FILE, JSON.stringify(cfg, null, 2)); }
 
 function readLeads() {
   try {
@@ -184,6 +229,28 @@ app.get('/api/dashboard', (req, res) => {
   const stats = readStats();
   const sales = readSales();
   res.json({ ok: true, leads, sales, popupViews: stats.popupViews || 0, visits: stats.visits || { total: 0, byDay: {} } });
+});
+
+// config pública: o site lê pra montar banner/campanha/popup
+app.get('/api/config', (req, res) => {
+  res.json(readConfig());
+});
+
+// salvar config (protegido pela mesma senha do painel — a equipe usa pelo painel)
+app.post('/api/config', (req, res) => {
+  var senha = req.query.senha || (req.body && req.body.senha);
+  if (senha !== LEADS_SECRET) {
+    return res.status(401).json({ ok: false, error: 'Senha invalida.' });
+  }
+  var incoming = (req.body && req.body.config) || {};
+  var cur = readConfig();
+  var merged = {
+    banner: Object.assign(cur.banner, incoming.banner || {}),
+    campaign: Object.assign(cur.campaign, incoming.campaign || {}),
+    popup: Object.assign(cur.popup, incoming.popup || {})
+  };
+  writeConfig(merged);
+  res.json({ ok: true, config: merged });
 });
 
 // fallback: qualquer rota desconhecida cai na home

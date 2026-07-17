@@ -131,6 +131,34 @@
 
   @media (max-width:860px){ .metrics{ grid-template-columns:1fr; } }
   @media (max-width:720px){ .kpis{ grid-template-columns:repeat(2,1fr); } .kpi .value{ font-size:28px; } .kpi .spark{ display:none; } }
+
+  /* ===== Gerenciador do site (aba Site) ===== */
+  .cfg-help{ font-size:14px; color:var(--muted); margin-bottom:18px; }
+  .cfg-help b{ color:var(--text); }
+  .cfg-card{ background:var(--panel); border:1px solid var(--line); border-radius:15px; padding:20px; margin-bottom:16px; }
+  .cfg-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+  .cfg-head h3{ font-family:'Manrope',sans-serif; font-weight:800; font-size:17px; }
+  .cfg-note{ font-size:12.5px; color:var(--muted-2); margin-bottom:14px; }
+  .cfg-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:12px; }
+  .cfg-grid label{ display:flex; flex-direction:column; gap:6px; font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); }
+  .cfg-grid label.wide{ grid-column:1 / -1; }
+  .cfg-grid label.chk{ flex-direction:row; align-items:center; gap:9px; text-transform:none; letter-spacing:0; font-family:'Inter',sans-serif; font-size:13.5px; color:var(--text); }
+  .cfg-grid input[type=text], .cfg-grid input[type=number], .cfg-grid textarea{ background:var(--ink); border:1px solid var(--line-2); border-radius:9px; padding:11px 13px; color:var(--text); font-family:'Inter',sans-serif; font-size:14px; width:100%; }
+  .cfg-grid input:focus, .cfg-grid textarea:focus{ outline:none; border-color:var(--orange); }
+  .cfg-grid input[type=color]{ width:56px; height:42px; padding:3px; background:var(--ink); border:1px solid var(--line-2); border-radius:9px; cursor:pointer; }
+  .cfg-grid textarea{ resize:vertical; min-height:46px; }
+  /* toggle liga/desliga */
+  .switch{ position:relative; display:inline-block; width:50px; height:28px; cursor:pointer; }
+  .switch input{ opacity:0; width:0; height:0; }
+  .switch span{ position:absolute; inset:0; background:var(--panel-2); border:1px solid var(--line-2); border-radius:100px; transition:.2s; }
+  .switch span::before{ content:""; position:absolute; width:20px; height:20px; left:3px; top:3px; background:#888; border-radius:50%; transition:.2s; }
+  .switch input:checked + span{ background:rgba(34,197,94,.25); border-color:var(--green); }
+  .switch input:checked + span::before{ transform:translateX(22px); background:var(--green); }
+  .cfg-actions{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:6px 0 30px; }
+  .cfg-status{ font-family:var(--mono); font-size:12px; color:var(--muted); }
+  .cfg-status.ok{ color:var(--green); }
+  .cfg-status.err{ color:var(--red); }
+  @media (max-width:640px){ .cfg-grid{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -202,6 +230,7 @@
   <div class="tabs">
     <button class="tab active" id="tabBtnLeads">Leads <span class="cnt" id="tabCntLeads">0</span></button>
     <button class="tab" id="tabBtnVendas">Vendas <span class="cnt" id="tabCntVendas">0</span></button>
+    <button class="tab" id="tabBtnSite">⚙ Site</button>
   </div>
 
   <div id="tabLeads">
@@ -254,6 +283,64 @@
         <tbody id="tbodyVendas"></tbody>
       </table>
       <div class="empty hidden" id="emptyVendas">Nenhuma venda registrada ainda. Assim que o webhook da Greenn estiver ativo, as vendas aparecem aqui automaticamente.</div>
+    </div>
+  </div>
+
+  <div id="tabSite" class="hidden">
+    <p class="cfg-help">Edite o que aparece no site. As mudanças valem <b>na hora que você salvar</b> — não precisa de código nem programador.</p>
+
+    <div class="cfg-card">
+      <div class="cfg-head"><h3>Faixa de aviso no topo</h3>
+        <label class="switch"><input type="checkbox" id="cfgBannerOn"><span></span></label></div>
+      <div class="cfg-grid">
+        <label class="wide">Texto da faixa<input type="text" id="cfgBannerText"></label>
+        <label>Cor da faixa<input type="color" id="cfgBannerColor"></label>
+        <label>Texto do botão (opcional)<input type="text" id="cfgBannerBtn"></label>
+        <label class="wide">Link do botão (opcional)<input type="text" id="cfgBannerLink" placeholder="https://..."></label>
+      </div>
+    </div>
+
+    <div class="cfg-card">
+      <div class="cfg-head"><h3>Modo campanha na home</h3>
+        <label class="switch"><input type="checkbox" id="cfgCampOn"><span></span></label></div>
+      <p class="cfg-note">Quando ligado, o topo da home vira uma campanha (tipo a Relâmpago). Quando desligado, volta o normal.</p>
+      <div class="cfg-grid">
+        <label class="wide">Faixa do topo<input type="text" id="cfgCampTopbar"></label>
+        <label>Selo<input type="text" id="cfgCampBadge"></label>
+        <label class="wide">Título<input type="text" id="cfgCampTitle"></label>
+        <label class="wide">Parte colorida do título (tem que ser um trecho igual ao título)<input type="text" id="cfgCampHl"></label>
+        <label class="wide">Texto de apoio<textarea id="cfgCampLead" rows="2"></textarea></label>
+        <label>Desconto 1<input type="text" id="cfgCampT1"></label>
+        <label>Legenda 1<input type="text" id="cfgCampT1l"></label>
+        <label>Desconto 2<input type="text" id="cfgCampT2"></label>
+        <label>Legenda 2<input type="text" id="cfgCampT2l"></label>
+        <label>Desconto 3<input type="text" id="cfgCampT3"></label>
+        <label>Legenda 3<input type="text" id="cfgCampT3l"></label>
+        <label class="chk"><input type="checkbox" id="cfgCampCd"> Mostrar cronômetro</label>
+        <label>Encerra às (hora 0–23)<input type="number" id="cfgCampEnd" min="0" max="23"></label>
+        <label>Texto do botão<input type="text" id="cfgCampCta"></label>
+        <label>WhatsApp (só números, com 55)<input type="text" id="cfgCampWa" placeholder="5544999999999"></label>
+        <label class="wide">Mensagem do WhatsApp<input type="text" id="cfgCampWaMsg"></label>
+      </div>
+    </div>
+
+    <div class="cfg-card">
+      <div class="cfg-head"><h3>Popup de captura</h3>
+        <label class="switch"><input type="checkbox" id="cfgPopOn"><span></span></label></div>
+      <div class="cfg-grid">
+        <label>Selo<input type="text" id="cfgPopBadge"></label>
+        <label class="wide">Título<input type="text" id="cfgPopTitle"></label>
+        <label class="wide">Parte colorida do título<input type="text" id="cfgPopHl"></label>
+        <label class="wide">Subtítulo<textarea id="cfgPopSub" rows="2"></textarea></label>
+        <label>Texto do botão<input type="text" id="cfgPopCta"></label>
+        <label>WhatsApp (só números, com 55)<input type="text" id="cfgPopWa" placeholder="5544999999999"></label>
+      </div>
+    </div>
+
+    <div class="cfg-actions">
+      <button class="btn btn-primary" id="cfgSaveBtn">💾 Salvar alterações</button>
+      <button class="btn" id="cfgReloadBtn">Descartar e recarregar</button>
+      <span class="cfg-status" id="cfgStatus"></span>
     </div>
   </div>
 </div>
@@ -439,12 +526,53 @@
   }
 
   function switchTab(which){
-    var isV=which==='vendas';
-    document.getElementById('tabLeads').classList.toggle('hidden',isV);
+    var isV=which==='vendas', isS=which==='site';
+    document.getElementById('tabLeads').classList.toggle('hidden',isV||isS);
     document.getElementById('tabVendas').classList.toggle('hidden',!isV);
-    document.getElementById('tabBtnLeads').classList.toggle('active',!isV);
+    document.getElementById('tabSite').classList.toggle('hidden',!isS);
+    document.getElementById('tabBtnLeads').classList.toggle('active',!isV&&!isS);
     document.getElementById('tabBtnVendas').classList.toggle('active',isV);
-    document.getElementById('exportBtn').style.display=isV?'none':'';
+    document.getElementById('tabBtnSite').classList.toggle('active',isS);
+    document.getElementById('exportBtn').style.display=(isV||isS)?'none':'';
+    if(isS && !siteCfgLoaded) loadConfig();
+  }
+
+  // ---------- gerenciador do site ----------
+  var siteCfgLoaded = false;
+  function setVal(id,v){ var el=document.getElementById(id); if(el) el.value=(v==null?'':v); }
+  function setChk(id,v){ var el=document.getElementById(id); if(el) el.checked=!!v; }
+  function getVal(id){ var el=document.getElementById(id); return el?el.value:''; }
+  function getChk(id){ var el=document.getElementById(id); return el?el.checked:false; }
+
+  function loadConfig(){
+    fetch('/api/config').then(function(r){ return r.json(); }).then(function(c){
+      var b=c.banner||{}, cp=c.campaign||{}, pp=c.popup||{};
+      setChk('cfgBannerOn',b.on); setVal('cfgBannerText',b.text); setVal('cfgBannerColor',b.color||'#F97316'); setVal('cfgBannerBtn',b.buttonText); setVal('cfgBannerLink',b.buttonLink);
+      setChk('cfgCampOn',cp.on); setVal('cfgCampTopbar',cp.topbar); setVal('cfgCampBadge',cp.badge); setVal('cfgCampTitle',cp.title); setVal('cfgCampHl',cp.highlight); setVal('cfgCampLead',cp.lead);
+      setVal('cfgCampT1',cp.tier1); setVal('cfgCampT1l',cp.tier1l); setVal('cfgCampT2',cp.tier2); setVal('cfgCampT2l',cp.tier2l); setVal('cfgCampT3',cp.tier3); setVal('cfgCampT3l',cp.tier3l);
+      setChk('cfgCampCd',cp.countdownOn); setVal('cfgCampEnd',cp.endHour); setVal('cfgCampCta',cp.ctaText); setVal('cfgCampWa',cp.whatsapp); setVal('cfgCampWaMsg',cp.whatsappMsg);
+      setChk('cfgPopOn',pp.on); setVal('cfgPopBadge',pp.badge); setVal('cfgPopTitle',pp.title); setVal('cfgPopHl',pp.highlight); setVal('cfgPopSub',pp.sub); setVal('cfgPopCta',pp.ctaText); setVal('cfgPopWa',pp.whatsapp);
+      siteCfgLoaded=true;
+    }).catch(function(){ document.getElementById('cfgStatus').textContent='Erro ao carregar config.'; });
+  }
+
+  function readConfigForm(){
+    return {
+      banner:{ on:getChk('cfgBannerOn'), text:getVal('cfgBannerText'), color:getVal('cfgBannerColor'), buttonText:getVal('cfgBannerBtn'), buttonLink:getVal('cfgBannerLink') },
+      campaign:{ on:getChk('cfgCampOn'), topbar:getVal('cfgCampTopbar'), badge:getVal('cfgCampBadge'), title:getVal('cfgCampTitle'), highlight:getVal('cfgCampHl'), lead:getVal('cfgCampLead'),
+        tier1:getVal('cfgCampT1'), tier1l:getVal('cfgCampT1l'), tier2:getVal('cfgCampT2'), tier2l:getVal('cfgCampT2l'), tier3:getVal('cfgCampT3'), tier3l:getVal('cfgCampT3l'),
+        countdownOn:getChk('cfgCampCd'), endHour:parseInt(getVal('cfgCampEnd'),10)||22, ctaText:getVal('cfgCampCta'), whatsapp:getVal('cfgCampWa').replace(/\D+/g,''), whatsappMsg:getVal('cfgCampWaMsg') },
+      popup:{ on:getChk('cfgPopOn'), badge:getVal('cfgPopBadge'), title:getVal('cfgPopTitle'), highlight:getVal('cfgPopHl'), sub:getVal('cfgPopSub'), ctaText:getVal('cfgPopCta'), whatsapp:getVal('cfgPopWa').replace(/\D+/g,'') }
+    };
+  }
+
+  function saveConfig(){
+    var senha=sessionStorage.getItem(SENHA_KEY); if(!senha){ return; }
+    var st=document.getElementById('cfgStatus'); st.className='cfg-status'; st.textContent='Salvando...';
+    fetch('/api/config?senha='+encodeURIComponent(senha),{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ config:readConfigForm() }) })
+      .then(function(r){ return r.json(); })
+      .then(function(res){ if(res&&res.ok){ st.className='cfg-status ok'; st.textContent='✓ Salvo! Já está no ar. Atualize o site pra ver.'; } else { st.className='cfg-status err'; st.textContent='Erro ao salvar.'; } })
+      .catch(function(){ st.className='cfg-status err'; st.textContent='Erro de conexão ao salvar.'; });
   }
 
   document.getElementById('entrarBtn').addEventListener('click',function(){ var s=document.getElementById('senhaInput').value; if(!s){ document.getElementById('loginErr').textContent='Digite a senha.'; return; } load(s); });
@@ -458,6 +586,9 @@
   document.querySelectorAll('th[data-sort]').forEach(function(th){ th.addEventListener('click',function(){ var k=th.getAttribute('data-sort'); if(sortKey===k) sortDir*=-1; else { sortKey=k; sortDir=(k==='createdAt')?-1:1; } render(); }); });
   document.getElementById('tabBtnLeads').addEventListener('click',function(){ switchTab('leads'); });
   document.getElementById('tabBtnVendas').addEventListener('click',function(){ switchTab('vendas'); });
+  document.getElementById('tabBtnSite').addEventListener('click',function(){ switchTab('site'); });
+  document.getElementById('cfgSaveBtn').addEventListener('click',saveConfig);
+  document.getElementById('cfgReloadBtn').addEventListener('click',function(){ siteCfgLoaded=false; loadConfig(); document.getElementById('cfgStatus').textContent='Recarregado.'; });
 
   var saved=null; try{ saved=sessionStorage.getItem(SENHA_KEY); }catch(e){}
   if(saved) load(saved);
