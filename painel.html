@@ -472,9 +472,7 @@
     var base=Math.max(1,v);
     var steps=[
       { name:'Visitantes', val:v, cls:'' },
-      { name:'Viram o popup', val:pop, cls:'' },
-      { name:'Viraram lead', val:leads, cls:'' },
-      { name:'Compraram', val:vendas, cls:'green' }
+      { name:'Viram o popup', val:pop, cls:'' }
     ];
     document.getElementById('funnel').innerHTML=steps.map(function(s){
       var pct=v>0 ? (s.val/base*100) : 0;
