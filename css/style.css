@@ -634,3 +634,21 @@ footer{ padding:52px 0 28px; border-top:1px solid var(--line); background:var(--
 /* eletronica-inicial (arte própria) */
 .course-poster[style*="eletronica-inicial.jpg"] .num, .course-poster[style*="eletronica-inicial.jpg"] .badge, .course-poster[style*="eletronica-inicial.jpg"] h3{ display:none; }
 .course-poster[style*="eletronica-inicial.jpg"]::after{ display:none; }
+
+/* =======================================================================
+   MOVIMENTO PREMIUM — reveal ao rolar, entrada do topo, rolagem macia
+   (só ativa quando o JS marca .has-reveal; sem JS, tudo fica visível)
+   ======================================================================= */
+.has-reveal .reveal{ opacity:0; transform:translateY(24px); transition:opacity .75s cubic-bezier(.2,.7,.2,1), transform .75s cubic-bezier(.2,.7,.2,1); }
+.has-reveal .reveal.in{ opacity:1; transform:none; }
+
+@media (prefers-reduced-motion: no-preference){
+  html{ scroll-behavior:smooth; }
+  /* brilho ambiente do topo pulsando bem de leve */
+  .promo-mega-hero::before{ animation:heroGlow 7s ease-in-out infinite; }
+  @keyframes heroGlow{ 0%,100%{ opacity:.85; } 50%{ opacity:1; } }
+}
+
+/* acabamento extra nos cards de categoria: leve brilho na borda ao passar o mouse */
+.cat-card::after{ content:""; position:absolute; inset:0; border-radius:16px; box-shadow:inset 0 0 0 1.5px rgba(249,115,22,0); transition:box-shadow .25s ease; pointer-events:none; z-index:2; }
+.cat-card:hover::after{ box-shadow:inset 0 0 0 1.5px rgba(249,115,22,.65); }
