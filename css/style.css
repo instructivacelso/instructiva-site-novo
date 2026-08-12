@@ -602,3 +602,35 @@ footer{ padding:52px 0 28px; border-top:1px solid var(--line); background:var(--
   .btn, .cat-card, .value-card, .testi, .flow-node, .wa-choice, .wa-reason{ transition:none; }
   .btn-cta:hover, .value-card:hover, .testi:hover, .cat-card:hover, .flow-node:hover{ transform:none; }
 }
+
+/* ===== Categorias com arte própria (logo + título já embutidos na imagem) ===== */
+/* home: não sobrepõe título nem logo (a arte já tem) — mantém só a faixa de preço */
+.cat-card-logo{ display:none; }
+.cat-card-content h3{ display:none; }
+.cat-card .cat-meta{ border-top:none; padding-top:0; }
+/* cards de curso que usam a arte pronta: some o texto sobreposto e o escurecimento */
+.course-poster[style*="televisores.jpg"] .num, .course-poster[style*="televisores.jpg"] .badge, .course-poster[style*="televisores.jpg"] h3,
+.course-poster[style*="fontes-chaveadas.jpg"] .num, .course-poster[style*="fontes-chaveadas.jpg"] .badge, .course-poster[style*="fontes-chaveadas.jpg"] h3,
+.course-poster[style*="tecnologias-inverter.jpg"] .num, .course-poster[style*="tecnologias-inverter.jpg"] .badge, .course-poster[style*="tecnologias-inverter.jpg"] h3,
+.course-poster[style*="emac.jpg"] .num, .course-poster[style*="emac.jpg"] .badge, .course-poster[style*="emac.jpg"] h3,
+.course-poster[style*="amplificadores-de-audio.jpg"] .num, .course-poster[style*="amplificadores-de-audio.jpg"] .badge, .course-poster[style*="amplificadores-de-audio.jpg"] h3,
+.course-poster[style*="softstarter.jpg"] .num, .course-poster[style*="softstarter.jpg"] .badge, .course-poster[style*="softstarter.jpg"] h3,
+.course-poster[style*="inversores-solares.jpg"] .num, .course-poster[style*="inversores-solares.jpg"] .badge, .course-poster[style*="inversores-solares.jpg"] h3,
+.course-poster[style*="esteira-de-academias.jpg"] .num, .course-poster[style*="esteira-de-academias.jpg"] .badge, .course-poster[style*="esteira-de-academias.jpg"] h3,
+.course-poster[style*="odonto-esteticos.jpg"] .num, .course-poster[style*="odonto-esteticos.jpg"] .badge, .course-poster[style*="odonto-esteticos.jpg"] h3{ display:none; }
+.course-poster[style*="televisores.jpg"]::after, .course-poster[style*="fontes-chaveadas.jpg"]::after, .course-poster[style*="tecnologias-inverter.jpg"]::after, .course-poster[style*="emac.jpg"]::after, .course-poster[style*="amplificadores-de-audio.jpg"]::after, .course-poster[style*="softstarter.jpg"]::after, .course-poster[style*="inversores-solares.jpg"]::after, .course-poster[style*="esteira-de-academias.jpg"]::after, .course-poster[style*="odonto-esteticos.jpg"]::after{ display:none; }
+
+/* ===== Cursos/livros com arte própria (logo + título embutidos) — esconde texto sobreposto ===== */
+.course-poster[style*="instalacao-ar-condicionado.jpg"] .num, .course-poster[style*="instalacao-ar-condicionado.jpg"] .badge, .course-poster[style*="instalacao-ar-condicionado.jpg"] h3,
+.course-poster[style*="livro-analise-e-procedimentos.jpg"] .num, .course-poster[style*="livro-analise-e-procedimentos.jpg"] .badge, .course-poster[style*="livro-analise-e-procedimentos.jpg"] h3,
+.course-poster[style*="retificador-pfc.jpg"] .num, .course-poster[style*="retificador-pfc.jpg"] .badge, .course-poster[style*="retificador-pfc.jpg"] h3,
+.course-poster[style*="flyback.jpg"] .num, .course-poster[style*="flyback.jpg"] .badge, .course-poster[style*="flyback.jpg"] h3,
+.course-poster[style*="manuseio-de-osciloscopio.jpg"] .num, .course-poster[style*="manuseio-de-osciloscopio.jpg"] .badge, .course-poster[style*="manuseio-de-osciloscopio.jpg"] h3,
+.course-poster[style*="livro-retificadores.jpg"] .num, .course-poster[style*="livro-retificadores.jpg"] .badge, .course-poster[style*="livro-retificadores.jpg"] h3,
+.course-poster[style*="livro-semicondutores.jpg"] .num, .course-poster[style*="livro-semicondutores.jpg"] .badge, .course-poster[style*="livro-semicondutores.jpg"] h3,
+.course-poster[style*="livro-cc-cc.jpg"] .num, .course-poster[style*="livro-cc-cc.jpg"] .badge, .course-poster[style*="livro-cc-cc.jpg"] h3,
+.course-poster[style*="livro-exercicios.jpg"] .num, .course-poster[style*="livro-exercicios.jpg"] .badge, .course-poster[style*="livro-exercicios.jpg"] h3{ display:none; }
+.course-poster[style*="instalacao-ar-condicionado.jpg"]::after, .course-poster[style*="livro-analise-e-procedimentos.jpg"]::after, .course-poster[style*="retificador-pfc.jpg"]::after, .course-poster[style*="flyback.jpg"]::after, .course-poster[style*="manuseio-de-osciloscopio.jpg"]::after, .course-poster[style*="livro-retificadores.jpg"]::after, .course-poster[style*="livro-semicondutores.jpg"]::after, .course-poster[style*="livro-cc-cc.jpg"]::after, .course-poster[style*="livro-exercicios.jpg"]::after{ display:none; }
+/* eletronica-inicial (arte própria) */
+.course-poster[style*="eletronica-inicial.jpg"] .num, .course-poster[style*="eletronica-inicial.jpg"] .badge, .course-poster[style*="eletronica-inicial.jpg"] h3{ display:none; }
+.course-poster[style*="eletronica-inicial.jpg"]::after{ display:none; }
