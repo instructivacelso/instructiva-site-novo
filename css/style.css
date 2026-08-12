@@ -545,3 +545,60 @@ footer{ padding:52px 0 28px; border-top:1px solid var(--line); background:var(--
 .site-banner-btn{ background:rgba(0,0,0,.22); color:#fff; text-decoration:none; font-weight:700; padding:6px 16px; border-radius:100px; font-size:13.5px; white-space:nowrap; transition:background .15s; }
 .site-banner-btn:hover{ background:rgba(0,0,0,.38); }
 @media (max-width:600px){ .site-banner-in{ font-size:13px; padding:9px 14px; gap:10px; } }
+
+/* =======================================================================
+   POLISH PASS — refinamento visual global (profundidade, hover, foco)
+   ======================================================================= */
+
+/* transições suaves e foco acessível */
+.btn, .cat-card, .value-card, .testi, .flow-node, .offer-cta, .wa-choice, .wa-reason, .hero-card, .nav-links a{
+  transition: transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s ease, border-color .18s ease, background-color .18s ease, color .15s ease;
+}
+:focus-visible{ outline:2px solid var(--orange); outline-offset:2px; border-radius:6px; }
+
+/* botão principal com sombra mais rica e lift maior */
+.btn-cta{ box-shadow:0 10px 24px -10px rgba(249,115,22,.55), 0 2px 6px -3px rgba(249,115,22,.45); }
+.btn-cta:hover{ transform:translateY(-2px); box-shadow:0 18px 38px -12px rgba(249,115,22,.68); }
+
+/* cards claros: mais profundidade e lift no hover */
+.value-card{ box-shadow:0 1px 2px rgba(16,24,40,.04), 0 14px 30px -18px rgba(16,24,40,.20); }
+.value-card:hover{ transform:translateY(-4px); box-shadow:0 3px 6px rgba(16,24,40,.06), 0 26px 48px -20px rgba(16,24,40,.30); border-color:rgba(249,115,22,.35); }
+.testi{ box-shadow:0 1px 2px rgba(16,24,40,.04), 0 14px 30px -18px rgba(16,24,40,.18); }
+.testi:hover{ transform:translateY(-4px); box-shadow:0 3px 6px rgba(16,24,40,.06), 0 26px 48px -20px rgba(16,24,40,.28); }
+
+/* oferta em destaque: sombra premium */
+.offer-card{ box-shadow:0 2px 8px rgba(16,24,40,.06), 0 44px 84px -44px rgba(16,24,40,.40); }
+
+/* categorias (cards com imagem): lift + brilho laranja */
+.cat-card:hover{ transform:translateY(-5px); box-shadow:0 30px 60px -26px rgba(249,115,22,.45); }
+
+/* como funciona (fundo escuro): borda acende no hover + brilho no número */
+.flow-node .fn-num{ box-shadow:0 10px 22px -8px rgba(249,115,22,.6); }
+.flow-node:hover{ transform:translateY(-4px); border-color:rgba(249,115,22,.5); background:rgba(249,115,22,.07); }
+
+/* FAQ: pergunta fica laranja ao passar o mouse */
+.faq-q:hover{ color:var(--orange-deep); }
+.faq-item{ transition:border-color .18s ease; }
+
+/* eyebrow: pontinho vira um traço mais elegante */
+.eyebrow::before{ content:""; display:inline-block; width:16px; height:2px; background:var(--orange); border-radius:2px; margin-right:9px; vertical-align:middle; margin-bottom:3px; }
+
+/* títulos de seção um pouco mais apertados/nítidos */
+.sec-head h2{ letter-spacing:-.02em; }
+
+/* nav com sublinhado animado */
+.nav-links a{ position:relative; }
+.nav-links a::after{ content:""; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:var(--orange); transition:width .22s ease; }
+.nav-links a:hover::after, .nav-links a.active::after{ width:100%; }
+
+/* suporte mais bonito: seleção com brilho e leve lift */
+.wa-choice:hover, .wa-reason:hover{ transform:translateY(-2px); }
+.wa-choice.selected{ box-shadow:0 0 0 1px var(--orange) inset, 0 10px 22px -14px rgba(249,115,22,.6); }
+.wa-reason.selected{ box-shadow:0 0 0 1px var(--orange) inset, 0 10px 22px -14px rgba(249,115,22,.6); }
+.wa-submit-btn:hover:not(:disabled){ box-shadow:0 16px 32px -12px rgba(249,115,22,.6); }
+
+/* respeitar quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce){
+  .btn, .cat-card, .value-card, .testi, .flow-node, .wa-choice, .wa-reason{ transition:none; }
+  .btn-cta:hover, .value-card:hover, .testi:hover, .cat-card:hover, .flow-node:hover{ transform:none; }
+}

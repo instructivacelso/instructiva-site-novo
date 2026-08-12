@@ -37,7 +37,7 @@ function defaultConfig() {
       highlight: 'qual curso',
       sub: 'Deixe seu WhatsApp que um especialista da Instructiva te ajuda a escolher o curso certo pra você — sem compromisso.',
       ctaText: 'Falar com um especialista',
-      whatsapp: '5544997041114'
+      whatsapp: '5544920066945'
     }
   };
 }

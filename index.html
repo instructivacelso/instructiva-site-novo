@@ -39,10 +39,6 @@
         <div class="wa-avatar" style="background-image:url('assets/img/team/vitoria.jpg'); background-size:cover; background-position:center;"></div>
         <div class="wa-name">Vitória</div>
       </div>
-      <div class="wa-choice" data-name="Rayssa" data-phone="5544997224134">
-        <div class="wa-avatar" style="background-image:url('assets/img/team/rayssa.jpg'); background-size:cover; background-position:center;"></div>
-        <div class="wa-name">Rayssa</div>
-      </div>
     </div>
 
     <div class="wa-step-label">Como podemos te ajudar?</div>
@@ -69,8 +65,15 @@
 
     var selectedName = null, selectedPhone = null, selectedReason = null;
 
+    // vendedora que recebe quem quer COMPRAR
+    var VENDEDORA = { name: 'Dayane', phone: '5544920066945' };
+    var MOTIVO_COMPRA = 'Quero adquirir um treinamento';
+
+    function isCompra(){ return selectedReason === MOTIVO_COMPRA; }
+
     function updateSubmitState(){
-      submitBtn.disabled = !(selectedPhone && selectedReason);
+      // se for compra, nem precisa escolher atendente (vai direto pra vendedora)
+      submitBtn.disabled = !(selectedReason && (isCompra() || selectedPhone));
     }
 
     toggleBtn.addEventListener('click', function(){
@@ -103,9 +106,17 @@
     });
 
     submitBtn.addEventListener('click', function(){
-      if(!selectedPhone || !selectedReason) return;
-      var msg = 'Oi, ' + selectedName + '! Vim pelo site da Escola Instructiva. ' + selectedReason + '.';
-      var url = 'https://wa.me/' + selectedPhone + '?text=' + encodeURIComponent(msg);
+      if(!selectedReason) return;
+      var phone, msg;
+      if(isCompra()){
+        phone = VENDEDORA.phone;
+        msg = 'Olá, ' + VENDEDORA.name + '! Vim pelo site da Escola Instructiva e quero adquirir um treinamento. Pode me ajudar a escolher e finalizar minha matrícula?';
+      } else {
+        if(!selectedPhone) return;
+        phone = selectedPhone;
+        msg = 'Oi, ' + selectedName + '! Vim pelo site da Escola Instructiva. ' + selectedReason + '.';
+      }
+      var url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(msg);
       window.open(url, '_blank');
       overlay.classList.remove('show');
     });
@@ -148,16 +159,16 @@
 <section class="promo-mega-hero lancamento-hero">
   <div class="wrap">
     <div class="promo-mega-badge">🔥 Lançamento oficial</div>
-    <h2>Especialista em <em>Equipamentos Odontológicos &amp; Estéticos</em>.</h2>
-    <p>Diagnóstico e reparo de autoclaves, ultrassom, eletroterapia e alta frequência — para atender clínicas odontológicas, estéticas e de fisioterapia com segurança e domínio técnico.</p>
+    <h2>Especialista em Reparo de <em>Esteiras de Academia</em>.</h2>
+    <p>Motores DC, sistemas inverter integrados e acionamento via inversor de frequência — domine o reparo de esteiras de academia, home fitness e ergométricas, um mercado com serviço o ano todo.</p>
     <div class="lanc-chips">
-      <span class="lanc-chip">Autoclaves</span>
-      <span class="lanc-chip">Ultrassom</span>
-      <span class="lanc-chip">Eletroterapia</span>
-      <span class="lanc-chip">Alta frequência</span>
+      <span class="lanc-chip">Motores DC</span>
+      <span class="lanc-chip">Sistemas inverter</span>
+      <span class="lanc-chip">Inversor de frequência</span>
+      <span class="lanc-chip">Sensores Hall / ópticos</span>
     </div>
     <div class="lanc-cta-row">
-      <a href="cursos/especialista-em-equipamentos-odontologicos-esteticos.html" class="btn btn-cta promo-mega-cta">Ver oferta completa →</a>
+      <a href="cursos/especialista-em-manutencao-em-esteira-de-academias.html" class="btn btn-cta promo-mega-cta">Ver oferta completa →</a>
       <span class="lanc-meta">Acesso vitalício · certificado incluso</span>
     </div>
   </div>

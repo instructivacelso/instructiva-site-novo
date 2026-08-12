@@ -115,7 +115,7 @@
           if (res && res.ok === false) { throw new Error(res.error || 'falha'); }
           // prepara o botao de WhatsApp do sucesso com o nome do lead
           var msg = 'Olá! Me chamo ' + name + ' e vim pelo site da Escola Instructiva. Queria uma ajuda pra escolher o curso certo pra mim.';
-          var waNum = (POPUP_CFG && POPUP_CFG.whatsapp) || '5544997041114';
+          var waNum = (POPUP_CFG && POPUP_CFG.whatsapp) || '5544920066945';
           waBtn.href = 'https://wa.me/' + waNum + '?text=' + encodeURIComponent(msg);
           formBody.classList.add('hide');
           successState.classList.add('show');
