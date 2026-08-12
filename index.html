@@ -25,26 +25,28 @@
     <h3>Falar com o suporte</h3>
     <div class="wa-hours">Atendimento: Segunda a Sexta, das 08:00 às 18:00</div>
 
-    <div class="wa-step-label">Escolha uma de nossas atendentes!!</div>
+    <div class="wa-step-label">Está com problema de acesso? Fale com uma atendente:</div>
     <div class="wa-choice-row" id="waAttendantRow">
-      <div class="wa-choice" data-name="Letícia" data-phone="5544997085134">
+      <div class="wa-choice" data-reason="acesso" data-name="Letícia" data-phone="5544997085134">
         <div class="wa-avatar" style="background-image:url('assets/img/team/leticia.jpg'); background-size:cover; background-position:center;"></div>
         <div class="wa-name">Letícia</div>
       </div>
-      <div class="wa-choice" data-name="Lilian" data-phone="5544997005267">
+      <div class="wa-choice" data-reason="acesso" data-name="Lilian" data-phone="5544997005267">
         <div class="wa-avatar" style="background-image:url('assets/img/team/lilian.jpg'); background-size:cover; background-position:center;"></div>
         <div class="wa-name">Lilian</div>
       </div>
-      <div class="wa-choice" data-name="Vitória" data-phone="5544997267313">
+      <div class="wa-choice" data-reason="acesso" data-name="Vitória" data-phone="5544997267313">
         <div class="wa-avatar" style="background-image:url('assets/img/team/vitoria.jpg'); background-size:cover; background-position:center;"></div>
         <div class="wa-name">Vitória</div>
       </div>
     </div>
 
-    <div class="wa-step-label">Como podemos te ajudar?</div>
-    <div class="wa-reason-row" id="waReasonRow">
-      <div class="wa-reason" data-reason="Estou com problema de acesso à plataforma">Problema com acesso</div>
-      <div class="wa-reason" data-reason="Quero adquirir um treinamento">Quero adquirir um treinamento</div>
+    <div class="wa-step-label">Quer adquirir um treinamento? Fale com a Dayane:</div>
+    <div class="wa-choice-row wa-single">
+      <div class="wa-choice wa-vendedora" data-reason="compra" data-name="Dayane" data-phone="5544920066945">
+        <div class="wa-avatar" style="background-image:url('assets/img/team/dayane.jpg'); background-size:cover; background-position:center;"></div>
+        <div class="wa-name">Dayane</div>
+      </div>
     </div>
 
     <button class="wa-submit-btn" id="waSubmit" disabled>
@@ -59,64 +61,38 @@
     var toggleBtn = document.getElementById('waToggle');
     var overlay = document.getElementById('waPopupOverlay');
     var closeBtn = document.getElementById('waPopupClose');
-    var attendantRow = document.getElementById('waAttendantRow');
-    var reasonRow = document.getElementById('waReasonRow');
     var submitBtn = document.getElementById('waSubmit');
+    var choices = overlay.querySelectorAll('.wa-choice');
 
     var selectedName = null, selectedPhone = null, selectedReason = null;
 
-    // vendedora que recebe quem quer COMPRAR
-    var VENDEDORA = { name: 'Dayane', phone: '5544920066945' };
-    var MOTIVO_COMPRA = 'Quero adquirir um treinamento';
+    function updateSubmitState(){ submitBtn.disabled = !selectedPhone; }
 
-    function isCompra(){ return selectedReason === MOTIVO_COMPRA; }
+    toggleBtn.addEventListener('click', function(){ overlay.classList.add('show'); });
+    closeBtn.addEventListener('click', function(){ overlay.classList.remove('show'); });
+    overlay.addEventListener('click', function(e){ if(e.target === overlay){ overlay.classList.remove('show'); } });
 
-    function updateSubmitState(){
-      // se for compra, nem precisa escolher atendente (vai direto pra vendedora)
-      submitBtn.disabled = !(selectedReason && (isCompra() || selectedPhone));
-    }
-
-    toggleBtn.addEventListener('click', function(){
-      overlay.classList.add('show');
-    });
-    closeBtn.addEventListener('click', function(){
-      overlay.classList.remove('show');
-    });
-    overlay.addEventListener('click', function(e){
-      if(e.target === overlay){ overlay.classList.remove('show'); }
-    });
-
-    attendantRow.querySelectorAll('.wa-choice').forEach(function(el){
+    // clicar direto na pessoa (atendente ou Dayane) — o motivo vem dela
+    choices.forEach(function(el){
       el.addEventListener('click', function(){
-        attendantRow.querySelectorAll('.wa-choice').forEach(function(o){ o.classList.remove('selected'); });
+        choices.forEach(function(o){ o.classList.remove('selected'); });
         el.classList.add('selected');
         selectedName = el.dataset.name;
         selectedPhone = el.dataset.phone;
-        updateSubmitState();
-      });
-    });
-
-    reasonRow.querySelectorAll('.wa-reason').forEach(function(el){
-      el.addEventListener('click', function(){
-        reasonRow.querySelectorAll('.wa-reason').forEach(function(o){ o.classList.remove('selected'); });
-        el.classList.add('selected');
         selectedReason = el.dataset.reason;
         updateSubmitState();
       });
     });
 
     submitBtn.addEventListener('click', function(){
-      if(!selectedReason) return;
-      var phone, msg;
-      if(isCompra()){
-        phone = VENDEDORA.phone;
-        msg = 'Olá, ' + VENDEDORA.name + '! Vim pelo site da Escola Instructiva e quero adquirir um treinamento. Pode me ajudar a escolher e finalizar minha matrícula?';
+      if(!selectedPhone) return;
+      var msg;
+      if(selectedReason === 'compra'){
+        msg = 'Olá, ' + selectedName + '! Vim pelo site da Escola Instructiva e quero adquirir um treinamento. Pode me ajudar a escolher e finalizar minha matrícula?';
       } else {
-        if(!selectedPhone) return;
-        phone = selectedPhone;
-        msg = 'Oi, ' + selectedName + '! Vim pelo site da Escola Instructiva. ' + selectedReason + '.';
+        msg = 'Oi, ' + selectedName + '! Vim pelo site da Escola Instructiva e estou com problema de acesso à plataforma. Pode me ajudar?';
       }
-      var url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(msg);
+      var url = 'https://wa.me/' + selectedPhone + '?text=' + encodeURIComponent(msg);
       window.open(url, '_blank');
       overlay.classList.remove('show');
     });
@@ -157,22 +133,19 @@
 </div>
 
 <section class="promo-mega-hero lancamento-hero">
-  <div class="lanc-visual" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="lanc-text">
-      <div class="promo-mega-badge">🔥 Lançamento oficial</div>
-      <h2>Especialista em Reparo de <em>Esteiras de Academia</em>.</h2>
-      <p>Motores DC, sistemas inverter integrados e acionamento via inversor de frequência — domine o reparo de esteiras de academia, home fitness e ergométricas, um mercado com serviço o ano todo.</p>
-      <div class="lanc-chips">
-        <span class="lanc-chip">Motores DC</span>
-        <span class="lanc-chip">Sistemas inverter</span>
-        <span class="lanc-chip">Inversor de frequência</span>
-        <span class="lanc-chip">Sensores Hall / ópticos</span>
-      </div>
-      <div class="lanc-cta-row">
-        <a href="cursos/especialista-em-manutencao-em-esteira-de-academias.html" class="btn btn-cta promo-mega-cta">Ver oferta completa →</a>
-        <span class="lanc-meta">Acesso vitalício · certificado incluso</span>
-      </div>
+    <div class="promo-mega-badge">🔥 Lançamento oficial</div>
+    <h2>Especialista em Reparo de <em>Esteiras de Academia</em>.</h2>
+    <p>Motores DC, sistemas inverter integrados e acionamento via inversor de frequência — domine o reparo de esteiras de academia, home fitness e ergométricas, um mercado com serviço o ano todo.</p>
+    <div class="lanc-chips">
+      <span class="lanc-chip">Motores DC</span>
+      <span class="lanc-chip">Sistemas inverter</span>
+      <span class="lanc-chip">Inversor de frequência</span>
+      <span class="lanc-chip">Sensores Hall / ópticos</span>
+    </div>
+    <div class="lanc-cta-row">
+      <a href="cursos/especialista-em-manutencao-em-esteira-de-academias.html" class="btn btn-cta promo-mega-cta">Ver oferta completa →</a>
+      <span class="lanc-meta">Acesso vitalício · certificado incluso</span>
     </div>
   </div>
 </section>
