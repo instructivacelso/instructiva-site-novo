@@ -231,6 +231,22 @@ app.get('/api/dashboard', (req, res) => {
   res.json({ ok: true, leads, sales, popupViews: stats.popupViews || 0, visits: stats.visits || { total: 0, byDay: {} } });
 });
 
+// ZERAR TODOS OS DADOS (leads, vendas, visitas, popup) — protegido por senha
+app.post('/api/reset', (req, res) => {
+  var senha = req.query.senha || (req.body && req.body.senha);
+  if (senha !== LEADS_SECRET) {
+    return res.status(401).json({ ok: false, error: 'Senha invalida.' });
+  }
+  try {
+    writeLeads([]);
+    writeSales([]);
+    writeStats({ popupViews: 0, visits: { total: 0, byDay: {} } });
+    res.json({ ok: true });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: 'Falha ao zerar.' });
+  }
+});
+
 // config pública: o site lê pra montar banner/campanha/popup
 app.get('/api/config', (req, res) => {
   res.json(readConfig());

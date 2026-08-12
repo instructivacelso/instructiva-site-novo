@@ -16,9 +16,9 @@
   @font-face{ font-family:'JetBrains Mono'; font-weight:700; src:url('assets/fonts/jetbrains-mono-latin-700-normal.woff2') format('woff2'); font-display:swap; }
 
   :root{
-    --ink:#08090A; --panel:#0F1113; --panel-2:#15181B; --line:rgba(255,255,255,.07); --line-2:rgba(255,255,255,.12);
-    --orange:#F97316; --orange-bright:#FF9A4D; --green:#22C55E; --red:#EF4444;
-    --text:#ECECEA; --muted:#8B8F94; --muted-2:#5B5F64;
+    --ink:#F3F5F8; --panel:#FFFFFF; --panel-2:#EEF1F5; --line:rgba(16,24,40,.09); --line-2:rgba(16,24,40,.15);
+    --orange:#F97316; --orange-bright:#FB8B3D; --green:#16A34A; --red:#DC2626;
+    --text:#101828; --muted:#667085; --muted-2:#98A2B3;
     --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   }
   *{ box-sizing:border-box; margin:0; padding:0; }
@@ -32,7 +32,7 @@
   /* topo */
   .top{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:26px; }
   .brand{ display:flex; align-items:center; gap:12px; }
-  .brand img{ width:36px; height:36px; border-radius:9px; object-fit:contain; background:#fff; padding:3px; }
+  .brand img{ width:38px; height:38px; border-radius:9px; object-fit:contain; }
   .brand .bt{ font-family:'Manrope',sans-serif; font-weight:800; font-size:18px; letter-spacing:-.02em; }
   .brand .bt span{ color:var(--orange); }
   .brand .sig{ display:flex; align-items:center; gap:6px; margin-top:2px; }
@@ -111,7 +111,7 @@
   .lead-src{ color:var(--muted-2); font-size:12px; font-family:var(--mono); }
   .tag{ display:inline-block; font-size:11.5px; font-weight:600; padding:3px 10px; border-radius:100px; white-space:nowrap; }
   .tag-tec{ background:rgba(249,115,22,.14); color:var(--orange); }
-  .tag-ini{ background:rgba(255,255,255,.08); color:var(--muted); }
+  .tag-ini{ background:#EEF1F5; color:var(--muted); }
   .tag-na{ background:transparent; color:var(--muted-2); border:1px dashed var(--line-2); }
   .acts{ display:flex; gap:7px; white-space:nowrap; }
   .icon-btn{ width:33px; height:33px; border-radius:9px; border:1px solid var(--line-2); background:var(--panel-2); display:inline-flex; align-items:center; justify-content:center; cursor:pointer; transition:.15s; font-size:14px; }
@@ -159,6 +159,30 @@
   .cfg-status.ok{ color:var(--green); }
   .cfg-status.err{ color:var(--red); }
   @media (max-width:640px){ .cfg-grid{ grid-template-columns:1fr; } }
+
+  /* ===== LIGHT THEME — profundidade e polimento das métricas ===== */
+  body{ background-image:radial-gradient(ellipse 80% 50% at 50% -12%, rgba(249,115,22,.05), transparent 60%); }
+  .btn{ background:var(--panel); box-shadow:0 1px 2px rgba(16,24,40,.05); }
+  .btn:hover{ border-color:var(--orange); box-shadow:0 3px 10px -4px rgba(249,115,22,.35); }
+  .btn-primary{ box-shadow:0 8px 20px -8px rgba(249,115,22,.5); }
+  .kpi{ box-shadow:0 1px 3px rgba(16,24,40,.05), 0 14px 30px -22px rgba(16,24,40,.28); transition:transform .2s ease, box-shadow .2s ease; }
+  .kpi:hover{ transform:translateY(-3px); box-shadow:0 2px 6px rgba(16,24,40,.06), 0 24px 44px -24px rgba(16,24,40,.32); }
+  .kpi.accent{ background:linear-gradient(180deg, rgba(249,115,22,.08), #fff 62%); border-color:rgba(249,115,22,.3); }
+  .card{ box-shadow:0 1px 3px rgba(16,24,40,.05), 0 18px 44px -30px rgba(16,24,40,.3); }
+  .table-wrap{ box-shadow:0 1px 3px rgba(16,24,40,.05), 0 18px 44px -32px rgba(16,24,40,.28); }
+  .cfg-card{ box-shadow:0 1px 3px rgba(16,24,40,.05), 0 14px 30px -24px rgba(16,24,40,.22); }
+  .login{ box-shadow:0 24px 70px -30px rgba(16,24,40,.35); }
+  th{ background:#FAFBFC; }
+  tbody tr:hover td{ background:rgba(249,115,22,.05); }
+  .cfg-grid input[type=text], .cfg-grid input[type=number], .cfg-grid textarea, .login input, .filters input[type=text], .filters select{ background:#fff; }
+  .switch span{ background:#E4E7EC; border-color:transparent; }
+  .switch span::before{ background:#fff; box-shadow:0 1px 3px rgba(16,24,40,.25); }
+  .kpi .value{ letter-spacing:-.03em; }
+  .danger-card{ border:1px solid rgba(220,38,38,.3); background:linear-gradient(180deg, rgba(220,38,38,.045), #fff 62%); border-radius:15px; padding:20px; margin-bottom:16px; }
+  .danger-card h3{ font-family:'Manrope',sans-serif; font-weight:800; font-size:16px; color:var(--red); margin-bottom:6px; }
+  .danger-card p{ font-size:13.5px; color:var(--muted); margin-bottom:14px; max-width:560px; }
+  .btn-danger{ background:var(--red); border:1px solid var(--red); color:#fff; }
+  .btn-danger:hover{ background:#b91c1c; box-shadow:0 8px 20px -8px rgba(220,38,38,.5); }
 </style>
 </head>
 <body>
@@ -342,6 +366,13 @@
       <button class="btn" id="cfgReloadBtn">Descartar e recarregar</button>
       <span class="cfg-status" id="cfgStatus"></span>
     </div>
+
+    <div class="danger-card">
+      <h3>Zerar todos os dados</h3>
+      <p>Apaga <b>todos os leads, vendas, visitas e exibições de popup</b> e recomeça do zero. Use para entregar o painel limpo. Esta ação não tem volta.</p>
+      <button class="btn btn-danger" id="resetBtn">Zerar tudo agora</button>
+      <span class="cfg-status" id="resetStatus"></span>
+    </div>
   </div>
 </div>
 
@@ -415,10 +446,10 @@
     data.forEach(function(p,i){ var x=xs(i),y=ys(p.v); line+=(i===0?'M ':'L ')+x+' '+y+' '; if(i>0) area+=' L '+x+' '+y; });
     area+=' L '+xs(n-1)+' '+(padT+ih)+' L '+xs(0)+' '+(padT+ih)+' Z';
     // grid horizontal (4 linhas)
-    var grid=''; for(var g=0;g<=4;g++){ var gy=padT+(g/4)*ih; grid+='<line x1="'+padL+'" y1="'+gy+'" x2="'+(W-padR)+'" y2="'+gy+'" stroke="rgba(255,255,255,.05)" stroke-width="1"/>'; }
+    var grid=''; for(var g=0;g<=4;g++){ var gy=padT+(g/4)*ih; grid+='<line x1="'+padL+'" y1="'+gy+'" x2="'+(W-padR)+'" y2="'+gy+'" stroke="rgba(16,24,40,.08)" stroke-width="1"/>'; }
     // dots + labels (a cada ~3 dias)
     var dots='', labels='';
-    data.forEach(function(p,i){ var x=xs(i),y=ys(p.v); dots+='<circle cx="'+x+'" cy="'+y+'" r="'+(p.v>0?3:2)+'" fill="#08090A" stroke="#F97316" stroke-width="2"/>';
+    data.forEach(function(p,i){ var x=xs(i),y=ys(p.v); dots+='<circle cx="'+x+'" cy="'+y+'" r="'+(p.v>0?3:2)+'" fill="#ffffff" stroke="#F97316" stroke-width="2"/>';
       if(i%3===0 || i===n-1){ var dd=p.d.getDate(), mm=p.d.getMonth()+1; labels+='<text x="'+x+'" y="'+(H-8)+'" fill="#5B5F64" font-size="10" font-family="monospace" text-anchor="middle">'+(dd<10?'0':'')+dd+'/'+(mm<10?'0':'')+mm+'</text>'; } });
     var svg=''+
       '<defs><linearGradient id="scopeFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F97316" stop-opacity=".35"/><stop offset="1" stop-color="#F97316" stop-opacity="0"/></linearGradient>'+
@@ -589,6 +620,19 @@
   document.getElementById('tabBtnSite').addEventListener('click',function(){ switchTab('site'); });
   document.getElementById('cfgSaveBtn').addEventListener('click',saveConfig);
   document.getElementById('cfgReloadBtn').addEventListener('click',function(){ siteCfgLoaded=false; loadConfig(); document.getElementById('cfgStatus').textContent='Recarregado.'; });
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    var senha=sessionStorage.getItem(SENHA_KEY); if(!senha) return;
+    if(!confirm('Tem certeza? Isso apaga TODOS os leads, vendas, visitas e popup. Não dá pra desfazer.')) return;
+    if(!confirm('Última confirmação: zerar tudo mesmo?')) return;
+    var st=document.getElementById('resetStatus'); st.className='cfg-status'; st.textContent='Zerando...';
+    fetch('/api/reset?senha='+encodeURIComponent(senha),{ method:'POST' })
+      .then(function(r){ return r.json(); })
+      .then(function(res){
+        if(res&&res.ok){ st.className='cfg-status ok'; st.textContent='✓ Tudo zerado. Recarregando...'; setTimeout(function(){ load(senha); switchTab('leads'); },900); }
+        else { st.className='cfg-status err'; st.textContent='Erro ao zerar.'; }
+      })
+      .catch(function(){ st.className='cfg-status err'; st.textContent='Erro de conexão.'; });
+  });
 
   var saved=null; try{ saved=sessionStorage.getItem(SENHA_KEY); }catch(e){}
   if(saved) load(saved);
