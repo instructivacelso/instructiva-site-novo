@@ -660,3 +660,33 @@ footer{ padding:52px 0 28px; border-top:1px solid var(--line); background:var(--
 .wa-choice.wa-vendedora{ display:flex; flex-direction:column; align-items:center; }
 .wa-choice.wa-vendedora .wa-role{ font-family:'Inter',sans-serif; font-size:12px; color:var(--muted); margin-top:2px; }
 .wa-avatar-initial{ display:flex; align-items:center; justify-content:center; background:var(--orange); color:#fff; font-family:'Manrope',sans-serif; font-weight:800; font-size:22px; }
+
+/* =======================================================================
+   BANNER DE LANÇAMENTO — identidade reforçada (degradê, textura, brilho)
+   ======================================================================= */
+.lancamento-hero .wrap{ position:relative; z-index:2; }
+.lancamento-hero::before{ z-index:0; }
+
+/* título com degradê laranja (só onde o navegador suporta; senão fica laranja normal) */
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .lancamento-hero h2 em{
+    background:linear-gradient(96deg,#FF7A18 0%,#FFC074 48%,#FF7A18 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+}
+
+/* textura sutil de placa (grade de pontos) que some pra baixo */
+.lancamento-hero::after{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.6;
+  background-image:radial-gradient(rgba(249,115,22,.13) 1px, transparent 1.5px);
+  background-size:26px 26px;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 78%);
+          mask-image:linear-gradient(180deg,#000 0%,transparent 78%);
+}
+
+/* badge com leve brilho */
+.lancamento-hero .promo-mega-badge{ box-shadow:0 10px 26px -12px rgba(249,115,22,.6); }
+
+/* chips com hover refinado */
+.lanc-chip{ transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.lanc-chip:hover{ transform:translateY(-2px); border-color:rgba(249,115,22,.6); box-shadow:0 8px 18px -8px rgba(249,115,22,.5); }
