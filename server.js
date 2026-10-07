@@ -104,6 +104,46 @@ function writeStats(stats) {
 }
 
 app.use(express.json());
+
+// nunca entrega pela web os arquivos de dados (leads, vendas, visitas, config)
+// nem o codigo do servidor — quando nao ha volume no Railway, eles ficam nesta pasta
+const BLOQUEADOS = ['leads.json', 'sales.json', 'stats.json', 'config.json', 'server.js'].map(function (f) {
+  return path.join(path.resolve(__dirname), f).toLowerCase();
+});
+const PASTA_SERVER = (path.join(path.resolve(__dirname), 'server') + path.sep).toLowerCase();
+app.use(function (req, res, next) {
+  let file;
+  try { file = path.resolve(path.resolve(__dirname), '.' + decodeURIComponent(req.path)).toLowerCase(); }
+  catch (e) { return res.status(400).send('Bad request'); }
+  if (BLOQUEADOS.indexOf(file) !== -1 || file.indexOf(PASTA_SERVER) === 0) {
+    return res.status(404).send('Not found');
+  }
+  next();
+});
+
+// paginas HTML: troca %SITE_URL% pelo endereco do site. As previas de link
+// (WhatsApp, Facebook) precisam da URL completa da imagem. Se der qualquer
+// erro aqui, segue pro express.static normal.
+const ROOT_DIR = path.resolve(__dirname);
+function siteUrl(req) {
+  const proto = String(req.headers['x-forwarded-proto'] || req.protocol || 'https').split(',')[0].trim();
+  return proto + '://' + req.get('host');
+}
+function sendHtml(file, req, res, next) {
+  fs.readFile(file, 'utf8', function (err, html) {
+    if (err) return next();
+    res.type('html').send(html.split('%SITE_URL%').join(siteUrl(req)));
+  });
+}
+app.get(['/', '/*.html'], function (req, res, next) {
+  let rel;
+  try { rel = req.path === '/' ? 'index.html' : decodeURIComponent(req.path).replace(/^\/+/, ''); }
+  catch (e) { return next(); }
+  const file = path.resolve(ROOT_DIR, rel);
+  if (file.indexOf(ROOT_DIR + path.sep) !== 0) return next();
+  sendHtml(file, req, res, next);
+});
+
 app.use(express.static(path.join(__dirname)));
 
 // salva um lead novo (nome, email, telefone, se ja e tecnico)
@@ -271,7 +311,9 @@ app.post('/api/config', (req, res) => {
 
 // fallback: qualquer rota desconhecida cai na home
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  sendHtml(path.join(__dirname, 'index.html'), req, res, function () {
+    res.sendFile(path.join(__dirname, 'index.html'));
+  });
 });
 
 app.listen(PORT, () => {

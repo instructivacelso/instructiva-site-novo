@@ -1,38 +1,41 @@
-ATUALIZAÇÃO DO SITE — Lançamento Tecnologias Inverter + visual novo
-===================================================================
+ATUALIZAÇÃO DO SITE — Escola Instructiva
+=========================================
 
 O QUE MUDOU
-- Visual novo no site inteiro: topo escuro com menu pro celular, banner do
-  lançamento animado, benefícios em mosaico, curso em destaque, trilhas,
-  professor, linha do tempo "Como funciona", depoimentos, garantia,
-  perguntas frequentes com atalho pro WhatsApp, chamada final e rodapé novo.
-  Catálogo e as 18 páginas de curso no mesmo padrão.
-- Lançamento: Especialista em Tecnologias Inverter. Fora da página do curso
-  aparece só "18x de R$ 187,23"; os R$ 2.597,00 à vista ficam só dentro
-  da página do curso. Os botões de compra levam pro checkout da Greenn.
-- Curso avulso "Manutenção, Reparo + Instalação de Ar Condicionado" saiu do site.
-  A página antiga dele agora redireciona pro curso de Tecnologias Inverter.
-- Saíram as menções a "ex-autorizado" / "ex-assistência técnica autorizada".
-- Números da escola: 35 mil+ alunos, 38 anos, 7 livros, 7 dias de garantia.
-- Janela de atendimento (botão verde "Fale com a gente") nova em todas as páginas:
-  "Quero adquirir um treinamento" vai direto pra Dayane (com a foto dela);
-  "Problema de acesso" mostra as 3 atendentes do suporte. Nas páginas de curso,
-  a mensagem pra Dayane já vai com o nome do curso. Mostra se a equipe está
-  online (seg a sex, 8h às 18h, horário de Brasília).
+- Visual novo no site inteiro (home, catálogo, 18 cursos do catálogo e as 16
+  páginas antigas de curso que ficam fora do catálogo).
+- Lançamento: Especialista em Tecnologias Inverter. Fora da página do curso aparece
+  só "18x de R$ 187,23"; os R$ 2.597,00 à vista ficam só dentro da página do curso.
+  Os botões de compra levam pro checkout da Greenn.
+- Curso avulso de ar-condicionado saiu (a página antiga redireciona pro Inverter).
+- Saíram as menções a "ex-autorizado". Números: 35 mil+ alunos, 38 anos, 7 livros.
+- Animações: arte do banner, faíscas, trilhas de circuito com pulsos de luz, onda de
+  osciloscópio, cards que inclinam com o mouse, botões de compra "magnéticos",
+  títulos surgindo palavra por palavra e transição suave entre páginas.
+- Atendimento (botão verde "Fale com a gente"): "Quero adquirir" vai pra Dayane;
+  "Problema de acesso" mostra as 3 atendentes do suporte.
+- Popup de captura (aparece depois de um tempo): visual novo com a Dayane,
+  máscara do WhatsApp e confete ao enviar. Os textos continuam vindo do painel.
+- Janela "Área do aluno" (Cademi, Hotmart, Nutror) com visual novo.
+- Páginas antigas: o botão "Comprar agora" não levava a lugar nenhum; agora é
+  "Quero me matricular" e abre a Dayane no WhatsApp já com o nome do curso.
+- Prévia de link: ao mandar o link do site ou de um curso no WhatsApp/Facebook,
+  aparece uma imagem com a arte, o nome e a parcela (pasta assets/img/og).
+- SEGURANÇA (server.js): os arquivos de dados (leads.json, sales.json, stats.json,
+  config.json) e o código do servidor não podem mais ser abertos pelo navegador.
 
-ARQUIVOS NOVOS (e a foto nova da Dayane em assets/img/team/dayane.jpg)
-- css/theme.css ............ todo o visual novo
-- js/fx.js ................. animações, menu do celular, efeitos
-- js/wa.js ................. janela de atendimento pelo WhatsApp
-- assets/img/logo-instructiva-light.png ... logo pra fundo escuro
+PRA FAZER NO SEU LADO
+1. Pixel do Facebook / Google Analytics: abra js/tracking.js e cole os IDs no topo
+   (metaPixelId e ga4Id). Vazio = desligado.
+2. No Railway (Variables): crie LEADS_SECRET com uma senha forte. Sem ela, a senha
+   do painel é "troque-esta-senha".
+3. No Railway: confira se existe um Volume (RAILWAY_VOLUME_MOUNT_PATH). Sem volume,
+   os leads se perdem a cada atualização do site.
 
 COMO SUBIR NO GITHUB (pelo site)
 1. Descompacte este zip.
 2. No repositório, clique em "Add file" > "Upload files".
-3. Arraste TUDO que está dentro da pasta descompactada (as pastas assets, css,
-   js, cursos e os arquivos index.html e cursos.html) pra área de upload.
-   As pastas são mantidas e os arquivos com o mesmo nome são substituídos.
-4. Em "Commit changes", escreva "Lançamento Tecnologias Inverter + visual novo"
-   e confirme. O Railway atualiza o site sozinho em ~1 minuto.
-
-O resto do site (painel, servidor, popups) continua igual.
+3. Arraste TUDO que está dentro da pasta descompactada (pastas assets, css, js,
+   cursos e os arquivos index.html, cursos.html e server.js).
+4. Em "Commit changes", escreva "Site novo + lançamento Inverter" e confirme.
+   O Railway atualiza o site sozinho em ~1 minuto.

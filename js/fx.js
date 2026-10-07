@@ -287,4 +287,110 @@
       });
     });
   }
+
+  // ---------------------------------------------------------------- trilhas de placa de circuito com pulsos de luz
+  function circuits(host, opts) {
+    if (!host) return;
+    opts = opts || {};
+    var seed = opts.seed || 7;
+    function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+    var count = opts.count || 14, paths = '', vias = '', pulses = '';
+    for (var i = 0; i < count; i++) {
+      var y = Math.round(40 + i * (720 / count) + rnd() * 30), x = -20;
+      var d = 'M' + x + ' ' + y, segs = 2 + Math.floor(rnd() * 3);
+      for (var k = 0; k < segs; k++) {
+        x += Math.round(70 + rnd() * 220);
+        d += ' H' + x;
+        if (k < segs - 1) {
+          var dy = Math.round((rnd() < 0.5 ? -1 : 1) * (24 + rnd() * 70));
+          x += Math.abs(dy); y += dy;
+          d += ' L' + x + ' ' + y;
+        }
+      }
+      paths += '<path d="' + d + '"/>';
+      vias += '<circle cx="' + x + '" cy="' + y + '" r="4"/>';
+      if (rnd() < 0.75) {
+        pulses += '<path d="' + d + '" pathLength="100" style="animation-duration:' + (3.5 + rnd() * 4).toFixed(2) +
+          's;animation-delay:-' + (rnd() * 6).toFixed(2) + 's"/>';
+      }
+    }
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'fx-circuits' + (opts.cls ? ' ' + opts.cls : ''));
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('viewBox', '0 0 1200 800');
+    svg.setAttribute('preserveAspectRatio', 'xMinYMid slice');
+    svg.innerHTML = '<g class="tr">' + paths + '</g><g class="vi">' + vias + '</g><g class="pu">' + pulses + '</g>';
+    host.insertBefore(svg, host.firstChild);
+  }
+  circuits($('.lancamento-hero'), { seed: 11 });
+  circuits($('.sales-hero'), { seed: 23, cls: 'from-right' });
+  circuits($('.final-card'), { seed: 5, count: 10, cls: 'in-card' });
+  circuits($('.page-catalog section'), { seed: 31, cls: 'from-right' });
+
+  // ---------------------------------------------------------------- onda de osciloscópio
+  function scope(target, cls) {
+    if (!target) return;
+    var w = 1200, h = 64, mid = h / 2, d = '';
+    // duas telas iguais lado a lado (loop perfeito): senoide com "degraus" de PWM por cima
+    for (var x = 0; x <= w * 2; x += 4) {
+      var t = (x / w) * Math.PI * 2 * 3;
+      var y = mid + Math.sin(t) * 18 + Math.sin(t * 7) * 2.5;
+      d += (x === 0 ? 'M' : ' L') + x + ' ' + y.toFixed(1);
+    }
+    var el = document.createElement('div');
+    el.className = 'fx-scope' + (cls ? ' ' + cls : '');
+    el.setAttribute('aria-hidden', 'true');
+    el.innerHTML = '<svg viewBox="0 0 ' + (w * 2) + ' ' + h + '" preserveAspectRatio="none"><path class="glow" d="' + d + '"/><path d="' + d + '"/></svg>';
+    target.appendChild(el);
+  }
+  scope($('.stats-strip'));
+  scope($('footer'), 'top');
+
+  // ---------------------------------------------------------------- cards inclinam em 3D com o mouse
+  if (finePointer) {
+    $$('.course-card, .cat-card').forEach(function (card) {
+      card.classList.add('fx-tilt');
+      card.addEventListener('mousemove', function (e) {
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.setProperty('--cry', (x * 10).toFixed(2) + 'deg');
+        card.style.setProperty('--crx', (-y * 8).toFixed(2) + 'deg');
+      });
+      card.addEventListener('mouseleave', function () {
+        card.style.setProperty('--cry', '0deg');
+        card.style.setProperty('--crx', '0deg');
+      });
+    });
+
+    // ---------------------------------------------------------------- botões de compra "magnéticos"
+    $$('.lanc-cta-row .btn-cta, .final-actions .btn-cta, .feature-buy .btn-cta, .course-final .btn-cta, .price-panel .btn-cta').forEach(function (b) {
+      b.classList.add('fx-mag');
+      var k = b.closest('.price-panel') ? 0.35 : 1;
+      b.addEventListener('mousemove', function (e) {
+        var r = b.getBoundingClientRect();
+        b.style.setProperty('--bx', (((e.clientX - r.left) / r.width - 0.5) * 14 * k).toFixed(1) + 'px');
+        b.style.setProperty('--by', (((e.clientY - r.top) / r.height - 0.5) * 10 * k).toFixed(1) + 'px');
+      });
+      b.addEventListener('mouseleave', function () {
+        b.style.setProperty('--bx', '0px');
+        b.style.setProperty('--by', '0px');
+      });
+    });
+  }
+
+  // ---------------------------------------------------------------- transição suave entre páginas
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if ((a.target && a.target !== '_self') || a.hasAttribute('download')) return;
+    var url;
+    try { url = new URL(a.getAttribute('href'), location.href); } catch (err) { return; }
+    if (url.origin !== location.origin) return;
+    if (url.pathname === location.pathname && url.search === location.search) return; // âncoras na mesma página
+    e.preventDefault();
+    document.documentElement.classList.add('is-leaving');
+    setTimeout(function () { location.href = url.href; }, 200);
+    setTimeout(function () { document.documentElement.classList.remove('is-leaving'); }, 1500);
+  });
+  window.addEventListener('pageshow', function () { document.documentElement.classList.remove('is-leaving'); });
 })();

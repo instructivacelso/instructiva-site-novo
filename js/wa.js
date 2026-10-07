@@ -42,6 +42,13 @@
   }
 
   toggle.addEventListener('click', function () { open(); });
+  // qualquer botão com data-wa-open="compra" (ou "acesso") abre a janela direto nesse passo
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-wa-open]') : null;
+    if (!t) return;
+    e.preventDefault();
+    open(t.getAttribute('data-wa-open') || 'motivo');
+  });
   if (closeBtn) closeBtn.addEventListener('click', close);
   overlay.addEventListener('click', function (e) {
     if (e.target === overlay) { close(); return; }
@@ -53,7 +60,7 @@
   });
 
   // ---------------------------------------------------------------- comercial (Dayane)
-  var courseEl = document.querySelector('.course-infobar h2');
+  var courseEl = document.querySelector('.course-infobar h2, .course-hero h1');
   var course = courseEl ? courseEl.textContent.trim() : '';
   var buy = overlay.querySelector('[data-cta="compra"]');
   if (buy) {

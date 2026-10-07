@@ -6,20 +6,87 @@
 <title>Manutenção em Máquinas Inversoras de Solda — Escola Instructiva</title>
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/popup.css">
+<link rel="stylesheet" href="../css/course-sales.css">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon-180.png">
 </head>
 <body>
+<button type="button" class="whatsapp-float" id="waToggle" aria-label="Falar com a Escola Instructiva pelo WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 3C9.373 3 4 8.373 4 15.004c0 2.647.86 5.096 2.318 7.077L4.6 28.4l6.5-1.677a11.93 11.93 0 0 0 4.9 1.043h.004c6.63 0 12.004-5.373 12.004-12.004C28.008 8.373 22.635 3 16.004 3Zm7.03 17.06c-.297.833-1.47 1.526-2.404 1.727-.639.136-1.473.245-4.28-.92-3.59-1.49-5.9-5.14-6.08-5.38-.176-.24-1.454-1.938-1.454-3.696 0-1.757.918-2.62 1.245-2.98.297-.325.647-.407.863-.407.216 0 .432.002.62.011.216.01.482-.082.754.575.297.72.008 2.06.008 2.06s-.44.505-.19 1.166c.43 1.14 1.87 2.5 2.05 2.68.18.18 1.6 1.62 2.79 2.06.66.244 1.09.207 1.33-.05.24-.257.68-.83.87-1.08.19-.25.38-.207.63-.13.25.08 1.58.76 1.86.93.28.17.46.256.53.396.07.14.07.81-.227 1.643Z"/></svg>
+  <span class="wa-label">Fale com a gente</span>
+</button>
+
+<div class="wa-popup-overlay" id="waPopupOverlay" aria-hidden="true">
+  <div class="wa-popup wa2" role="dialog" aria-modal="true" aria-labelledby="waTitle">
+    <div class="wa2-head">
+      <button type="button" class="wa-popup-close" id="waPopupClose" aria-label="Fechar">&times;</button>
+      <div class="wa2-team" aria-hidden="true">
+        <img src="../assets/img/team/dayane.jpg" alt="" width="42" height="42">
+        <img src="../assets/img/team/leticia.jpg" alt="" width="42" height="42">
+        <img src="../assets/img/team/lilian.jpg" alt="" width="42" height="42">
+        <img src="../assets/img/team/vitoria.jpg" alt="" width="42" height="42">
+      </div>
+      <h3 id="waTitle">Como podemos te ajudar?</h3>
+      <div class="wa2-status"><span class="dot"></span><span id="waStatus">Atendimento de segunda a sexta, das 8h às 18h</span></div>
+    </div>
+    <div class="wa2-body">
+      <div class="wa2-step" data-step="motivo">
+        <button type="button" class="wa2-option is-primary" data-go="compra">
+          <span class="wa2-face"><img src="../assets/img/team/dayane.jpg" alt="" width="48" height="48"><i></i></span>
+          <span class="wa2-txt"><strong>Quero adquirir um treinamento</strong><small>Fale com a Dayane e faça sua matrícula</small></span>
+          <span class="wa2-arrow" aria-hidden="true">→</span>
+        </button>
+        <button type="button" class="wa2-option" data-go="acesso">
+          <span class="wa2-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2.5"/></svg></span>
+          <span class="wa2-txt"><strong>Estou com problema de acesso</strong><small>Nossa equipe de suporte resolve pra você</small></span>
+          <span class="wa2-stack" aria-hidden="true"><img src="../assets/img/team/leticia.jpg" alt="" width="30" height="30"><img src="../assets/img/team/lilian.jpg" alt="" width="30" height="30"><img src="../assets/img/team/vitoria.jpg" alt="" width="30" height="30"></span>
+        </button>
+      </div>
+      <div class="wa2-step" data-step="compra" hidden>
+        <button type="button" class="wa2-back" data-go="motivo">← Voltar</button>
+        <div class="wa2-person">
+          <span class="wa2-avatar"><img src="../assets/img/team/dayane.jpg" alt="Dayane" width="84" height="84"><i></i></span>
+          <div><strong>Dayane</strong><span>Matrículas e cursos</span></div>
+        </div>
+        <p class="wa2-note">Ela tira suas dúvidas, te ajuda a escolher o curso certo e finaliza sua matrícula pelo WhatsApp.</p>
+        <a class="wa2-cta" data-cta="compra" data-phone="5544920066945" href="https://wa.me/5544920066945" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.004 3C9.373 3 4 8.373 4 15.004c0 2.647.86 5.096 2.318 7.077L4.6 28.4l6.5-1.677a11.93 11.93 0 0 0 4.9 1.043h.004c6.63 0 12.004-5.373 12.004-12.004C28.008 8.373 22.635 3 16.004 3Zm7.03 17.06c-.297.833-1.47 1.526-2.404 1.727-.639.136-1.473.245-4.28-.92-3.59-1.49-5.9-5.14-6.08-5.38-.176-.24-1.454-1.938-1.454-3.696 0-1.757.918-2.62 1.245-2.98.297-.325.647-.407.863-.407.216 0 .432.002.62.011.216.01.482-.082.754.575.297.72.008 2.06.008 2.06s-.44.505-.19 1.166c.43 1.14 1.87 2.5 2.05 2.68.18.18 1.6 1.62 2.79 2.06.66.244 1.09.207 1.33-.05.24-.257.68-.83.87-1.08.19-.25.38-.207.63-.13.25.08 1.58.76 1.86.93.28.17.46.256.53.396.07.14.07.81-.227 1.643Z"/></svg><span>Falar com a Dayane</span></a>
+      </div>
+      <div class="wa2-step" data-step="acesso" hidden>
+        <button type="button" class="wa2-back" data-go="motivo">← Voltar</button>
+        <p class="wa2-label">Escolha uma atendente do suporte:</p>
+        <div class="wa2-people">
+          <button type="button" class="wa2-pick" data-name="Letícia" data-phone="5544997085134" aria-pressed="false">
+            <img src="../assets/img/team/leticia.jpg" alt="" width="58" height="58"><span>Letícia</span>
+          </button>
+          <button type="button" class="wa2-pick" data-name="Lilian" data-phone="5544997005267" aria-pressed="false">
+            <img src="../assets/img/team/lilian.jpg" alt="" width="58" height="58"><span>Lilian</span>
+          </button>
+          <button type="button" class="wa2-pick" data-name="Vitória" data-phone="5544997267313" aria-pressed="false">
+            <img src="../assets/img/team/vitoria.jpg" alt="" width="58" height="58"><span>Vitória</span>
+          </button>
+        </div>
+        <a class="wa2-cta is-disabled" data-cta="acesso" aria-disabled="true" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.004 3C9.373 3 4 8.373 4 15.004c0 2.647.86 5.096 2.318 7.077L4.6 28.4l6.5-1.677a11.93 11.93 0 0 0 4.9 1.043h.004c6.63 0 12.004-5.373 12.004-12.004C28.008 8.373 22.635 3 16.004 3Zm7.03 17.06c-.297.833-1.47 1.526-2.404 1.727-.639.136-1.473.245-4.28-.92-3.59-1.49-5.9-5.14-6.08-5.38-.176-.24-1.454-1.938-1.454-3.696 0-1.757.918-2.62 1.245-2.98.297-.325.647-.407.863-.407.216 0 .432.002.62.011.216.01.482-.082.754.575.297.72.008 2.06.008 2.06s-.44.505-.19 1.166c.43 1.14 1.87 2.5 2.05 2.68.18.18 1.6 1.62 2.79 2.06.66.244 1.09.207 1.33-.05.24-.257.68-.83.87-1.08.19-.25.38-.207.63-.13.25.08 1.58.76 1.86.93.28.17.46.256.53.396.07.14.07.81-.227 1.643Z"/></svg><span class="who">Escolha uma atendente</span></a>
+      </div>
+      <p class="wa2-fine">Fora do horário? Pode chamar mesmo assim — respondemos assim que possível.</p>
+    </div>
+  </div>
+</div>
+
 <header>
   <div class="wrap">
     <nav>
       <a class="logo" href="../index.html">
-        <img class="mark" src="../assets/img/logo-instructiva.png" alt="Escola Instructiva">
-        escola <b>instructiva</b>
+        <img class="mark" src="../assets/img/logo-instructiva-light.png" alt="Escola Instructiva">
+        Escola <b>Instructiva</b>
       </a>
       <div class="nav-links">
-        <a href="../cursos.html" class="active">cursos</a>
-        <a href="../index.html#professor">sobre</a>
-        <a href="../index.html#depoimentos">depoimentos</a>
-        <a href="../index.html#faq">faq</a>
+        <a href="../cursos.html" class="active">Cursos</a>
+        <a href="../index.html#professor">Sobre</a>
+        <a href="../index.html#depoimentos">Depoimentos</a>
+        <a href="../index.html#faq">FAQ</a>
       </div>
       <div class="nav-actions">
         <a href="#" class="btn btn-outline-dark btn-sm">Área do aluno</a>
@@ -45,7 +112,7 @@
       <div class="lbl">Investimento único</div>
       <div class="price">R$ 997<span>,00</span></div>
       <div class="inst">ou 12x de R$ 83,08 no cartão</div>
-      <a href="#" class="btn btn-cta">Comprar agora</a>
+      <a href="#" class="btn btn-cta" data-wa-open="compra">Quero me matricular <span class="arr">→</span></a>
       <ul class="incl">
         <li>Certificado de conclusão incluso</li>
         <li>Acesso vitalício às aulas</li>
@@ -106,9 +173,14 @@
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="sec-head"><div class="eyebrow">Antes de começar</div><h2>Perguntas frequentes</h2></div>
+<section class="faq-section">
+  <div class="wrap faq-layout">
+    <div class="faq-side">
+      <div class="eyebrow">Antes de começar</div>
+      <h2>Perguntas frequentes</h2>
+      <p>Ficou alguma dúvida sobre o curso? Nossa equipe responde no WhatsApp, de segunda a sexta, das 8h às 18h.</p>
+      <button type="button" class="btn btn-wa js-open-wa"><svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.004 3C9.373 3 4 8.373 4 15.004c0 2.647.86 5.096 2.318 7.077L4.6 28.4l6.5-1.677a11.93 11.93 0 0 0 4.9 1.043h.004c6.63 0 12.004-5.373 12.004-12.004C28.008 8.373 22.635 3 16.004 3Zm7.03 17.06c-.297.833-1.47 1.526-2.404 1.727-.639.136-1.473.245-4.28-.92-3.59-1.49-5.9-5.14-6.08-5.38-.176-.24-1.454-1.938-1.454-3.696 0-1.757.918-2.62 1.245-2.98.297-.325.647-.407.863-.407.216 0 .432.002.62.011.216.01.482-.082.754.575.297.72.008 2.06.008 2.06s-.44.505-.19 1.166c.43 1.14 1.87 2.5 2.05 2.68.18.18 1.6 1.62 2.79 2.06.66.244 1.09.207 1.33-.05.24-.257.68-.83.87-1.08.19-.25.38-.207.63-.13.25.08 1.58.76 1.86.93.28.17.46.256.53.396.07.14.07.81-.227 1.643Z"/></svg>Falar com a equipe</button>
+    </div>
     <div class="faq-list"><div class="faq-item open">
         <button class="faq-q"><span>Preciso ter experiência em eletrônica pra começar?</span><span class="faq-icon">+</span></button>
         <div class="faq-a"><p>Não. Temos cursos desde o nível básico até o avançado. Mesmo quem nunca teve contato com eletrônica consegue acompanhar e evoluir passo a passo, no seu próprio ritmo.</p></div>
@@ -136,11 +208,11 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-col">
-        <a class="logo" href="../index.html" style="margin-bottom:16px;">
-          <img class="mark" src="../assets/img/logo-instructiva.png" alt="Escola Instructiva">
-          escola <b>instructiva</b>
+        <a class="logo" href="../index.html">
+          <img class="mark" src="../assets/img/logo-instructiva-light.png" alt="Escola Instructiva">
+          Escola <b>Instructiva</b>
         </a>
-        <p style="font-size:13.5px; color:#9A9A94; max-width:260px; line-height:1.6; font-family:'Inter',sans-serif;">Ensino técnico de eletrônica e manutenção. Sete anos formando quem conserta de verdade.</p>
+        <p class="foot-about">Ensino técnico de eletrônica e manutenção. Sete anos formando quem conserta de verdade.</p>
       </div>
       <div class="foot-col">
         <h4>Cursos</h4>
@@ -153,7 +225,7 @@
         <h4>Empresa</h4>
         <a href="../index.html#professor">Quem somos</a>
         <a href="../index.html#depoimentos">Depoimentos</a>
-        <a href="#">Contato</a>
+        <a href="#" class="js-open-wa">Contato</a>
       </div>
       <div class="foot-col">
         <h4>Suporte</h4>
@@ -170,7 +242,7 @@
 <div class="sticky-cta" id="stickyCta">
   <div class="wrap sticky-inner">
     <span class="sticky-copy"><strong>Manutenção em Máquinas Inversoras de Solda</strong> — <span class="sticky-price">R$ 997,00</span></span>
-    <a href="#comprar" class="btn btn-cta btn-sm">Comprar agora</a>
+    <a href="#" class="btn btn-cta btn-sm" data-wa-open="compra">Quero me matricular</a>
   </div>
 </div>
 <script>
@@ -193,5 +265,9 @@
 </script>
 
 <script src="../js/popup.js"></script>
+<script src="../js/reveal.js"></script>
+<script src="../js/tracking.js"></script>
+<script src="../js/wa.js"></script>
+<script src="../js/fx.js"></script>
 </body>
 </html>

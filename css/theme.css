@@ -783,3 +783,65 @@ footer{ position:relative; overflow:hidden; background:var(--dark-0); border-top
   .wa2-body{ padding:18px 16px calc(18px + env(safe-area-inset-bottom)); }
   .wa2-stack{ display:none; }
 }
+
+/* ----------------------------------------------------------------- 18
+   ANIMAÇÕES EXTRAS (js/fx.js): circuito, osciloscópio, cards 3D,
+   botões magnéticos e transição entre páginas
+   ----------------------------------------------------------------- */
+.fx-circuits{ position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.55) 38%,transparent 62%); mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.55) 38%,transparent 62%); }
+.fx-circuits.from-right{ transform:scaleX(-1); }
+.fx-circuits.in-card{ z-index:-1; opacity:.8; }
+.fx-circuits .tr path{ fill:none; stroke:rgba(249,115,22,.15); stroke-width:1.4; }
+.fx-circuits .vi circle{ fill:var(--dark-0); stroke:rgba(249,115,22,.38); stroke-width:1.4; }
+.fx-circuits .pu path{ fill:none; stroke:#FF9A4D; stroke-width:2.2; stroke-linecap:round; stroke-dasharray:6 94; stroke-dashoffset:100; opacity:0; filter:drop-shadow(0 0 5px rgba(255,140,60,.95)); }
+@media (prefers-reduced-motion: no-preference){
+  .fx-circuits .pu path{ opacity:1; animation:circuitPulse 5s linear infinite; }
+  @keyframes circuitPulse{ from{ stroke-dashoffset:100; } to{ stroke-dashoffset:0; } }
+}
+.page-catalog section{ position:relative; overflow:hidden; }
+.page-catalog section > .wrap{ position:relative; z-index:1; }
+@media (max-width:700px){ .fx-circuits{ opacity:.6; } }
+
+.fx-scope{ position:absolute; left:0; right:0; bottom:0; height:64px; overflow:hidden; pointer-events:none; opacity:.9;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent); mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:40px 16px; background-position:center; }
+.fx-scope svg{ width:200%; height:100%; display:block; }
+.fx-scope path{ fill:none; stroke:#FF8F3F; stroke-width:2; vector-effect:non-scaling-stroke; }
+.fx-scope path.glow{ stroke:rgba(255,140,60,.35); stroke-width:7; filter:blur(3px); }
+.fx-scope.top{ top:0; bottom:auto; height:48px; opacity:.55; }
+.stats-strip{ padding-bottom:70px; }
+@media (prefers-reduced-motion: no-preference){
+  .fx-scope svg{ animation:scopeRun 7s linear infinite; }
+  @keyframes scopeRun{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+}
+
+.fx-tilt{ transform:perspective(900px) rotateX(var(--crx,0deg)) rotateY(var(--cry,0deg)) translateY(var(--lift,0px)); }
+.fx-tilt:hover{ --lift:-6px; transform:perspective(900px) rotateX(var(--crx,0deg)) rotateY(var(--cry,0deg)) translateY(var(--lift,0px)); transition:transform .15s linear, box-shadow .4s ease, border-color .3s ease; }
+
+.fx-mag{ transform:translate(var(--bx,0px), var(--by,0px)); }
+.fx-mag:hover{ transform:translate(var(--bx,0px), calc(var(--by,0px) - 2px)); }
+
+@media (prefers-reduced-motion: no-preference){
+  body{ animation:pageIn .45s var(--ease) backwards; }
+  @keyframes pageIn{ from{ opacity:0; } to{ opacity:1; } }
+  .is-leaving body{ opacity:0; transition:opacity .2s ease; }
+}
+
+/* ----------------------------------------------------------------- 19
+   PÁGINAS DE CURSO NO MODELO ANTIGO (fora do catálogo)
+   ----------------------------------------------------------------- */
+.course-hero{ gap:56px; }
+.course-hero h1{ font-size:clamp(32px,3.8vw,50px); line-height:1.05; letter-spacing:-.04em; }
+.course-hero .desc{ font-size:17px; }
+.course-hero .course-list{ grid-template-columns:1fr; }
+.pitch-box{ background:var(--mint); border-left:3px solid var(--orange); border-radius:0 16px 16px 0; padding:18px 22px; }
+.buy-card{ border-radius:24px; padding:30px 28px; background:linear-gradient(180deg,#1C1C21 0%,#131316 100%); border:1px solid rgba(255,255,255,.1); box-shadow:0 0 0 1px rgba(249,115,22,.10), 0 40px 80px -40px rgba(0,0,0,.6); }
+.buy-card .lbl{ letter-spacing:.14em; font-size:11.5px; }
+.buy-card .price{ font-size:44px; letter-spacing:-.04em; }
+.buy-card .btn{ padding:17px; font-size:16px; border-radius:14px; }
+.buy-card .pay span{ border-radius:999px; }
+.bg-black .guarantee-banner{ background:var(--dark-2); border-color:var(--line-on-dark); box-shadow:none; }
+.bg-black .guarantee-banner h3{ color:#fff; }
+.bg-black .guarantee-banner p{ color:var(--on-dark-2); }
