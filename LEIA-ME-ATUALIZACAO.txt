@@ -1,0 +1,24 @@
+ATUALIZAÇÃO DO SITE — Lançamento Tecnologias Inverter + visual novo
+===================================================================
+
+O QUE MUDOU
+- Banner da home: lançamento oficial agora é o "Especialista em Tecnologias Inverter",
+  arte em tela cheia (sem moldura) com animação (entrada, reflexo, faíscas, segue o mouse).
+- Preço do Inverter: 18x de R$ 187,23 (fora da página do curso aparece só a parcela);
+  R$ 2.597,00 à vista aparece só dentro da página do curso.
+- Botões de compra do Inverter levam pro checkout da Greenn.
+- Curso avulso "Manutenção, Reparo + Instalação de Ar Condicionado" saiu do site.
+  A página antiga dele agora redireciona pro curso de Tecnologias Inverter
+  (assim ninguém cai numa página morta vindo de link antigo/anúncio).
+- Visual novo no site inteiro (arquivo css/theme.css) + efeitos (js/fx.js).
+
+COMO SUBIR NO GITHUB (pelo site)
+1. Descompacte este zip.
+2. No repositório, clique em "Add file" > "Upload files".
+3. Arraste TUDO que está dentro da pasta descompactada (as pastas css, js, cursos
+   e os arquivos index.html, cursos.html) pra área de upload. As pastas são mantidas.
+4. Em "Commit changes", escreva algo como "Lançamento Tecnologias Inverter + visual novo"
+   e confirme. O Railway atualiza o site sozinho em ~1 minuto.
+
+Os arquivos com o mesmo nome são substituídos; o resto do site continua igual.
+Pra voltar ao visual antigo, basta tirar a linha do css/theme.css das páginas.

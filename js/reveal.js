@@ -5,8 +5,7 @@
   if ((mq && mq.matches) || !('IntersectionObserver' in window)) return; // nada é escondido
 
   var SELECTOR = [
-    '.promo-mega-badge', '.lancamento-hero h2', '.lancamento-hero .wrap > p',
-    '.lanc-chips', '.lanc-cta-row',
+    '.stat',
     '.sec-head', '.value-card', '.cat-card', '.offer-card', '.flow-node',
     '.faq-item', '.prof-copy', '.prof-media', '.guarantee-hero .wrap',
     '.cta-band .wrap', '.course-card'
