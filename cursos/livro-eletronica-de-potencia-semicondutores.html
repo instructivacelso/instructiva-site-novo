@@ -19,94 +19,61 @@
   <span class="wa-label">Falar com o suporte</span>
 </button>
 
-<div class="wa-popup-overlay" id="waPopupOverlay">
-  <div class="wa-popup" role="dialog" aria-modal="true">
-    <button class="wa-popup-close" id="waPopupClose" aria-label="Fechar">&times;</button>
-    <h3>Falar com o suporte</h3>
-    <div class="wa-hours">Atendimento: Segunda a Sexta, das 08:00 às 18:00</div>
-
-    <div class="wa-step-label">Escolha uma de nossas atendentes!!</div>
-    <div class="wa-choice-row" id="waAttendantRow">
-      <div class="wa-choice" data-name="Letícia" data-phone="5544997085134">
-        <div class="wa-avatar" style="background-image:url('../assets/img/team/leticia.jpg'); background-size:cover; background-position:center;"></div>
-        <div class="wa-name">Letícia</div>
+<div class="wa-popup-overlay" id="waPopupOverlay" aria-hidden="true">
+  <div class="wa-popup wa2" role="dialog" aria-modal="true" aria-labelledby="waTitle">
+    <div class="wa2-head">
+      <button type="button" class="wa-popup-close" id="waPopupClose" aria-label="Fechar">&times;</button>
+      <div class="wa2-team" aria-hidden="true">
+        <img src="../assets/img/team/dayane.jpg" alt="" width="42" height="42">
+        <img src="../assets/img/team/leticia.jpg" alt="" width="42" height="42">
+        <img src="../assets/img/team/lilian.jpg" alt="" width="42" height="42">
+        <img src="../assets/img/team/vitoria.jpg" alt="" width="42" height="42">
       </div>
-      <div class="wa-choice" data-name="Lilian" data-phone="5544997005267">
-        <div class="wa-avatar" style="background-image:url('../assets/img/team/lilian.jpg'); background-size:cover; background-position:center;"></div>
-        <div class="wa-name">Lilian</div>
-      </div>
-      <div class="wa-choice" data-name="Vitória" data-phone="5544997267313">
-        <div class="wa-avatar" style="background-image:url('../assets/img/team/vitoria.jpg'); background-size:cover; background-position:center;"></div>
-        <div class="wa-name">Vitória</div>
-      </div>
+      <h3 id="waTitle">Como podemos te ajudar?</h3>
+      <div class="wa2-status"><span class="dot"></span><span id="waStatus">Atendimento de segunda a sexta, das 8h às 18h</span></div>
     </div>
-
-    <div class="wa-step-label">Como podemos te ajudar?</div>
-    <div class="wa-reason-row" id="waReasonRow">
-      <div class="wa-reason" data-reason="Estou com problema de acesso à plataforma">Problema com acesso</div>
-      <div class="wa-reason" data-reason="Quero adquirir um treinamento">Quero adquirir um treinamento</div>
+    <div class="wa2-body">
+      <div class="wa2-step" data-step="motivo">
+        <button type="button" class="wa2-option is-primary" data-go="compra">
+          <span class="wa2-face"><img src="../assets/img/team/dayane.jpg" alt="" width="48" height="48"><i></i></span>
+          <span class="wa2-txt"><strong>Quero adquirir um treinamento</strong><small>Fale com a Dayane e faça sua matrícula</small></span>
+          <span class="wa2-arrow" aria-hidden="true">→</span>
+        </button>
+        <button type="button" class="wa2-option" data-go="acesso">
+          <span class="wa2-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2.5"/></svg></span>
+          <span class="wa2-txt"><strong>Estou com problema de acesso</strong><small>Nossa equipe de suporte resolve pra você</small></span>
+          <span class="wa2-stack" aria-hidden="true"><img src="../assets/img/team/leticia.jpg" alt="" width="30" height="30"><img src="../assets/img/team/lilian.jpg" alt="" width="30" height="30"><img src="../assets/img/team/vitoria.jpg" alt="" width="30" height="30"></span>
+        </button>
+      </div>
+      <div class="wa2-step" data-step="compra" hidden>
+        <button type="button" class="wa2-back" data-go="motivo">← Voltar</button>
+        <div class="wa2-person">
+          <span class="wa2-avatar"><img src="../assets/img/team/dayane.jpg" alt="Dayane" width="84" height="84"><i></i></span>
+          <div><strong>Dayane</strong><span>Matrículas e cursos</span></div>
+        </div>
+        <p class="wa2-note">Ela tira suas dúvidas, te ajuda a escolher o curso certo e finaliza sua matrícula pelo WhatsApp.</p>
+        <a class="wa2-cta" data-cta="compra" data-phone="5544920066945" href="https://wa.me/5544920066945" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.004 3C9.373 3 4 8.373 4 15.004c0 2.647.86 5.096 2.318 7.077L4.6 28.4l6.5-1.677a11.93 11.93 0 0 0 4.9 1.043h.004c6.63 0 12.004-5.373 12.004-12.004C28.008 8.373 22.635 3 16.004 3Zm7.03 17.06c-.297.833-1.47 1.526-2.404 1.727-.639.136-1.473.245-4.28-.92-3.59-1.49-5.9-5.14-6.08-5.38-.176-.24-1.454-1.938-1.454-3.696 0-1.757.918-2.62 1.245-2.98.297-.325.647-.407.863-.407.216 0 .432.002.62.011.216.01.482-.082.754.575.297.72.008 2.06.008 2.06s-.44.505-.19 1.166c.43 1.14 1.87 2.5 2.05 2.68.18.18 1.6 1.62 2.79 2.06.66.244 1.09.207 1.33-.05.24-.257.68-.83.87-1.08.19-.25.38-.207.63-.13.25.08 1.58.76 1.86.93.28.17.46.256.53.396.07.14.07.81-.227 1.643Z"/></svg><span>Falar com a Dayane</span></a>
+      </div>
+      <div class="wa2-step" data-step="acesso" hidden>
+        <button type="button" class="wa2-back" data-go="motivo">← Voltar</button>
+        <p class="wa2-label">Escolha uma atendente do suporte:</p>
+        <div class="wa2-people">
+          <button type="button" class="wa2-pick" data-name="Letícia" data-phone="5544997085134" aria-pressed="false">
+            <img src="../assets/img/team/leticia.jpg" alt="" width="58" height="58"><span>Letícia</span>
+          </button>
+          <button type="button" class="wa2-pick" data-name="Lilian" data-phone="5544997005267" aria-pressed="false">
+            <img src="../assets/img/team/lilian.jpg" alt="" width="58" height="58"><span>Lilian</span>
+          </button>
+          <button type="button" class="wa2-pick" data-name="Vitória" data-phone="5544997267313" aria-pressed="false">
+            <img src="../assets/img/team/vitoria.jpg" alt="" width="58" height="58"><span>Vitória</span>
+          </button>
+        </div>
+        <a class="wa2-cta is-disabled" data-cta="acesso" aria-disabled="true" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.004 3C9.373 3 4 8.373 4 15.004c0 2.647.86 5.096 2.318 7.077L4.6 28.4l6.5-1.677a11.93 11.93 0 0 0 4.9 1.043h.004c6.63 0 12.004-5.373 12.004-12.004C28.008 8.373 22.635 3 16.004 3Zm7.03 17.06c-.297.833-1.47 1.526-2.404 1.727-.639.136-1.473.245-4.28-.92-3.59-1.49-5.9-5.14-6.08-5.38-.176-.24-1.454-1.938-1.454-3.696 0-1.757.918-2.62 1.245-2.98.297-.325.647-.407.863-.407.216 0 .432.002.62.011.216.01.482-.082.754.575.297.72.008 2.06.008 2.06s-.44.505-.19 1.166c.43 1.14 1.87 2.5 2.05 2.68.18.18 1.6 1.62 2.79 2.06.66.244 1.09.207 1.33-.05.24-.257.68-.83.87-1.08.19-.25.38-.207.63-.13.25.08 1.58.76 1.86.93.28.17.46.256.53.396.07.14.07.81-.227 1.643Z"/></svg><span class="who">Escolha uma atendente</span></a>
+      </div>
+      <p class="wa2-fine">Fora do horário? Pode chamar mesmo assim — respondemos assim que possível.</p>
     </div>
-
-    <button class="wa-submit-btn" id="waSubmit" disabled>
-      <span>Continuar no WhatsApp</span>
-    </button>
-    <p class="wa-fine-print">Fora do horário de atendimento? Pode chamar mesmo assim — respondemos assim que possível.</p>
   </div>
 </div>
-
-<script>
-  (function(){
-    var toggleBtn = document.getElementById('waToggle');
-    var overlay = document.getElementById('waPopupOverlay');
-    var closeBtn = document.getElementById('waPopupClose');
-    var attendantRow = document.getElementById('waAttendantRow');
-    var reasonRow = document.getElementById('waReasonRow');
-    var submitBtn = document.getElementById('waSubmit');
-
-    var selectedName = null, selectedPhone = null, selectedReason = null;
-
-    function updateSubmitState(){
-      submitBtn.disabled = !(selectedPhone && selectedReason);
-    }
-
-    toggleBtn.addEventListener('click', function(){
-      overlay.classList.add('show');
-    });
-    closeBtn.addEventListener('click', function(){
-      overlay.classList.remove('show');
-    });
-    overlay.addEventListener('click', function(e){
-      if(e.target === overlay){ overlay.classList.remove('show'); }
-    });
-
-    attendantRow.querySelectorAll('.wa-choice').forEach(function(el){
-      el.addEventListener('click', function(){
-        attendantRow.querySelectorAll('.wa-choice').forEach(function(o){ o.classList.remove('selected'); });
-        el.classList.add('selected');
-        selectedName = el.dataset.name;
-        selectedPhone = el.dataset.phone;
-        updateSubmitState();
-      });
-    });
-
-    reasonRow.querySelectorAll('.wa-reason').forEach(function(el){
-      el.addEventListener('click', function(){
-        reasonRow.querySelectorAll('.wa-reason').forEach(function(o){ o.classList.remove('selected'); });
-        el.classList.add('selected');
-        selectedReason = el.dataset.reason;
-        updateSubmitState();
-      });
-    });
-
-    submitBtn.addEventListener('click', function(){
-      if(!selectedPhone || !selectedReason) return;
-      var msg = 'Oi, ' + selectedName + '! Vim pelo site da Escola Instructiva. ' + selectedReason + '.';
-      var url = 'https://wa.me/' + selectedPhone + '?text=' + encodeURIComponent(msg);
-      window.open(url, '_blank');
-      overlay.classList.remove('show');
-    });
-  })();
-</script>
 
 <header>
   <div class="wrap">
@@ -394,6 +361,7 @@
 </script>
 <script src="../js/popup.js"></script>
 <script src="../js/reveal.js"></script>
+<script src="../js/wa.js"></script>
 <script src="../js/fx.js"></script>
 
 </body>

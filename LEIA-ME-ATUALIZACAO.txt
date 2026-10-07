@@ -14,10 +14,16 @@ O QUE MUDOU
   A página antiga dele agora redireciona pro curso de Tecnologias Inverter.
 - Saíram as menções a "ex-autorizado" / "ex-assistência técnica autorizada".
 - Números da escola: 35 mil+ alunos, 38 anos, 7 livros, 7 dias de garantia.
+- Janela de atendimento (botão verde do WhatsApp) nova em todas as páginas:
+  "Quero adquirir um treinamento" vai direto pra Dayane (com a foto dela);
+  "Problema de acesso" mostra as 3 atendentes do suporte. Nas páginas de curso,
+  a mensagem pra Dayane já vai com o nome do curso. Mostra se a equipe está
+  online (seg a sex, 8h às 18h, horário de Brasília).
 
-ARQUIVOS NOVOS
+ARQUIVOS NOVOS (e a foto nova da Dayane em assets/img/team/dayane.jpg)
 - css/theme.css ............ todo o visual novo
 - js/fx.js ................. animações, menu do celular, efeitos
+- js/wa.js ................. janela de atendimento pelo WhatsApp
 - assets/img/logo-instructiva-light.png ... logo pra fundo escuro
 
 COMO SUBIR NO GITHUB (pelo site)
