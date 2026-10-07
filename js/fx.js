@@ -1,22 +1,106 @@
-/* Efeitos visuais do site: banner do lançamento, artes das páginas de curso,
-   números que contam, luz nos cards e topo que encolhe ao rolar.
+/* Efeitos visuais do site: menu do celular, barra de leitura, banner do
+   lançamento, artes das páginas de curso, números que contam, linha do tempo,
+   títulos que surgem palavra por palavra e luz nos cards.
    Tudo é decorativo — se o JS falhar ou a pessoa preferir menos movimento,
-   o site continua igual, só sem animação. */
+   o site continua funcionando igual, só sem animação. */
 (function () {
   var mq = function (q) { return window.matchMedia && window.matchMedia(q).matches; };
   var reduce = mq('(prefers-reduced-motion: reduce)');
   var finePointer = mq('(hover: hover) and (pointer: fine)');
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
-  // ---------------------------------------------------------------- topo encolhe ao rolar
-  var header = document.querySelector('header');
-  if (header) {
-    var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 8); };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
+  // ---------------------------------------------------------------- topo encolhe ao rolar + barra de leitura
+  var header = $('header');
+  var bar = $('.scroll-progress span');
+  if (!bar) {
+    var wrapBar = document.createElement('div');
+    wrapBar.className = 'scroll-progress';
+    wrapBar.setAttribute('aria-hidden', 'true');
+    wrapBar.innerHTML = '<span></span>';
+    document.body.insertBefore(wrapBar, document.body.firstChild);
+    bar = wrapBar.firstChild;
+  }
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var y = window.scrollY || window.pageYOffset;
+    if (header) header.classList.toggle('is-scrolled', y > 8);
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.setProperty('--p', max > 0 ? Math.min(1, y / max).toFixed(4) : 0);
+    updateTimeline();
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+
+  // ---------------------------------------------------------------- menu do celular
+  var nav = $('header nav');
+  if (nav) {
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'nav-toggle';
+    toggle.setAttribute('aria-label', 'Abrir menu');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.innerHTML = '<span></span>';
+    var actions = $('.nav-actions', nav);
+    (actions || nav).appendChild(toggle);
+
+    var menu = document.createElement('div');
+    menu.className = 'mobile-menu';
+    menu.setAttribute('role', 'dialog');
+    menu.setAttribute('aria-label', 'Menu');
+    var html = '';
+    $$('.nav-links a', nav).forEach(function (a) {
+      html += '<a class="mm-link" href="' + a.getAttribute('href') + '">' + a.textContent + '</a>';
+    });
+    html += '<div class="mm-actions">';
+    $$('.nav-actions a', nav).forEach(function (a) {
+      var ext = a.getAttribute('target') === '_blank' ? ' target="_blank" rel="noopener"' : '';
+      var cls = a.classList.contains('btn-cta') ? 'btn btn-cta' : 'btn btn-ghost-light';
+      html += '<a class="' + cls + '" href="' + a.getAttribute('href') + '"' + ext + '>' + a.textContent + '</a>';
+    });
+    html += '</div>';
+    menu.innerHTML = html;
+    document.body.appendChild(menu);
+
+    var setOpen = function (open) {
+      document.documentElement.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    };
+    toggle.addEventListener('click', function () { setOpen(!document.documentElement.classList.contains('menu-open')); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
   }
 
-  // ---------------------------------------------------------------- números que contam (faixa de números)
-  var counters = document.querySelectorAll('[data-count]');
+  // ---------------------------------------------------------------- botões que abrem o atendimento no WhatsApp
+  $$('.js-open-wa').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      var t = document.getElementById('waToggle');
+      if (t) { e.preventDefault(); t.click(); }
+    });
+  });
+
+  // ---------------------------------------------------------------- linha do tempo (Como funciona)
+  var timeline = $('.timeline');
+  var tlNodes = timeline ? $$('.flow-node', timeline) : [];
+  function updateTimeline() {
+    if (!timeline) return;
+    var r = timeline.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var p = (vh * 0.8 - r.top) / (r.height + vh * 0.3);
+    p = Math.max(0, Math.min(1, p));
+    timeline.style.setProperty('--tl', reduce ? 1 : p.toFixed(3));
+    tlNodes.forEach(function (n, i) {
+      n.classList.toggle('on', reduce || p >= (i / Math.max(1, tlNodes.length - 1)) * 0.92);
+    });
+  }
+
+  onScroll();
+
+  // ---------------------------------------------------------------- números que contam
+  var counters = $$('[data-count]');
   if (counters.length && 'IntersectionObserver' in window && !reduce) {
     var countIo = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -37,6 +121,35 @@
   }
 
   if (reduce) return;
+
+  // ---------------------------------------------------------------- títulos surgem palavra por palavra
+  $$('.sec-head h2').forEach(function (h) {
+    var i = 0;
+    Array.prototype.slice.call(h.childNodes).forEach(function (node) {
+      if (node.nodeType === 3) {
+        var frag = document.createDocumentFragment();
+        node.textContent.split(/(\s+)/).forEach(function (part) {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+          var s = document.createElement('span');
+          s.className = 'w'; s.style.setProperty('--i', i++); s.textContent = part;
+          frag.appendChild(s);
+        });
+        h.replaceChild(frag, node);
+      } else if (node.nodeType === 1) {
+        node.classList.add('w'); node.style.setProperty('--i', i++);
+      }
+    });
+  });
+
+  // depois que um bloco termina de aparecer, devolve o movimento normal dele (hover etc.)
+  document.addEventListener('transitionend', function (e) {
+    var el = e.target;
+    if (e.propertyName !== 'opacity' || !el.classList || !el.classList.contains('reveal') || !el.classList.contains('in')) return;
+    if (el.classList.contains('sec-head')) return;
+    el.classList.remove('reveal', 'in');
+    el.style.transitionDelay = '';
+  });
 
   // ---------------------------------------------------------------- arte inclina seguindo o mouse
   function tilt(area, frame) {
@@ -138,8 +251,7 @@
     measure();
     var resizeT;
     window.addEventListener('resize', function () { clearTimeout(resizeT); resizeT = setTimeout(measure, 150); });
-    // a arte termina de entrar ~1.5s depois: mede de novo pra mirar certo
-    setTimeout(measure, 1700);
+    setTimeout(measure, 1700); // a arte termina de entrar ~1.5s depois
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (en) { visible = en[0].isIntersecting; update(); }).observe(host);
     }
@@ -147,23 +259,26 @@
     update();
   }
 
-  var launch = document.querySelector('.lancamento-hero');
+  var launch = $('.lancamento-hero');
   if (launch) {
-    var lFrame = launch.querySelector('.art-frame');
+    var lFrame = $('.art-frame', launch);
     tilt(launch, lFrame);
     sparks(launch, lFrame, 7000);
   }
-  var sales = document.querySelector('.sales-hero');
+  var sales = $('.sales-hero');
   if (sales) {
-    var sFrame = sales.querySelector('.art-frame');
+    var sFrame = $('.art-frame', sales);
     tilt(sales, sFrame);
     sparks(sales, sFrame, 11000, true);
   }
+  var feature = $('.feature-card');
+  if (feature) tilt(feature, $('.art-frame', feature));
+  var finalCard = $('.final-card');
+  if (finalCard) tilt(finalCard, $('.art-frame', finalCard));
 
   // ---------------------------------------------------------------- luz que segue o mouse nos cards
   if (finePointer) {
-    var cards = document.querySelectorAll('.value-card, .flow-node, .error-card, .testi, .course-card, .compare-col, .offer-card, .course-list li');
-    Array.prototype.forEach.call(cards, function (el) {
+    $$('.bento-card, .error-card, .testi, .course-card, .compare-col, .course-list li, .prof-fact, .faq-item, .guarantee-banner').forEach(function (el) {
       el.classList.add('fx-spot');
       el.addEventListener('mousemove', function (e) {
         var r = el.getBoundingClientRect();

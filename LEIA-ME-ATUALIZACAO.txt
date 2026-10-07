@@ -2,23 +2,31 @@ ATUALIZAÇÃO DO SITE — Lançamento Tecnologias Inverter + visual novo
 ===================================================================
 
 O QUE MUDOU
-- Banner da home: lançamento oficial agora é o "Especialista em Tecnologias Inverter",
-  arte em tela cheia (sem moldura) com animação (entrada, reflexo, faíscas, segue o mouse).
-- Preço do Inverter: 18x de R$ 187,23 (fora da página do curso aparece só a parcela);
-  R$ 2.597,00 à vista aparece só dentro da página do curso.
-- Botões de compra do Inverter levam pro checkout da Greenn.
+- Visual novo no site inteiro: topo escuro com menu pro celular, banner do
+  lançamento animado, benefícios em mosaico, curso em destaque, trilhas,
+  professor, linha do tempo "Como funciona", depoimentos, garantia,
+  perguntas frequentes com atalho pro WhatsApp, chamada final e rodapé novo.
+  Catálogo e as 18 páginas de curso no mesmo padrão.
+- Lançamento: Especialista em Tecnologias Inverter. Fora da página do curso
+  aparece só "18x de R$ 187,23"; os R$ 2.597,00 à vista ficam só dentro
+  da página do curso. Os botões de compra levam pro checkout da Greenn.
 - Curso avulso "Manutenção, Reparo + Instalação de Ar Condicionado" saiu do site.
-  A página antiga dele agora redireciona pro curso de Tecnologias Inverter
-  (assim ninguém cai numa página morta vindo de link antigo/anúncio).
-- Visual novo no site inteiro (arquivo css/theme.css) + efeitos (js/fx.js).
+  A página antiga dele agora redireciona pro curso de Tecnologias Inverter.
+- Saíram as menções a "ex-autorizado" / "ex-assistência técnica autorizada".
+- Números da escola: 35 mil+ alunos, 38 anos, 7 livros, 7 dias de garantia.
+
+ARQUIVOS NOVOS
+- css/theme.css ............ todo o visual novo
+- js/fx.js ................. animações, menu do celular, efeitos
+- assets/img/logo-instructiva-light.png ... logo pra fundo escuro
 
 COMO SUBIR NO GITHUB (pelo site)
 1. Descompacte este zip.
 2. No repositório, clique em "Add file" > "Upload files".
-3. Arraste TUDO que está dentro da pasta descompactada (as pastas css, js, cursos
-   e os arquivos index.html, cursos.html) pra área de upload. As pastas são mantidas.
-4. Em "Commit changes", escreva algo como "Lançamento Tecnologias Inverter + visual novo"
+3. Arraste TUDO que está dentro da pasta descompactada (as pastas assets, css,
+   js, cursos e os arquivos index.html e cursos.html) pra área de upload.
+   As pastas são mantidas e os arquivos com o mesmo nome são substituídos.
+4. Em "Commit changes", escreva "Lançamento Tecnologias Inverter + visual novo"
    e confirme. O Railway atualiza o site sozinho em ~1 minuto.
 
-Os arquivos com o mesmo nome são substituídos; o resto do site continua igual.
-Pra voltar ao visual antigo, basta tirar a linha do css/theme.css das páginas.
+O resto do site (painel, servidor, popups) continua igual.

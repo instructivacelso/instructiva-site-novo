@@ -5,10 +5,10 @@
   if ((mq && mq.matches) || !('IntersectionObserver' in window)) return; // nada é escondido
 
   var SELECTOR = [
-    '.stat',
-    '.sec-head', '.value-card', '.cat-card', '.offer-card', '.flow-node',
-    '.faq-item', '.prof-copy', '.prof-media', '.guarantee-hero .wrap',
-    '.cta-band .wrap', '.course-card'
+    '.stat', '.sec-head', '.bento-card', '.feature-card', '.cat-card', '.flow-node',
+    '.prof-media', '.prof-copy', '.testi-track-wrap', '.guarantee-inner', '.faq-side', '.faq-item',
+    '.final-card', '.course-card', '.course-list li', '.compare-col', '.quote-block', '.quote-sm',
+    '.error-card', '.guarantee-banner', '.course-final > .wrap', '.foot-grid'
   ].join(',');
 
   document.documentElement.classList.add('has-reveal');
