@@ -27,7 +27,8 @@ O QUE MUDOU
   de atendimento ("Quero adquirir um treinamento") e num cartão "Fale com a Dayane"
   na seção de perguntas frequentes de todas as páginas.
 - Selo "Verificada por Reclame AQUI" (js/selo-reclame-aqui.js): aparece abaixo do
-  preço nas páginas de curso, na seção de garantia da home e no rodapé do catálogo.
+  preço nas páginas de curso, na seção de garantia da home e no rodapé do catálogo,
+  dentro de um cartão escuro com brilho verde, texto e link "Ver nossa página".
 - SEGURANÇA (server.js): os arquivos de dados (leads.json, sales.json, stats.json,
   config.json) e o código do servidor não podem mais ser abertos pelo navegador.
 
