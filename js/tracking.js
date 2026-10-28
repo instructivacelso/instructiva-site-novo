@@ -59,7 +59,7 @@ var INSTRUCTIVA_TRACKING = {
     var a = e.target.closest ? e.target.closest('a[href]') : null;
     if (!a) return;
     var href = a.href || '';
-    if (/payfast\.greenn\.com\.br|instructiva\.co\//.test(href)) {
+    if (/pay\.hotmart\.com|payfast\.greenn\.com\.br|instructiva\.co\//.test(href)) {
       track('InitiateCheckout', 'begin_checkout', course ? { content_name: course } : {});
     } else if (/wa\.me\//.test(href)) {
       track('Contact', 'contact', {});

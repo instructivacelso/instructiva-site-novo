@@ -222,7 +222,7 @@ header .btn-outline-dark:hover{ border-color:rgba(255,255,255,.45); background:r
 .hero-launch-art{ position:absolute; z-index:1; top:0; bottom:0; right:calc((100vw - min(100vw, 1240px)) / 2 + 8px); display:flex; align-items:center; pointer-events:none; }
 .hero-launch-art::before{
   content:""; position:absolute; inset:-10% -20% -10% -30%; z-index:-1;
-  background:url('../assets/img/cursos/tecnologias-inverter.jpg') center/contain no-repeat;
+  background:url('../assets/img/cursos/inversores-solares.jpg') center/contain no-repeat;
   filter:blur(80px) saturate(1.5); opacity:.55; transform:scale(1.05);
   -webkit-mask-image:radial-gradient(closest-side, #000 35%, transparent 100%); mask-image:radial-gradient(closest-side, #000 35%, transparent 100%);
 }
@@ -845,3 +845,51 @@ footer{ position:relative; overflow:hidden; background:var(--dark-0); border-top
 .bg-black .guarantee-banner{ background:var(--dark-2); border-color:var(--line-on-dark); box-shadow:none; }
 .bg-black .guarantee-banner h3{ color:#fff; }
 .bg-black .guarantee-banner p{ color:var(--on-dark-2); }
+
+/* ----------------------------------------------------------------- 20
+   DAYANE EM DESTAQUE + SELO RECLAME AQUI
+   ----------------------------------------------------------------- */
+/* janela de atendimento → passo "Quero adquirir" */
+.wa2-hero{ position:relative; height:280px; margin-bottom:14px; border-radius:22px; overflow:hidden; background:#1A120C; box-shadow:0 24px 50px -30px rgba(0,0,0,.6); }
+.wa2-hero img{ width:100%; height:100%; object-fit:cover; object-position:50% 24%; display:block; }
+.wa2-hero::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(10,8,6,.88) 100%); }
+.wa2-hero-info{ position:absolute; z-index:1; left:18px; right:18px; bottom:16px; color:#fff; }
+.wa2-hero-info strong{ display:block; font-family:'Manrope',sans-serif; font-weight:800; font-size:26px; letter-spacing:-.03em; line-height:1.1; }
+.wa2-hero-info span{ font-size:14px; color:#E5E5EA; }
+.wa2-online{ display:inline-flex; margin-bottom:8px; }
+.wa2-online i{ width:12px; height:12px; border-radius:50%; background:#F59E0B; box-shadow:0 0 0 3px rgba(255,255,255,.25); }
+.is-online .wa2-online i{ background:#22C55E; animation:pulseGreen 1.8s infinite; }
+@media (max-width:560px){ .wa2-hero{ height:230px; } }
+
+/* perguntas frequentes → cartão da Dayane */
+.consult-card{ margin-top:6px; max-width:420px; border-radius:24px; overflow:hidden; background:var(--paper); border:1px solid var(--line); box-shadow:var(--shadow-lg); }
+.cc-photo{ position:relative; height:260px; background:#1A120C; }
+.cc-photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 22%; display:block; transition:transform 1s var(--ease); }
+.consult-card:hover .cc-photo img{ transform:scale(1.04); }
+.cc-photo::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(10,8,6,.55) 100%); }
+.cc-tag{ position:absolute; z-index:1; left:14px; bottom:14px; display:inline-flex; align-items:center; gap:8px; padding:7px 12px; border-radius:999px; background:rgba(12,12,14,.72); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.16); color:#fff; font-size:12.5px; font-weight:700; }
+.cc-tag i{ width:8px; height:8px; border-radius:50%; background:#22C55E; box-shadow:0 0 0 3px rgba(34,197,94,.25); }
+.cc-body{ padding:20px 22px 18px; }
+.cc-body strong{ display:block; font-family:'Manrope',sans-serif; font-weight:800; font-size:21px; letter-spacing:-.025em; color:var(--ink); }
+.cc-body p{ font-size:14.5px; line-height:1.5; color:var(--muted); margin:4px 0 16px; }
+.cc-body .btn-wa{ width:100%; justify-content:center; padding:15px; font-size:15px; }
+.cc-link{ display:block; width:100%; margin-top:12px; background:none; border:none; cursor:pointer; text-align:center; font-family:inherit; font-size:13px; font-weight:600; color:var(--muted); }
+.cc-link:hover{ color:var(--orange-deep); }
+.cc-link:hover .arr{ transform:translateX(3px); }
+@media (max-width:900px){ .consult-card{ max-width:none; display:grid; grid-template-columns:180px 1fr; } .cc-photo{ height:auto; min-height:220px; } }
+@media (max-width:520px){ .consult-card{ grid-template-columns:1fr; } .cc-photo{ height:240px; } }
+
+/* selo "Verificada por Reclame AQUI" */
+.ra-seal{ display:flex; align-items:center; gap:14px; }
+.ra-seal-lbl{ font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted-2); }
+#ra-verified-seal{ line-height:0; }
+#ra-verified-seal a{ display:block; border-radius:10px; transition:transform .25s var(--ease), box-shadow .25s ease; }
+#ra-verified-seal a:hover{ transform:translateY(-2px); box-shadow:0 12px 24px -12px rgba(0,0,0,.5); }
+.ra-seal--price{ margin-top:18px; max-width:560px; padding:12px 16px; border-radius:18px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); }
+.ra-seal--price .ra-seal-lbl{ color:var(--on-dark-2); flex:1; }
+.ra-seal--guarantee{ margin-top:22px; }
+.ra-seal--guarantee .ra-seal-lbl{ color:var(--on-dark-3); }
+.ra-seal--footer .ra-seal-lbl{ color:var(--on-dark-3); }
+.ra-seal--card{ margin-top:16px; padding-top:16px; border-top:1px dashed rgba(255,255,255,.15); }
+.ra-seal--card .ra-seal-lbl{ color:var(--on-dark-2); flex:1; }
+@media (max-width:840px){ .ra-seal--guarantee{ justify-content:center; } }

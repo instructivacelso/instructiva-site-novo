@@ -4,9 +4,11 @@ ATUALIZAÇÃO DO SITE — Escola Instructiva
 O QUE MUDOU
 - Visual novo no site inteiro (home, catálogo, 18 cursos do catálogo e as 16
   páginas antigas de curso que ficam fora do catálogo).
-- Lançamento: Especialista em Tecnologias Inverter. Fora da página do curso aparece
-  só "18x de R$ 187,23"; os R$ 2.597,00 à vista ficam só dentro da página do curso.
-  Os botões de compra levam pro checkout da Greenn.
+- Banner da home: Especialista em Manutenção de Inversores Solares, em até
+  12x de R$ 261,30 (R$ 2.497,00 à vista, só dentro da página do curso).
+- Curso em destaque na home: Tecnologias Inverter, 12x de R$ 198,51
+  (R$ 1.897,00 à vista, só dentro da página do curso).
+- Botões de compra dos dois cursos levam pro checkout da Hotmart (com sck=SITE).
 - Curso avulso de ar-condicionado saiu (a página antiga redireciona pro Inverter).
 - Saíram as menções a "ex-autorizado". Números: 35 mil+ alunos, 38 anos, 7 livros.
 - Animações: arte do banner, faíscas, trilhas de circuito com pulsos de luz, onda de
@@ -21,6 +23,11 @@ O QUE MUDOU
   "Quero me matricular" e abre a Dayane no WhatsApp já com o nome do curso.
 - Prévia de link: ao mandar o link do site ou de um curso no WhatsApp/Facebook,
   aparece uma imagem com a arte, o nome e a parcela (pasta assets/img/og).
+- Foto nova da Dayane, em destaque: retrato grande no popup de captura, na janela
+  de atendimento ("Quero adquirir um treinamento") e num cartão "Fale com a Dayane"
+  na seção de perguntas frequentes de todas as páginas.
+- Selo "Verificada por Reclame AQUI" (js/selo-reclame-aqui.js): aparece abaixo do
+  preço nas páginas de curso, na seção de garantia da home e no rodapé do catálogo.
 - SEGURANÇA (server.js): os arquivos de dados (leads.json, sales.json, stats.json,
   config.json) e o código do servidor não podem mais ser abertos pelo navegador.
 

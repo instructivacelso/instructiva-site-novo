@@ -65,20 +65,18 @@
       '<div class="exit-popup ep2" role="dialog" aria-modal="true" aria-labelledby="exitPopupTitle">' +
         '<button class="exit-popup-close" id="exitPopupClose" aria-label="Fechar">&times;</button>' +
         '<aside class="ep2-side" aria-hidden="true">' +
-          '<div class="ep2-agent">' +
-            '<span class="ep2-avatar"><img src="' + asset('assets/img/team/dayane.jpg') + '" alt="" width="56" height="56"><i></i></span>' +
-            '<div><strong>Dayane</strong><span>' + (online ? 'Online agora' : 'Escola Instructiva') + '</span></div>' +
+          '<img class="ep2-photo" src="' + asset('assets/img/team/dayane-retrato.jpg') + '" alt="" width="1198" height="1313">' +
+          '<div class="ep2-side-content">' +
+            '<div class="ep2-agent">' +
+              '<span class="ep2-status"><i></i>' + (online ? 'Online agora' : 'Matrículas e cursos') + '</span>' +
+              '<strong>Dayane</strong>' +
+            '</div>' +
+            '<div class="ep2-chat">' +
+              '<div class="ep2-typing"><span></span><span></span><span></span></div>' +
+              '<div class="ep2-bubble b1">Oi! Tá em dúvida sobre qual curso fazer?</div>' +
+              '<div class="ep2-bubble b2">Me deixa seu WhatsApp que eu te ajudo a escolher o certo pro seu nível.</div>' +
+            '</div>' +
           '</div>' +
-          '<div class="ep2-chat">' +
-            '<div class="ep2-typing"><span></span><span></span><span></span></div>' +
-            '<div class="ep2-bubble b1">Oi! Tá em dúvida sobre qual curso fazer?</div>' +
-            '<div class="ep2-bubble b2">Me deixa seu WhatsApp que eu te ajudo a escolher o certo pro seu nível.</div>' +
-          '</div>' +
-          '<ul class="ep2-perks">' +
-            '<li>Indicação do curso certo pra você</li>' +
-            '<li>Sem compromisso</li>' +
-            '<li>Seg a sex, das 8h às 18h</li>' +
-          '</ul>' +
         '</aside>' +
         '<div class="ep2-main">' +
           '<div class="form-body" id="exitPopupForm">' +
