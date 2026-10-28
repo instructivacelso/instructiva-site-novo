@@ -8,7 +8,7 @@ O QUE MUDOU
   12x de R$ 261,30 (R$ 2.497,00 à vista, só dentro da página do curso).
 - Curso em destaque na home: Tecnologias Inverter, 12x de R$ 198,51
   (R$ 1.897,00 à vista, só dentro da página do curso).
-- Botões de compra dos dois cursos levam pro checkout da Hotmart (com sck=SITE).
+- Botões de compra: Inversor Solar -> https://instructiva.co/795159 | Tecnologias Inverter -> https://instructiva.co/0545914
 - Curso avulso de ar-condicionado saiu (a página antiga redireciona pro Inverter).
 - Saíram as menções a "ex-autorizado". Números: 35 mil+ alunos, 38 anos, 7 livros.
 - Animações: arte do banner, faíscas, trilhas de circuito com pulsos de luz, onda de
