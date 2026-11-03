@@ -8,7 +8,8 @@
     '.stat', '.sec-head', '.bento-card', '.feature-card', '.cat-card', '.flow-node',
     '.prof-media', '.prof-copy', '.testi-track-wrap', '.guarantee-inner', '.faq-side', '.faq-item',
     '.final-card', '.course-card', '.course-list li', '.compare-col', '.quote-block', '.quote-sm',
-    '.error-card', '.guarantee-banner', '.course-final > .wrap', '.foot-grid'
+    '.error-card', '.guarantee-banner', '.course-final > .wrap', '.foot-grid',
+    '.shop-banner', '.loja-perks li', '.loja-cats', '.loja-shop-head', '.loja-how-card', '.loja-dayane'
   ].join(',');
 
   document.documentElement.classList.add('has-reveal');

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loja Instructiva — Livros técnicos, camisetas e canecas</title>
+<meta name="description" content="Livros técnicos impressos do Prof. Celso Muniz, camisetas e canecas oficiais da Escola Instructiva. Tudo em até 12x, com pagamento seguro.">
+<meta name="theme-color" content="#050505">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Escola Instructiva">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Loja Instructiva — Livros técnicos, camisetas e canecas">
+<meta property="og:description" content="O conhecimento vai além da sala de aula. Livros técnicos, camisetas e canecas para quem vive a eletrônica todos os dias.">
+<meta property="og:url" content="%SITE_URL%/loja.html">
+<meta property="og:image" content="%SITE_URL%/assets/img/og/loja.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/popup.css">
+<link rel="stylesheet" href="css/course-sales.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon-180.png">
+</head>
+<body class="page-catalog page-loja">
+<button type="button" class="whatsapp-float" id="waToggle" aria-label="Falar com a Escola Instructiva pelo WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 3C9.373 3 4 8.373 4 15.004c0 2.647.86 5.096 2.318 7.077L4.6 28.4l6.5-1.677a11.93 11.93 0 0 0 4.9 1.043h.004c6.63 0 12.004-5.373 12.004-12.004C28.008 8.373 22.635 3 16.004 3Zm7.03 17.06c-.297.833-1.47 1.526-2.404 1.727-.639.136-1.473.245-4.28-.92-3.59-1.49-5.9-5.14-6.08-5.38-.176-.24-1.454-1.938-1.454-3.696 0-1.757.918-2.62 1.245-2.98.297-.325.647-.407.863-.407.216 0 .432.002.62.011.216.01.482-.082.754.575.297.72.008 2.06.008 2.06s-.44.505-.19 1.166c.43 1.14 1.87 2.5 2.05 2.68.18.18 1.6 1.62 2.79 2.06.66.244 1.09.207 1.33-.05.24-.257.68-.83.87-1.08.19-.25.38-.207.63-.13.25.08 1.58.76 1.86.93.28.17.46.256.53.396.07.14.07.81-.227 1.643Z"/></svg>
+  <span class="wa-label">Fale com a gente</span>
+</button>
+
+<div class="wa-popup-overlay" id="waPopupOverlay" aria-hidden="true">
+  <div class="wa-popup wa2" role="dialog" aria-modal="true" aria-labelledby="waTitle">
+    <div class="wa2-head">
+      <button type="button" class="wa-popup-close" id="waPopupClose" aria-label="Fechar">&times;</button>
+      <div class="wa2-team" aria-hidden="true">
+        <img src="assets/img/team/dayane.jpg" alt="" width="42" height="42">
+        <img src="assets/img/team/leticia.jpg" alt="" width="42" height="42">
+        <img src="assets/img/team/lilian.jpg" alt="" width="42" height="42">
+        <img src="assets/img/team/vitoria.jpg" alt="" width="42" height="42">
+      </div>
+      <h3 id="waTitle">Como podemos te ajudar?</h3>
+      <div class="wa2-status"><span class="dot"></span><span id="waStatus">Atendimento de segunda a sexta, das 8h às 18h</span></div>
+    </div>
+    <div class="wa2-body">
+      <div class="wa2-step" data-step="motivo">
+        <button type="button" class="wa2-option is-primary" data-go="compra">
+          <span class="wa2-face"><img src="assets/img/team/dayane.jpg" alt="" width="48" height="48"><i></i></span>
+          <span class="wa2-txt"><strong>Quero adquirir um treinamento</strong><small>Fale com a Dayane e faça sua matrícula</small></span>
+          <span class="wa2-arrow" aria-hidden="true">→</span>
+        </button>
+        <button type="button" class="wa2-option" data-go="acesso">
+          <span class="wa2-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2.5"/></svg></span>
+          <span class="wa2-txt"><strong>Estou com problema de acesso</strong><small>Nossa equipe de suporte resolve pra você</small></span>
+          <span class="wa2-stack" aria-hidden="true"><img src="assets/img/team/leticia.jpg" alt="" width="30" height="30"><img src="assets/img/team/lilian.jpg" alt="" width="30" height="30"><img src="assets/img/team/vitoria.jpg" alt="" width="30" height="30"></span>
+        </button>
+      </div>
+      <div class="wa2-step" data-step="compra" hidden>
+        <button type="button" class="wa2-back" data-go="motivo">← Voltar</button>
+        <div class="wa2-hero">
+          <img src="assets/img/team/dayane-retrato.jpg" alt="Dayane, da Escola Instructiva" width="1198" height="1313" loading="lazy">
+          <div class="wa2-hero-info"><span class="wa2-online"><i></i></span><strong>Dayane</strong><span>Matrículas e cursos</span></div>
+        </div>
+        <p class="wa2-note">Ela tira suas dúvidas, te ajuda a escolher o curso certo e finaliza sua matrícula pelo WhatsApp.</p>
+        <a class="wa2-cta" data-cta="compra" data-phone="5544920066945" href="https://wa.me/5544920066945" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.004 3C9.373 3 4 8.373 4 15.004c0 2.647.86 5.096 2.318 7.077L4.6 28.4l6.5-1.677a11.93 11.93 0 0 0 4.9 1.043h.004c6.63 0 12.004-5.373 12.004-12.004C28.008 8.373 22.635 3 16.004 3Zm7.03 17.06c-.297.833-1.47 1.526-2.404 1.727-.639.136-1.473.245-4.28-.92-3.59-1.49-5.9-5.14-6.08-5.38-.176-.24-1.454-1.938-1.454-3.696 0-1.757.918-2.62 1.245-2.98.297-.325.647-.407.863-.407.216 0 .432.002.62.011.216.01.482-.082.754.575.297.72.008 2.06.008 2.06s-.44.505-.19 1.166c.43 1.14 1.87 2.5 2.05 2.68.18.18 1.6 1.62 2.79 2.06.66.244 1.09.207 1.33-.05.24-.257.68-.83.87-1.08.19-.25.38-.207.63-.13.25.08 1.58.76 1.86.93.28.17.46.256.53.396.07.14.07.81-.227 1.643Z"/></svg><span>Falar com a Dayane</span></a>
+      </div>
+      <div class="wa2-step" data-step="acesso" hidden>
+        <button type="button" class="wa2-back" data-go="motivo">← Voltar</button>
+        <p class="wa2-label">Escolha uma atendente do suporte:</p>
+        <div class="wa2-people">
+          <button type="button" class="wa2-pick" data-name="Letícia" data-phone="5544997085134" aria-pressed="false">
+            <img src="assets/img/team/leticia.jpg" alt="" width="58" height="58"><span>Letícia</span>
+          </button>
+          <button type="button" class="wa2-pick" data-name="Lilian" data-phone="5544997005267" aria-pressed="false">
+            <img src="assets/img/team/lilian.jpg" alt="" width="58" height="58"><span>Lilian</span>
+          </button>
+          <button type="button" class="wa2-pick" data-name="Vitória" data-phone="5544997267313" aria-pressed="false">
+            <img src="assets/img/team/vitoria.jpg" alt="" width="58" height="58"><span>Vitória</span>
+          </button>
+        </div>
+        <a class="wa2-cta is-disabled" data-cta="acesso" aria-disabled="true" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.004 3C9.373 3 4 8.373 4 15.004c0 2.647.86 5.096 2.318 7.077L4.6 28.4l6.5-1.677a11.93 11.93 0 0 0 4.9 1.043h.004c6.63 0 12.004-5.373 12.004-12.004C28.008 8.373 22.635 3 16.004 3Zm7.03 17.06c-.297.833-1.47 1.526-2.404 1.727-.639.136-1.473.245-4.28-.92-3.59-1.49-5.9-5.14-6.08-5.38-.176-.24-1.454-1.938-1.454-3.696 0-1.757.918-2.62 1.245-2.98.297-.325.647-.407.863-.407.216 0 .432.002.62.011.216.01.482-.082.754.575.297.72.008 2.06.008 2.06s-.44.505-.19 1.166c.43 1.14 1.87 2.5 2.05 2.68.18.18 1.6 1.62 2.79 2.06.66.244 1.09.207 1.33-.05.24-.257.68-.83.87-1.08.19-.25.38-.207.63-.13.25.08 1.58.76 1.86.93.28.17.46.256.53.396.07.14.07.81-.227 1.643Z"/></svg><span class="who">Escolha uma atendente</span></a>
+      </div>
+      <p class="wa2-fine">Fora do horário? Pode chamar mesmo assim — respondemos assim que possível.</p>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="index.html">
+        <img class="mark" src="assets/img/logo-instructiva-light.png" alt="Escola Instructiva">
+        Escola <b>Instructiva</b>
+      </a>
+      <div class="nav-links">
+        <a href="cursos.html">Cursos</a>
+        <a href="loja.html" class="active">Loja <span class="new-pill">novo</span></a>
+        <a href="index.html#professor">Sobre</a>
+        <a href="index.html#depoimentos">Depoimentos</a>
+        <a href="index.html#faq">FAQ</a>
+      </div>
+      <div class="nav-actions">
+        <a href="https://instructiva.cademi.com.br/auth/login?redirect=%2Foffice%2Fusuario%2Fperfil%2Fcompras%2F21549397" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm">Área do aluno</a>
+        <a href="cursos.html" class="btn btn-cta btn-sm">Matricule-se</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="wrap crumb"><a href="index.html">Início</a> / Loja</div>
+
+<section class="loja-hero">
+  <div class="wrap">
+    <div class="shop-banner shop-banner--hero">
+      <div class="shop-banner-frame">
+        <div class="shop-banner-media">
+          <img src="assets/img/loja/banner-loja.jpg" alt="Camiseta Mais Procedimento, Menos Macete no cabide, caneca Quem Aprende Não Depende e o livro Eletrônica de Potência: Conversores CC-CC" width="1148" height="896" fetchpriority="high">
+          <span class="shop-banner-pill"><i></i>Loja oficial · Escola Instructiva</span>
+        </div>
+      </div>
+      <div class="shop-banner-copy">
+        <span class="shop-badge">Nova seção</span>
+        <h1>O conhecimento vai além da <em>sala de aula</em>.</h1>
+        <p>Livros técnicos, camisetas e canecas para quem vive a eletrônica todos os dias.</p>
+        <a href="#produtos" class="btn btn-cta shop-banner-cta" data-filtro="todos">Ver todos os produtos <span class="arr">→</span></a>
+        <div class="shop-banner-mini">
+          <span class="sbm-thumbs" aria-hidden="true"><img src="assets/img/loja/livro-flyback.webp" alt="" width="40" height="40"><img src="assets/img/loja/camiseta-conhecimento-liberta.webp" alt="" width="40" height="40"><img src="assets/img/loja/caneca-menos-macete.webp" alt="" width="40" height="40"><img src="assets/img/loja/livro-pfc.webp" alt="" width="40" height="40"></span>
+          <span><b data-conta="todos" data-conta-texto>16 produtos</b> · tudo em até 12x</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="loja-perks-sec" aria-label="Vantagens da loja">
+  <div class="wrap">
+    <ul class="loja-perks">
+      <li><span class="lp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg></span><div><strong>Em até 12x</strong><span>no cartão, em todos os produtos</span></div></li>
+      <li><span class="lp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2.5"/></svg></span><div><strong>Pagamento seguro</strong><span>checkout protegido</span></div></li>
+      <li><span class="lp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5h11v10h-11z"/><path d="M13.5 9.5h4l3 3.5v3.5h-7"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></span><div><strong>Receba em casa</strong><span>o frete aparece no pagamento, pelo CEP</span></div></li>
+      <li><span class="lp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12.5a7.5 7.5 0 0 1-10.9 6.7L4 20.5l1.3-4.6A7.5 7.5 0 1 1 20 12.5Z"/></svg></span><div><strong>Atendimento de gente</strong><span>a Dayane tira suas dúvidas</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="loja-cats-sec" aria-label="Categorias">
+  <div class="wrap">
+    <div class="loja-cats">
+      <a class="loja-cat" href="#produtos" data-filtro="livro"><img src="assets/img/loja/livro-flyback.webp" alt="" width="1254" height="1254" loading="lazy"><span class="lc-txt"><strong>Livros técnicos</strong><small data-conta="livro" data-conta-texto>7 produtos</small></span><span class="lc-arr" aria-hidden="true">→</span></a>
+      <a class="loja-cat" href="#produtos" data-filtro="camiseta"><img src="assets/img/loja/camiseta-menos-macete.webp" alt="" width="1254" height="1254" loading="lazy"><span class="lc-txt"><strong>Camisetas</strong><small data-conta="camiseta" data-conta-texto>5 produtos</small></span><span class="lc-arr" aria-hidden="true">→</span></a>
+      <a class="loja-cat" href="#produtos" data-filtro="caneca"><img src="assets/img/loja/caneca-quem-aprende.webp" alt="" width="1254" height="1254" loading="lazy"><span class="lc-txt"><strong>Canecas</strong><small data-conta="caneca" data-conta-texto>4 produtos</small></span><span class="lc-arr" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="loja-shop" id="produtos">
+  <div class="wrap">
+    <div class="loja-shop-head">
+      <div>
+        <div class="eyebrow">Vitrine</div>
+        <h2>Escolha o seu.</h2>
+        <p class="loja-count" id="lojaContador" aria-live="polite">16 produtos</p>
+      </div>
+      <div class="loja-tabs" role="group" aria-label="Filtrar produtos">
+        <button type="button" data-filtro="todos" aria-pressed="true">Todos <b data-conta="todos">16</b></button>
+        <button type="button" data-filtro="livro" aria-pressed="false">Livros <b data-conta="livro">7</b></button>
+        <button type="button" data-filtro="camiseta" aria-pressed="false">Camisetas <b data-conta="camiseta">5</b></button>
+        <button type="button" data-filtro="caneca" aria-pressed="false">Canecas <b data-conta="caneca">4</b></button>
+      </div>
+    </div>
+    <div class="loja-grid" id="lojaGrid">
+      <noscript><p class="loja-noscript">Pra ver os produtos, ative o JavaScript do navegador ou <a href="https://wa.me/5544920066945">fale com a Dayane no WhatsApp</a>.</p></noscript>
+    </div>
+  </div>
+</section>
+
+<section class="loja-how">
+  <div class="wrap">
+    <div class="loja-how-head">
+      <div class="eyebrow">Como comprar</div>
+      <h2>Comprar é simples assim.</h2>
+    </div>
+    <div class="loja-how-grid">
+      <div class="loja-how-card"><span class="lh-n">01</span><h3>Escolha</h3><p>Filtre por livros, camisetas ou canecas e clique na foto pra espiar os detalhes.</p></div>
+      <div class="loja-how-card"><span class="lh-n">02</span><h3>Clique em Comprar</h3><p>Você vai pro pagamento seguro. Lá escolhe cor, tamanho e quantidade e coloca o CEP pro frete.</p></div>
+      <div class="loja-how-card"><span class="lh-n">03</span><h3>Receba em casa</h3><p>Pague no cartão em até 12x ou à vista. Seu pedido vai direto pra você.</p></div>
+    </div>
+    <div class="loja-dayane">
+      <img src="assets/img/team/dayane.jpg" alt="Dayane, da Escola Instructiva" width="64" height="64" loading="lazy">
+      <div><strong>Ficou com dúvida?</strong><span>A Dayane te ajuda a escolher e acompanha o seu pedido.</span></div>
+      <a class="btn btn-wa" href="https://wa.me/5544920066945?text=Ol%C3%A1%2C%20Dayane%21%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20os%20produtos%20da%20Loja%20Instructiva." target="_blank" rel="noopener"><svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.004 3C9.373 3 4 8.373 4 15.004c0 2.647.86 5.096 2.318 7.077L4.6 28.4l6.5-1.677a11.93 11.93 0 0 0 4.9 1.043h.004c6.63 0 12.004-5.373 12.004-12.004C28.008 8.373 22.635 3 16.004 3Zm7.03 17.06c-.297.833-1.47 1.526-2.404 1.727-.639.136-1.473.245-4.28-.92-3.59-1.49-5.9-5.14-6.08-5.38-.176-.24-1.454-1.938-1.454-3.696 0-1.757.918-2.62 1.245-2.98.297-.325.647-.407.863-.407.216 0 .432.002.62.011.216.01.482-.082.754.575.297.72.008 2.06.008 2.06s-.44.505-.19 1.166c.43 1.14 1.87 2.5 2.05 2.68.18.18 1.6 1.62 2.79 2.06.66.244 1.09.207 1.33-.05.24-.257.68-.83.87-1.08.19-.25.38-.207.63-.13.25.08 1.58.76 1.86.93.28.17.46.256.53.396.07.14.07.81-.227 1.643Z"/></svg><span>Falar com a Dayane</span></a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a class="logo" href="index.html">
+          <img class="mark" src="assets/img/logo-instructiva-light.png" alt="Escola Instructiva">
+          Escola <b>Instructiva</b>
+        </a>
+        <p class="foot-about">Ensino técnico de eletrônica e manutenção. Sete anos formando quem conserta de verdade.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Cursos</h4>
+        <a href="cursos.html">Televisores</a>
+        <a href="cursos.html">Fontes chaveadas</a>
+        <a href="cursos.html">Tecnologias Inverter</a>
+        <a href="cursos.html">Placas eletrônicas</a>
+      </div>
+      <div class="foot-col">
+        <h4>Empresa</h4>
+        <a href="index.html#professor">Quem somos</a>
+        <a href="index.html#depoimentos">Depoimentos</a>
+        <a href="loja.html">Loja Instructiva</a>
+        <a href="#" class="js-open-wa">Contato</a>
+      </div>
+      <div class="foot-col">
+        <h4>Suporte</h4>
+        <a href="index.html#faq">Dúvidas frequentes</a>
+        <a href="https://instructiva.cademi.com.br/auth/login?redirect=%2Foffice%2Fusuario%2Fperfil%2Fcompras%2F21549397" target="_blank" rel="noopener">Área do aluno</a>
+        <a href="https://wa.me/5544997085134?text=Oi%2C%20Let%C3%ADcia%21%20Vim%20pelo%20site%20da%20Escola%20Instructiva%20e%20preciso%20de%20ajuda." target="_blank" rel="noopener">Falar com a Letícia (WhatsApp)</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 ESCOLA INSTRUCTIVA · TODOS OS DIREITOS RESERVADOS</p>
+    </div>
+  </div>
+</footer>
+<script src="js/reveal.js"></script>
+<script src="js/popup.js"></script>
+<script src="js/tracking.js"></script>
+<script src="js/wa.js"></script>
+<script src="js/selo-reclame-aqui.js"></script>
+<script src="js/fx.js"></script>
+<script src="js/loja-produtos.js"></script>
+<script src="js/loja.js"></script>
+</body>
+</html>

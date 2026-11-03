@@ -31,6 +31,19 @@ O QUE MUDOU
   dentro de um cartão escuro com brilho verde, texto e link "Ver nossa página".
 - SEGURANÇA (server.js): os arquivos de dados (leads.json, sales.json, stats.json,
   config.json) e o código do servidor não podem mais ser abertos pelo navegador.
+- LOJA INSTRUCTIVA (loja.html), NOVA:
+  - Menu de todas as páginas: item "Loja" com o selo laranja "NOVO".
+  - Home: banner "O conhecimento vai além da sala de aula." com a foto da camiseta,
+    da caneca e do livro, e o botão "Conheça nossa loja".
+  - Página da loja: 16 produtos (7 livros, 5 camisetas e 4 canecas) com filtros,
+    preço em 12x e uma janela "Espiar" com os detalhes. Todo botão "Comprar" vai
+    direto pro link de pagamento; cor, tamanho, quantidade e frete a pessoa escolhe
+    lá no pagamento.
+  - PRA MUDAR PREÇO, LINK, NOME OU FOTO: edite js/loja-produtos.js e suba só ele.
+  - Fotos dos produtos: assets/img/loja/ (quadradas). Foto do banner:
+    assets/img/loja/banner-loja.jpg.
+  - Prévia de link da loja: assets/img/og/loja.jpg.
+  - Pixel/Analytics: o clique em "Comprar" na loja registra o nome do produto.
 
 PRA FAZER NO SEU LADO
 1. Pixel do Facebook / Google Analytics: abra js/tracking.js e cole os IDs no topo
@@ -44,6 +57,6 @@ COMO SUBIR NO GITHUB (pelo site)
 1. Descompacte este zip.
 2. No repositório, clique em "Add file" > "Upload files".
 3. Arraste TUDO que está dentro da pasta descompactada (pastas assets, css, js,
-   cursos e os arquivos index.html, cursos.html e server.js).
-4. Em "Commit changes", escreva "Site novo + lançamento Inverter" e confirme.
+   cursos e os arquivos index.html, cursos.html, loja.html e server.js).
+4. Em "Commit changes", escreva "Loja Instructiva" e confirme.
    O Railway atualiza o site sozinho em ~1 minuto.

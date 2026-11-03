@@ -60,7 +60,8 @@ var INSTRUCTIVA_TRACKING = {
     if (!a) return;
     var href = a.href || '';
     if (/pay\.hotmart\.com|payfast\.greenn\.com\.br|instructiva\.co\//.test(href)) {
-      track('InitiateCheckout', 'begin_checkout', course ? { content_name: course } : {});
+      var nome = a.getAttribute('data-produto') || course; // na loja, cada botão diz qual é o produto
+      track('InitiateCheckout', 'begin_checkout', nome ? { content_name: nome } : {});
     } else if (/wa\.me\//.test(href)) {
       track('Contact', 'contact', {});
     }

@@ -52,7 +52,7 @@
     menu.setAttribute('aria-label', 'Menu');
     var html = '';
     $$('.nav-links a', nav).forEach(function (a) {
-      html += '<a class="mm-link" href="' + a.getAttribute('href') + '">' + a.textContent + '</a>';
+      html += '<a class="mm-link" href="' + a.getAttribute('href') + '">' + a.innerHTML + '</a>';
     });
     html += '<div class="mm-actions">';
     $$('.nav-actions a', nav).forEach(function (a) {
