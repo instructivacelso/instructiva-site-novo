@@ -6,6 +6,14 @@ O QUE MUDOU
   Black Friday: letreiro de LED "BLACK FRIDAY", cronômetro digital até o fim da
   Black, fita de LED, faíscas, trilhas de circuito e os botões "Ver as ofertas"
   (vai pro catálogo) e "Entrar na lista VIP" (abre o popup).
+- Home na Black (volta ao normal sozinha quando a Black acaba):
+  - Saíram da home: a barrinha de categorias, o lançamento do Tecnologias
+    Inverter, a grade de trilhas e o final com a arte do Inverter.
+  - Entraram: faixas de LED cruzadas "BLACK FRIDAY ✦ INSTRUCTIVA", a "Vitrine
+    da Black" com 8 cursos (Inversores Solares, Televisores, Fontes, Placas,
+    Amplificadores, Softstarter, Esteira e Odonto) e a "Última chamada" com
+    cronômetro no final da página.
+  - A Loja desceu pra depois dos depoimentos.
 - Faixa de LED no topo de TODAS as páginas: letreiro correndo + "acaba em ..."
   com a contagem regressiva. Clicar leva pro catálogo de cursos.
 - Menu: item "Black Friday" com luz piscando (no celular também).
