@@ -52,7 +52,8 @@
     menu.setAttribute('aria-label', 'Menu');
     var html = '';
     $$('.nav-links a', nav).forEach(function (a) {
-      html += '<a class="mm-link" href="' + a.getAttribute('href') + '">' + a.innerHTML + '</a>';
+      var extra = a.classList.contains('bf-only') ? ' bf-only bf-nav' : '';
+      html += '<a class="mm-link' + extra + '" href="' + a.getAttribute('href') + '">' + a.innerHTML + '</a>';
     });
     html += '<div class="mm-actions">';
     $$('.nav-actions a', nav).forEach(function (a) {
@@ -265,6 +266,8 @@
     tilt(launch, lFrame);
     sparks(launch, lFrame, 7000);
   }
+  var bfHero = document.documentElement.classList.contains('bf') ? $('.bf-hero') : null;
+  if (bfHero) sparks(bfHero, $('.bf-sign', bfHero), 5200, true);
   var sales = $('.sales-hero');
   if (sales) {
     var sFrame = $('.art-frame', sales);
@@ -323,9 +326,10 @@
     host.insertBefore(svg, host.firstChild);
   }
   circuits($('.lancamento-hero'), { seed: 11 });
+  if (document.documentElement.classList.contains('bf')) circuits($('.bf-hero'), { seed: 41, count: 16, cls: 'bf-circuits' });
   circuits($('.sales-hero'), { seed: 23, cls: 'from-right' });
   circuits($('.final-card'), { seed: 5, count: 10, cls: 'in-card' });
-  circuits($('.page-catalog section'), { seed: 31, cls: 'from-right' });
+  circuits($('.page-catalog section:not(.bf-strip)'), { seed: 31, cls: 'from-right' });
 
   // ---------------------------------------------------------------- onda de osciloscópio
   function scope(target, cls) {

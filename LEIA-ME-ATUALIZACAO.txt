@@ -1,62 +1,43 @@
-ATUALIZAÇÃO DO SITE — Escola Instructiva
-=========================================
+ATUALIZAÇÃO DO SITE — BLACK FRIDAY INSTRUCTIVA
+==============================================
 
 O QUE MUDOU
-- Visual novo no site inteiro (home, catálogo, 18 cursos do catálogo e as 16
-  páginas antigas de curso que ficam fora do catálogo).
-- Banner da home: Especialista em Manutenção de Inversores Solares, em até
-  12x de R$ 261,30 (R$ 2.497,00 à vista, só dentro da página do curso).
-- Curso em destaque na home: Tecnologias Inverter, 12x de R$ 198,51
-  (R$ 1.897,00 à vista, só dentro da página do curso).
-- Botões de compra: Inversor Solar -> https://instructiva.co/795159 | Tecnologias Inverter -> https://instructiva.co/0545914
-- Curso avulso de ar-condicionado saiu (a página antiga redireciona pro Inverter).
-- Saíram as menções a "ex-autorizado". Números: 35 mil+ alunos, 38 anos, 7 livros.
-- Animações: arte do banner, faíscas, trilhas de circuito com pulsos de luz, onda de
-  osciloscópio, cards que inclinam com o mouse, botões de compra "magnéticos",
-  títulos surgindo palavra por palavra e transição suave entre páginas.
-- Atendimento (botão verde "Fale com a gente"): "Quero adquirir" vai pra Dayane;
-  "Problema de acesso" mostra as 3 atendentes do suporte.
-- Popup de captura (aparece depois de um tempo): visual novo com a Dayane,
-  máscara do WhatsApp e confete ao enviar. Os textos continuam vindo do painel.
-- Janela "Área do aluno" (Cademi, Hotmart, Nutror) com visual novo.
-- Páginas antigas: o botão "Comprar agora" não levava a lugar nenhum; agora é
-  "Quero me matricular" e abre a Dayane no WhatsApp já com o nome do curso.
-- Prévia de link: ao mandar o link do site ou de um curso no WhatsApp/Facebook,
-  aparece uma imagem com a arte, o nome e a parcela (pasta assets/img/og).
-- Foto nova da Dayane, em destaque: retrato grande no popup de captura, na janela
-  de atendimento ("Quero adquirir um treinamento") e num cartão "Fale com a Dayane"
-  na seção de perguntas frequentes de todas as páginas.
-- Selo "Verificada por Reclame AQUI" (js/selo-reclame-aqui.js): aparece abaixo do
-  preço nas páginas de curso, na seção de garantia da home e no rodapé do catálogo,
-  dentro de um cartão escuro com brilho verde, texto e link "Ver nossa página".
-- SEGURANÇA (server.js): os arquivos de dados (leads.json, sales.json, stats.json,
-  config.json) e o código do servidor não podem mais ser abertos pelo navegador.
-- LOJA INSTRUCTIVA (loja.html), NOVA:
-  - Menu de todas as páginas: item "Loja" com o selo laranja "NOVO".
-  - Home: banner "O conhecimento vai além da sala de aula." com a foto da camiseta,
-    da caneca e do livro, e o botão "Conheça nossa loja".
-  - Página da loja: 16 produtos (7 livros, 5 camisetas e 4 canecas) com filtros,
-    preço em 12x e uma janela "Espiar" com os detalhes. Todo botão "Comprar" vai
-    direto pro link de pagamento; cor, tamanho, quantidade e frete a pessoa escolhe
-    lá no pagamento.
-  - PRA MUDAR PREÇO, LINK, NOME OU FOTO: edite js/loja-produtos.js e suba só ele.
-  - Fotos dos produtos: assets/img/loja/ (quadradas). Foto do banner:
-    assets/img/loja/banner-loja.jpg.
-  - Prévia de link da loja: assets/img/og/loja.jpg.
-  - Pixel/Analytics: o clique em "Comprar" na loja registra o nome do produto.
+- Capa da home: saiu o banner do curso de Inversores Solares e entrou a capa da
+  Black Friday: letreiro de LED "BLACK FRIDAY", cronômetro digital até o fim da
+  Black, fita de LED, faíscas, trilhas de circuito e os botões "Ver as ofertas"
+  (vai pro catálogo) e "Entrar na lista VIP" (abre o popup).
+- Faixa de LED no topo de TODAS as páginas: letreiro correndo + "acaba em ..."
+  com a contagem regressiva. Clicar leva pro catálogo de cursos.
+- Menu: item "Black Friday" com luz piscando (no celular também).
+- Catálogo (cursos.html): faixa da Black com cronômetro + etiqueta "Black Friday"
+  em todos os cards de curso.
+- Páginas de curso: etiqueta "Oferta Black Friday" com a contagem em cima do
+  quadro de preço.
+- Loja: etiqueta "Black Friday" no banner (home e loja).
+- Popup: durante a Black vira "Lista VIP da Black Friday" (visual escuro com LED,
+  textos próprios e contagem). Os leads entram no painel com origem
+  "black_friday_...".
+- Barra fixa de baixo da home: "Black Friday Instructiva — acaba em ..." + "Ver ofertas".
+- Prévia de link da home (WhatsApp/Facebook): imagem e título da Black Friday
+  (assets/img/og/black-friday.jpg).
 
-PRA FAZER NO SEU LADO
-1. Pixel do Facebook / Google Analytics: abra js/tracking.js e cole os IDs no topo
-   (metaPixelId e ga4Id). Vazio = desligado.
-2. No Railway (Variables): crie LEADS_SECRET com uma senha forte. Sem ela, a senha
-   do painel é "troque-esta-senha".
-3. No Railway: confira se existe um Volume (RAILWAY_VOLUME_MOUNT_PATH). Sem volume,
-   os leads se perdem a cada atualização do site.
+LIGA / DESLIGA (arquivo js/black-friday.js)
+- Data final: fim: '2026-11-30T23:59:59-03:00' (horário de Brasília).
+  Quando passa essa data, o site volta SOZINHO pro normal (capa do curso,
+  popup normal, sem faixa nem etiquetas).
+- Pra desligar antes: troque ativo: true por ativo: false e suba só esse arquivo.
+- Frases da faixa de LED: lista "faixa" no mesmo arquivo.
+- Depois da Black, no index.html, volte a prévia de link (tem um comentário
+  explicando: og:title e og:image -> assets/img/og/home.jpg).
+
+ATENÇÃO
+- Os preços dos cursos ainda são os normais. A etiqueta "Oferta Black Friday"
+  aparece nas páginas de curso; o ideal é subir junto com os preços da Black.
 
 COMO SUBIR NO GITHUB (pelo site)
 1. Descompacte este zip.
-2. No repositório, clique em "Add file" > "Upload files".
+2. No repositório (logado como instructivacelso), clique em "Add file" > "Upload files".
 3. Arraste TUDO que está dentro da pasta descompactada (pastas assets, css, js,
-   cursos e os arquivos index.html, cursos.html, loja.html e server.js).
-4. Em "Commit changes", escreva "Loja Instructiva" e confirme.
+   cursos e os arquivos index.html, cursos.html e loja.html).
+4. Em "Commit changes", escreva "Black Friday" e confirme.
    O Railway atualiza o site sozinho em ~1 minuto.

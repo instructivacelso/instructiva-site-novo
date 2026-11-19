@@ -9,10 +9,11 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Escola Instructiva">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:title" content="Especialista em Manutenção de Inversores Solares | Escola Instructiva">
-<meta property="og:description" content="Cursos técnicos de eletrônica e manutenção com o Prof. Celso Muniz, 38 anos de bancada. Destaque: Especialista em Manutenção de Inversores Solares em até 12x de R$ 261,30.">
+<!-- BLACK FRIDAY: depois da Black, volte og:title pra "Especialista em Manutenção de Inversores Solares | Escola Instructiva" e og:image pra assets/img/og/home.jpg -->
+<meta property="og:title" content="Black Friday Instructiva | Escola Instructiva">
+<meta property="og:description" content="Ofertas especiais em cursos de eletrônica, livros técnicos e na loja da Escola Instructiva. Por tempo limitado.">
 <meta property="og:url" content="%SITE_URL%/">
-<meta property="og:image" content="%SITE_URL%/assets/img/og/home.jpg">
+<meta property="og:image" content="%SITE_URL%/assets/img/og/black-friday.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -24,6 +25,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon-180.png">
+<script src="js/black-friday.js"></script>
 </head>
 <body>
 
@@ -98,6 +100,7 @@
         Escola <b>Instructiva</b>
       </a>
       <div class="nav-links">
+        <a href="cursos.html" class="bf-only bf-nav"><i></i>Black Friday</a>
         <a href="cursos.html">Cursos</a>
         <a href="loja.html">Loja <span class="new-pill">novo</span></a>
         <a href="index.html#professor">Sobre</a>
@@ -124,7 +127,42 @@
   </div>
 </div>
 
-<section class="promo-mega-hero lancamento-hero">
+<section class="bf-hero bf-only" id="black-friday">
+  <div class="bf-hero-fx" aria-hidden="true">
+    <span class="bf-beam bf-beam--l"></span><span class="bf-beam bf-beam--r"></span>
+    <span class="bf-floor"></span>
+  </div>
+  <div class="bf-ledstrip" aria-hidden="true"></div>
+  <div class="wrap bf-hero-in">
+    <div class="bf-kicker"><span class="bf-dot"></span>A Escola Instructiva apresenta</div>
+    <h1 class="bf-sign">
+      <span class="bf-sign-row bf-sign-row--1">Black</span>
+      <span class="bf-sign-row bf-sign-row--2">Friday</span>
+    </h1>
+    <div class="bf-neon"><img src="assets/img/logo-instructiva-light.png" alt="" width="36" height="36">Instructiva</div>
+    <p class="bf-lead">Ofertas especiais em cursos, livros técnicos e na loja. Corre que o tempo tá contando.</p>
+    <div class="bf-clock" data-bf-countdown role="timer" aria-label="Tempo até o fim da Black Friday">
+      <div class="bf-seg"><b data-u="d">00</b><small>dias</small></div><span class="bf-colon" aria-hidden="true">:</span>
+      <div class="bf-seg"><b data-u="h">00</b><small>horas</small></div><span class="bf-colon" aria-hidden="true">:</span>
+      <div class="bf-seg"><b data-u="m">00</b><small>min</small></div><span class="bf-colon" aria-hidden="true">:</span>
+      <div class="bf-seg"><b data-u="s">00</b><small>seg</small></div>
+    </div>
+    <div class="bf-ctas">
+      <a href="cursos.html" class="btn btn-cta bf-cta">Ver as ofertas <span class="arr">→</span></a>
+      <a href="https://wa.me/5544920066945" class="btn bf-vip" data-bf-vip target="_blank" rel="noopener"><span class="bf-dot"></span>Entrar na lista VIP</a>
+    </div>
+    <ul class="bf-cats">
+      <li><a href="cursos.html">Cursos</a></li>
+      <li><a href="loja.html#livros">Livros técnicos</a></li>
+      <li><a href="loja.html#camisetas">Camisetas</a></li>
+      <li><a href="loja.html#canecas">Canecas</a></li>
+    </ul>
+  </div>
+  <div class="bf-ledstrip bf-ledstrip--bottom" aria-hidden="true"></div>
+  <a class="scroll-cue" href="#beneficios" aria-label="Ver mais"><span></span></a>
+</section>
+
+<section class="promo-mega-hero lancamento-hero bf-hide">
   <div class="hero-launch-art" aria-hidden="true">
     <div class="art-glow"></div>
     <div class="art-frame">
@@ -635,13 +673,15 @@
 </footer>
 <div class="sticky-cta" id="stickyCta">
   <div class="wrap sticky-inner">
-    <span class="sticky-copy"><strong>Especialista em Inversores Solares</strong><span class="sticky-dash"> — </span><span class="sticky-price">12x de R$ 261,30</span></span>
-    <a href="https://instructiva.co/795159" class="btn btn-cta btn-sm" target="_blank" rel="noopener">Garantir vaga</a>
+    <span class="sticky-copy bf-hide"><strong>Especialista em Inversores Solares</strong><span class="sticky-dash"> — </span><span class="sticky-price">12x de R$ 261,30</span></span>
+    <a href="https://instructiva.co/795159" class="btn btn-cta btn-sm bf-hide" target="_blank" rel="noopener">Garantir vaga</a>
+    <span class="sticky-copy bf-only"><strong>Black Friday Instructiva</strong><span class="sticky-dash"> — </span><span class="sticky-price">acaba em <b data-bf-countdown-compact>--:--:--</b></span></span>
+    <a href="cursos.html" class="btn btn-cta btn-sm bf-only">Ver ofertas</a>
   </div>
 </div>
 <script>
   var stickyCta = document.getElementById('stickyCta');
-  var trigger = document.querySelector('.lancamento-hero');
+  var trigger = document.querySelector(document.documentElement.classList.contains('bf') ? '.bf-hero' : '.lancamento-hero');
   window.addEventListener('scroll', function(){
     if(trigger && window.scrollY > trigger.offsetTop + trigger.offsetHeight){ stickyCta.classList.add('show'); }
     else{ stickyCta.classList.remove('show'); }

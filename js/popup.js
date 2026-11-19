@@ -4,6 +4,8 @@
    pelo topo (computador) ou quando a pessoa troca de aba (celular).
    Os textos, o número do WhatsApp e o liga/desliga vêm do painel (/api/config).
    Teste: abra qualquer página com ?popup=teste no fim do endereço.
+   Durante a Black Friday (js/black-friday.js ligado) vira o popup da
+   "lista VIP da Black Friday", com textos e visual próprios.
    ======================================================================= */
 (function () {
   var STORAGE_KEY = 'instructiva_exit_popup_shown';
@@ -47,8 +49,22 @@
   var ICON_PHONE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18h2"/></svg>';
   var ICON_LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
 
+  function emBlackFriday() {
+    return !!(window.INSTRUCTIVA_BF && window.INSTRUCTIVA_BF.ativo && document.documentElement.classList.contains('bf'));
+  }
+  var BF_TEXTOS = {
+    badge: 'Black Friday Instructiva · Lista VIP',
+    title: 'Receba as ofertas da Black Friday antes de todo mundo.',
+    highlight: 'Black Friday',
+    sub: 'Deixe seu WhatsApp e a Dayane te manda as ofertas em primeira mão, com o curso certo pro seu nível.',
+    ctaText: 'Quero entrar na lista VIP',
+    b1: 'Oi! A Black Friday da Instructiva tá no ar 🖤',
+    b2: 'Me deixa seu WhatsApp que eu te mando as ofertas primeiro.'
+  };
+
   function buildPopup() {
-    var cfg = POPUP_CFG || {};
+    var bf = emBlackFriday();
+    var cfg = bf ? BF_TEXTOS : (POPUP_CFG || {});
     var badge = cfg.badge || 'Atendimento no WhatsApp · grátis';
     var titleRaw = cfg.title || 'Não sabe qual curso escolher?';
     var hl = cfg.highlight || '';
@@ -59,7 +75,7 @@
     var online = isOnline();
 
     var overlay = document.createElement('div');
-    overlay.className = 'exit-popup-overlay' + (online ? ' is-online' : '');
+    overlay.className = 'exit-popup-overlay' + (online ? ' is-online' : '') + (bf ? ' ep-bf' : '');
     overlay.id = 'exitPopupOverlay';
     overlay.innerHTML =
       '<div class="exit-popup ep2" role="dialog" aria-modal="true" aria-labelledby="exitPopupTitle">' +
@@ -73,8 +89,8 @@
             '</div>' +
             '<div class="ep2-chat">' +
               '<div class="ep2-typing"><span></span><span></span><span></span></div>' +
-              '<div class="ep2-bubble b1">Oi! Tá em dúvida sobre qual curso fazer?</div>' +
-              '<div class="ep2-bubble b2">Me deixa seu WhatsApp que eu te ajudo a escolher o certo pro seu nível.</div>' +
+              '<div class="ep2-bubble b1">' + (bf ? esc(BF_TEXTOS.b1) : 'Oi! Tá em dúvida sobre qual curso fazer?') + '</div>' +
+              '<div class="ep2-bubble b2">' + (bf ? esc(BF_TEXTOS.b2) : 'Me deixa seu WhatsApp que eu te ajudo a escolher o certo pro seu nível.') + '</div>' +
             '</div>' +
           '</div>' +
         '</aside>' +
@@ -83,6 +99,7 @@
             '<div class="ep-badge">' + esc(badge) + '</div>' +
             '<h3 id="exitPopupTitle">' + titleHtml + '</h3>' +
             '<p class="sub">' + esc(sub) + '</p>' +
+            (bf ? '<p class="ep-bf-clock"><i></i>As ofertas acabam em <b data-bf-countdown-compact>--:--:--</b></p>' : '') +
             '<label class="ep2-field"><span class="ep2-ico">' + ICON_USER + '</span>' +
               '<input type="text" id="epName" autocomplete="name" placeholder=" "><span class="ep2-float">Seu nome</span></label>' +
             '<label class="ep2-field"><span class="ep2-ico">' + ICON_PHONE + '</span>' +
@@ -201,13 +218,15 @@
         body: JSON.stringify({
           name: name, email: '', phone: phone,
           isTechnician: selectedTech || 'nao_informado',
-          source: 'popup_saida_' + window.location.pathname,
+          source: (emBlackFriday() ? 'black_friday_' : 'popup_saida_') + window.location.pathname,
         }),
       })
         .then(function (r) { return r.json(); })
         .then(function (res) {
           if (res && res.ok === false) { throw new Error(res.error || 'falha'); }
-          var msg = 'Olá! Me chamo ' + name + ' e vim pelo site da Escola Instructiva. Queria uma ajuda pra escolher o curso certo pra mim.';
+          var msg = emBlackFriday()
+            ? 'Olá! Me chamo ' + name + ' e vim pelo site da Escola Instructiva. Quero entrar na lista VIP da Black Friday.'
+            : 'Olá! Me chamo ' + name + ' e vim pelo site da Escola Instructiva. Queria uma ajuda pra escolher o curso certo pra mim.';
           var waNum = (POPUP_CFG && POPUP_CFG.whatsapp) || '5544920066945';
           waBtn.href = 'https://wa.me/' + String(waNum).replace(/\D+/g, '') + '?text=' + encodeURIComponent(msg);
           formBody.classList.add('hide');
@@ -277,6 +296,12 @@
 
     var overlay = buildPopup();
     setupPopup(overlay);
+    // botões "Entrar na lista VIP" da Black Friday abrem o popup na hora
+    window.INSTRUCTIVA_ABRIR_POPUP = function () {
+      shown = true;
+      markShown();
+      openOverlay(overlay);
+    };
 
     if (forceShow) {
       openOverlay(overlay);

@@ -1161,3 +1161,196 @@ a.shop-banner:hover .shop-banner-cta{ transform:translateY(-2px); box-shadow:ins
   .loja-dayane{ flex-wrap:wrap; }
   .loja-dayane .btn{ width:100%; justify-content:center; }
 }
+
+/* =======================================================================
+   22. BLACK FRIDAY INSTRUCTIVA (liga/desliga em js/black-friday.js)
+   Tudo aqui só aparece quando a página tem html.bf.
+   .bf-only = só aparece na Black · .bf-hide = some durante a Black
+   ======================================================================= */
+html:not(.bf) .bf-only{ display:none !important; }
+html.bf .bf-hide{ display:none !important; }
+
+.bf-dot{ display:inline-block; flex:none; width:8px; height:8px; border-radius:50%; background:#FF8A3D; box-shadow:0 0 0 3px rgba(255,138,61,.18), 0 0 12px #FF8A3D; }
+@keyframes bfBlink{ 0%,100%{ opacity:1; } 50%{ opacity:.25; } }
+@keyframes bfTicker{ to{ transform:translateX(-50%); } }
+@keyframes bfChase{ to{ -webkit-mask-position:600px 0; mask-position:600px 0; } }
+@keyframes bfChaseRev{ to{ -webkit-mask-position:-600px 0; mask-position:-600px 0; } }
+@keyframes bfPowerOn{ 0%{ opacity:0; } 8%{ opacity:.9; } 12%{ opacity:.08; } 20%{ opacity:1; } 27%{ opacity:.2; } 34%,100%{ opacity:1; } }
+@keyframes bfFlicker{ 0%,91%,100%{ opacity:1; } 92%{ opacity:.3; } 93%{ opacity:1; } 95%{ opacity:.55; } 96%{ opacity:1; } }
+@keyframes bfPulse{ 0%,100%{ filter:drop-shadow(0 0 .015em #fff) drop-shadow(0 0 .08em rgba(255,175,115,.75)); } 50%{ filter:drop-shadow(0 0 .02em #fff) drop-shadow(0 0 .16em rgba(255,175,115,.95)); } }
+@keyframes bfSweepL{ from{ transform:rotate(-20deg); } to{ transform:rotate(12deg); } }
+@keyframes bfSweepR{ from{ transform:rotate(18deg); } to{ transform:rotate(-10deg); } }
+@keyframes bfGlowPulse{ 0%,100%{ box-shadow:0 0 0 1px rgba(255,200,150,.3) inset, 0 0 26px rgba(249,115,22,.45), 0 20px 40px -16px rgba(249,115,22,.9); } 50%{ box-shadow:0 0 0 1px rgba(255,200,150,.45) inset, 0 0 44px rgba(249,115,22,.75), 0 20px 40px -16px rgba(249,115,22,.9); } }
+
+/* --- fita de LED (pontinhos que acendem em sequência) --- */
+.bf-ledstrip{ position:absolute; left:0; right:0; top:0; height:12px; z-index:2; pointer-events:none; background:radial-gradient(circle, rgba(255,138,61,.2) 0 2.3px, transparent 3px) 0 50%/18px 12px repeat-x; }
+.bf-ledstrip::after{ content:""; position:absolute; inset:0; background:radial-gradient(circle, #FFC28F 0 2.5px, transparent 3.1px) 0 50%/18px 12px repeat-x; filter:drop-shadow(0 0 4px #FF8A3D);
+  -webkit-mask-image:linear-gradient(90deg, transparent 0 30%, #000 45%, transparent 60% 100%); mask-image:linear-gradient(90deg, transparent 0 30%, #000 45%, transparent 60% 100%);
+  -webkit-mask-size:600px 100%; mask-size:600px 100%; -webkit-mask-repeat:repeat-x; mask-repeat:repeat-x; }
+.bf-ledstrip--bottom{ top:auto; bottom:0; }
+
+/* --- faixa de LED no topo (todas as páginas) --- */
+.bf-bar{ position:relative; z-index:60; background:#000; border-bottom:1px solid rgba(255,138,61,.35); box-shadow:inset 0 -8px 18px -12px rgba(249,115,22,.6); }
+.bf-bar-in{ display:flex; align-items:center; gap:16px; height:40px; padding:0 18px; color:#fff; text-decoration:none; }
+.bf-bar-tag{ flex:none; display:inline-flex; align-items:center; gap:8px; padding:6px 11px; border-radius:6px; background:var(--grad-orange); font-family:'Manrope',sans-serif; font-size:11.5px; font-weight:800; line-height:1; letter-spacing:.14em; text-transform:uppercase; color:#fff; box-shadow:0 0 16px rgba(249,115,22,.65); }
+.bf-bar-tag i{ width:7px; height:7px; border-radius:50%; background:#fff; box-shadow:0 0 8px #fff; }
+.bf-bar-marquee{ flex:1; min-width:0; overflow:hidden; -webkit-mask-image:linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); mask-image:linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }
+.bf-bar-track{ display:inline-flex; white-space:nowrap; }
+.bf-bar-track > span{ font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:700; line-height:40px; letter-spacing:.14em; text-transform:uppercase; color:#FFC08A; text-shadow:0 0 4px rgba(255,150,60,.95), 0 0 12px rgba(255,110,20,.6); }
+.bf-bar-track i{ font-style:normal; margin:0 20px; color:#fff; }
+.bf-bar-clock{ flex:none; display:flex; align-items:baseline; gap:8px; }
+.bf-bar-clock small{ font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:#8A8A93; }
+.bf-bar-clock b{ font-family:'JetBrains Mono',monospace; font-size:15px; font-weight:700; color:#FF8A2B; text-shadow:0 0 8px rgba(255,120,30,.9); font-variant-numeric:tabular-nums; }
+.bf-bar-in:hover .bf-bar-tag{ filter:brightness(1.1); }
+@media (max-width:640px){
+  .bf-bar-in{ gap:10px; height:36px; padding:0 12px; }
+  .bf-bar-tag{ padding:5px 8px; font-size:10px; letter-spacing:.1em; }
+  .bf-bar-track > span{ font-size:12px; line-height:36px; }
+  .bf-bar-clock small{ display:none; }
+  .bf-bar-clock b{ font-size:13px; }
+}
+
+/* --- item "Black Friday" no menu --- */
+.nav-links a.bf-nav{ display:inline-flex; align-items:center; gap:7px; white-space:nowrap; padding:6px 12px 6px 10px; border-radius:999px; background:#000; border:1px solid rgba(255,138,61,.55); color:#fff; font-size:12.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; box-shadow:0 0 14px -2px rgba(249,115,22,.55), inset 0 0 10px rgba(249,115,22,.18); }
+.nav-links a.bf-nav::after{ display:none; }
+.nav-links a.bf-nav:hover{ border-color:#FF8A3D; box-shadow:0 0 20px rgba(249,115,22,.7), inset 0 0 12px rgba(249,115,22,.3); }
+.bf-nav i{ width:7px; height:7px; border-radius:50%; background:#FF8A3D; box-shadow:0 0 8px #FF8A3D; }
+.mobile-menu a.mm-link.bf-nav{ display:flex; align-items:center; gap:12px; color:#FF9A4D; text-shadow:0 0 14px rgba(255,120,30,.6); }
+.mobile-menu a.mm-link.bf-nav i{ width:11px; height:11px; }
+@media (max-width:1280px){ html.bf .nav-links{ gap:22px; } }
+@media (max-width:1180px){ .nav-links a.bf-nav{ display:none; } }
+
+/* --- capa da Black na home --- */
+.bf-hero{ position:relative; isolation:isolate; overflow:hidden; display:flex; align-items:center; min-height:min(820px, calc(100vh - 150px)); padding:46px 0 92px; background:#020202; color:#fff; text-align:center; }
+.bf-hero-fx{ position:absolute; inset:0; z-index:-1; pointer-events:none; overflow:hidden;
+  background:
+    radial-gradient(1000px 460px at 50% 115%, rgba(249,115,22,.5), transparent 70%),
+    radial-gradient(700px 360px at 50% 38%, rgba(255,90,20,.13), transparent 70%),
+    radial-gradient(circle, rgba(255,255,255,.06) 0 1px, transparent 1.6px) 0 0/22px 22px,
+    #020202; }
+.bf-beam{ position:absolute; top:-30%; width:52vw; height:150%; background:conic-gradient(from 180deg at 50% 0%, transparent 44%, rgba(255,160,90,.17) 50%, transparent 56%); filter:blur(4px); transform-origin:50% 0; mix-blend-mode:screen; }
+.bf-beam--l{ left:-6%; transform:rotate(-12deg); }
+.bf-beam--r{ right:-6%; transform:rotate(10deg); }
+.bf-floor{ position:absolute; left:-30%; right:-30%; bottom:0; height:46%; transform:perspective(420px) rotateX(64deg); transform-origin:50% 100%;
+  background:repeating-linear-gradient(90deg, rgba(255,138,61,.22) 0 1px, transparent 1px 72px), repeating-linear-gradient(0deg, rgba(255,138,61,.18) 0 1px, transparent 1px 56px);
+  -webkit-mask-image:linear-gradient(to top, #000 10%, transparent 92%); mask-image:linear-gradient(to top, #000 10%, transparent 92%); }
+.bf-hero .bf-circuits{ opacity:.55; }
+.bf-hero-in{ position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; }
+.bf-kicker{ display:inline-flex; align-items:center; gap:10px; padding:8px 16px; border-radius:999px; border:1px solid rgba(255,138,61,.4); background:rgba(255,138,61,.08); font-family:'Inter',sans-serif; font-size:12.5px; font-weight:700; line-height:1; letter-spacing:.18em; text-transform:uppercase; color:#FFB37A; }
+
+/* letreiro de LED: as letras são feitas de pontinhos acesos */
+.bf-sign{ --dot:.06em; position:relative; margin:22px 0 4px; font-family:'Manrope',sans-serif; font-weight:800; font-size:clamp(72px, 11vw, 176px); line-height:.9; letter-spacing:-.005em; text-transform:uppercase; }
+.bf-sign-row{ display:block; background:radial-gradient(circle at 50% 50%, var(--led) 0 33%, transparent 41%) 0 0/var(--dot) var(--dot); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.bf-sign-row--1{ --led:#FFF4E8; filter:drop-shadow(0 0 .015em #fff) drop-shadow(0 0 .08em rgba(255,175,115,.75)); }
+.bf-sign-row--2{ --led:#FF8A2B; filter:drop-shadow(0 0 .015em #FFC08A) drop-shadow(0 0 .11em rgba(255,100,20,.95)); }
+.bf-neon{ display:inline-flex; align-items:center; gap:14px; margin-top:4px; padding-left:.34em; font-family:'Manrope',sans-serif; font-size:clamp(20px, 2.6vw, 34px); font-weight:800; line-height:1; letter-spacing:.34em; text-transform:uppercase; color:#fff; text-shadow:0 0 4px #fff, 0 0 12px #FF8A3D, 0 0 30px rgba(255,120,30,.85); }
+.bf-neon img{ width:1.25em; height:1.25em; filter:drop-shadow(0 0 8px rgba(255,138,61,.8)); }
+.bf-lead{ max-width:760px; margin:18px auto 22px; font-size:18.5px; line-height:1.55; color:#C9C9D1; }
+
+/* cronômetro em display digital */
+.bf-clock{ display:flex; align-items:flex-start; justify-content:center; gap:10px; }
+.bf-seg{ display:flex; flex-direction:column; align-items:center; gap:9px; }
+.bf-seg b{ position:relative; display:block; padding:12px 14px 10px; border-radius:14px; background:linear-gradient(180deg,#101011,#060606); border:1px solid rgba(255,138,61,.3); box-shadow:inset 0 0 18px rgba(0,0,0,.95), 0 18px 40px -22px rgba(249,115,22,.7);
+  font-family:'JetBrains Mono',monospace; font-size:clamp(38px, 4.2vw, 58px); font-weight:700; line-height:1; color:#FF8A2B; text-shadow:0 0 6px rgba(255,138,43,.95), 0 0 20px rgba(255,100,20,.6); font-variant-numeric:tabular-nums; }
+.bf-seg b::before{ content:"88"; position:absolute; left:14px; top:12px; color:rgba(255,138,43,.07); text-shadow:none; }
+.bf-seg small{ font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:#8C8C95; }
+.bf-colon{ padding-top:12px; font-family:'JetBrains Mono',monospace; font-size:clamp(32px, 3.6vw, 48px); font-weight:700; line-height:1; color:#FF8A2B; text-shadow:0 0 8px rgba(255,138,43,.9); }
+
+.bf-ctas{ display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-top:26px; }
+.bf-cta{ padding:19px 32px; font-size:16px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; box-shadow:0 0 0 1px rgba(255,200,150,.3) inset, 0 0 26px rgba(249,115,22,.45), 0 20px 40px -16px rgba(249,115,22,.9); }
+.bf-cta .arr{ display:inline-block; margin-left:4px; transition:transform .3s var(--ease); }
+.bf-cta:hover .arr{ transform:translateX(5px); }
+.bf-vip{ display:inline-flex; align-items:center; gap:10px; padding:19px 26px; border-radius:12px; background:#0B0B0C; border:1px solid rgba(255,138,61,.5); color:#fff; font-size:15.5px; font-weight:800; box-shadow:inset 0 0 14px rgba(255,138,61,.14); }
+.bf-vip:hover{ border-color:#FF8A3D; box-shadow:inset 0 0 18px rgba(255,138,61,.3), 0 0 24px rgba(249,115,22,.4); transform:translateY(-2px); }
+.bf-cats{ list-style:none; display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin:30px 0 0; padding:0; }
+.bf-cats a{ display:inline-flex; padding:8px 15px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.03); color:#CFCFD6; font-size:13.5px; font-weight:600; transition:color .2s ease, border-color .2s ease; }
+.bf-cats a:hover{ color:#fff; border-color:rgba(255,138,61,.6); }
+.bf-hero .scroll-cue{ bottom:30px; }
+
+@media (prefers-reduced-motion: no-preference){
+  .bf-dot, .bf-bar-tag i, .bf-nav i, .bf-colon{ animation:bfBlink 1.1s steps(2) infinite; }
+  .bf-bar-track{ animation:bfTicker 46s linear infinite; }
+  .bf-bar-in:hover .bf-bar-track{ animation-play-state:paused; }
+  .bf-ledstrip::after{ animation:bfChase 2.6s linear infinite; }
+  .bf-ledstrip--bottom::after{ animation-name:bfChaseRev; }
+  .bf-beam--l{ animation:bfSweepL 9s ease-in-out infinite alternate; }
+  .bf-beam--r{ animation:bfSweepR 11s ease-in-out infinite alternate; }
+  .bf-sign-row--1{ animation:bfPowerOn 1.5s steps(1) .25s both, bfPulse 3.2s ease-in-out 2s infinite; }
+  .bf-sign-row--2{ animation:bfPowerOn 1.7s steps(1) .6s both, bfFlicker 7s 3.5s infinite; }
+  .bf-cta{ animation:bfGlowPulse 2.4s ease-in-out infinite; }
+}
+@media (max-width:760px){
+  .bf-hero{ min-height:0; padding:64px 0 84px; }
+  .bf-sign{ font-size:21vw; margin-top:24px; }
+  .bf-lead{ font-size:16.5px; margin:22px auto 24px; padding:0 4px; }
+  .bf-clock{ gap:6px; }
+  .bf-seg b{ font-size:34px; padding:10px 9px 8px; border-radius:11px; }
+  .bf-seg b::before{ left:9px; top:10px; }
+  .bf-seg small{ font-size:10px; letter-spacing:.14em; }
+  .bf-colon{ font-size:28px; padding-top:12px; }
+  .bf-ctas{ width:100%; flex-direction:column; gap:10px; margin-top:28px; }
+  .bf-ctas .btn{ width:100%; justify-content:center; }
+  .bf-kicker{ font-size:11px; letter-spacing:.14em; }
+  .bf-beam{ width:90vw; }
+}
+
+/* --- faixa da Black no catálogo --- */
+.page-catalog .bf-strip{ padding:22px 0 0 !important; background:none !important; overflow:visible; }
+.bf-strip-in{ position:relative; overflow:hidden; display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap; padding:38px 38px 32px; border-radius:28px;
+  background:radial-gradient(520px 280px at 100% 0%, rgba(249,115,22,.3), transparent 70%), radial-gradient(circle, rgba(255,255,255,.055) 0 1px, transparent 1.6px) 0 0/18px 18px, #030303;
+  border:1px solid rgba(255,138,61,.32); box-shadow:0 0 44px -14px rgba(249,115,22,.55); }
+.bf-strip-sign{ --dot:.06em; display:block; margin:14px 0 8px; font-family:'Manrope',sans-serif; font-size:clamp(46px, 6.2vw, 80px); font-weight:800; line-height:.9; text-transform:uppercase;
+  background:radial-gradient(circle, #FFA154 0 38%, transparent 45%) 0 0/var(--dot) var(--dot); -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 0 .02em #FFC08A) drop-shadow(0 0 .12em rgba(255,100,20,.95)); }
+.bf-strip-copy p{ margin:0; max-width:440px; font-size:15.5px; line-height:1.55; color:#BDBDC6; }
+.bf-clock--sm .bf-seg b{ font-size:clamp(28px, 3.4vw, 42px); padding:10px 11px 8px; border-radius:11px; }
+.bf-clock--sm .bf-seg b::before{ left:11px; top:10px; }
+.bf-clock--sm .bf-colon{ font-size:clamp(24px, 3vw, 36px); padding-top:10px; }
+@media (max-width:640px){
+  .bf-strip-in{ padding:30px 20px 24px; border-radius:22px; }
+  .bf-clock--sm{ width:100%; justify-content:flex-start; }
+}
+
+/* --- etiqueta "Black Friday" nos cards de curso --- */
+html.bf .course-poster .num{ display:inline-flex !important; position:absolute; z-index:3; top:14px; right:14px; left:auto; padding:6px 10px; border-radius:6px; background:#000; border:1px solid rgba(255,138,61,.6); font-size:0; line-height:1; box-shadow:0 0 12px rgba(249,115,22,.55); }
+html.bf .course-card:has(.card-ribbon) .course-poster .num{ top:52px; }
+html.bf .course-poster .num::before{ content:"Black Friday"; font-family:'Manrope',sans-serif; font-size:10.5px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#FFB070; text-shadow:0 0 6px rgba(255,138,43,.9); }
+
+/* --- etiqueta no quadro de preço das páginas de curso --- */
+.bf-panel-tag{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 12px; margin:0 0 18px; padding:10px 12px; border-radius:12px; background:#000; border:1px solid rgba(255,138,61,.45); box-shadow:inset 0 0 14px rgba(255,138,61,.12), 0 0 18px -6px rgba(249,115,22,.6); }
+.bf-panel-tag span{ display:inline-flex; align-items:center; gap:8px; font-family:'Manrope',sans-serif; font-size:12.5px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#FFB070; }
+.bf-panel-tag i{ width:8px; height:8px; border-radius:50%; background:#FF8A3D; box-shadow:0 0 10px #FF8A3D; }
+.bf-panel-tag small{ font-size:12px; color:#9A9AA3; }
+.bf-panel-tag b{ font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:700; color:#FF8A2B; text-shadow:0 0 6px rgba(255,138,43,.8); }
+@media (prefers-reduced-motion: no-preference){ .bf-panel-tag i{ animation:bfBlink 1.1s steps(2) infinite; } }
+
+/* --- barra fixa de baixo e banners da loja --- */
+html.bf .sticky-cta{ background:rgba(0,0,0,.94); border-top:1px solid rgba(255,138,61,.45); box-shadow:0 -12px 34px -14px rgba(249,115,22,.5); }
+.sticky-price b[data-bf-countdown-compact]{ font-family:'JetBrains Mono',monospace; color:#FF8A2B; text-shadow:0 0 6px rgba(255,138,43,.8); }
+html.bf .shop-banner-media::before{ content:"Black Friday"; position:absolute; z-index:2; top:14px; left:14px; padding:7px 12px; border-radius:8px; background:#000; border:1px solid rgba(255,138,61,.6); font-family:'Manrope',sans-serif; font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#FFB070; text-shadow:0 0 6px rgba(255,138,43,.9); box-shadow:0 0 18px rgba(249,115,22,.55); }
+
+/* --- popup na versão "lista VIP da Black Friday" --- */
+.ep-bf .exit-popup.ep2{ background:#060607; box-shadow:0 0 0 1px rgba(255,138,61,.4), 0 0 70px -14px rgba(249,115,22,.6), 0 60px 140px -40px rgba(0,0,0,.9); }
+.ep-bf .ep2-main{ color:#fff; background:radial-gradient(420px 280px at 100% 0%, rgba(249,115,22,.24), transparent 70%), radial-gradient(circle, rgba(255,255,255,.04) 0 1px, transparent 1.6px) 0 0/16px 16px, #07070A; }
+.ep-bf .ep2-main::before{ content:""; position:absolute; left:0; right:0; top:0; height:10px; background:radial-gradient(circle, #FF8A3D 0 2px, transparent 2.6px) 0 50%/14px 10px repeat-x; opacity:.75; filter:drop-shadow(0 0 3px #FF8A3D); }
+.ep-bf .exit-popup .ep-badge{ color:#FFB070; background:#000; border-color:rgba(255,138,61,.5); box-shadow:0 0 14px -4px rgba(249,115,22,.7); }
+.ep-bf .exit-popup .ep-badge::before{ background:#FF8A3D; box-shadow:0 0 8px #FF8A3D; }
+.ep-bf .exit-popup h3{ color:#fff; }
+.ep-bf .exit-popup h3 span{ background:none; -webkit-text-fill-color:#FF8A2B; color:#FF8A2B; text-shadow:0 0 14px rgba(255,120,30,.7); }
+.ep-bf .exit-popup p.sub{ color:#B9B9C2; margin-bottom:12px; }
+.ep-bf-clock{ display:flex; align-items:center; gap:8px; margin:0 0 18px; font-size:13px; color:#9A9AA3; }
+.ep-bf-clock i{ width:7px; height:7px; border-radius:50%; background:#FF8A3D; box-shadow:0 0 8px #FF8A3D; }
+.ep-bf-clock b{ font-family:'JetBrains Mono',monospace; font-size:14px; color:#FF8A2B; text-shadow:0 0 6px rgba(255,138,43,.8); }
+.ep-bf .ep2-field input{ background:#111114; border-color:rgba(255,255,255,.12); color:#fff; }
+.ep-bf .ep2-field input:focus{ background:#141417; border-color:#FF8A3D; box-shadow:0 0 0 4px rgba(249,115,22,.2); }
+.ep-bf .ep2-field input:focus + .ep2-float, .ep-bf .ep2-field input:not(:placeholder-shown) + .ep2-float{ color:#FF9A4D; }
+.ep-bf .ep2-ico{ color:#77777F; }
+.ep-bf .exit-popup .ep-quick-label{ color:#C9C9D1; }
+.ep-bf .ep2-seg{ background:#141417; }
+.ep-bf .ep2-seg .radio-opt{ color:#A1A1AA; }
+.ep-bf .ep2-seg .radio-opt:hover{ color:#fff; }
+.ep-bf .ep2-seg .radio-opt.selected{ background:#FF8A3D; color:#fff; }
+.ep-bf .exit-popup .fine-print{ color:#77777F; }
+.ep-bf .exit-popup-close{ color:#C9C9D1; background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.12); }
+.ep-bf .exit-popup-close:hover{ color:#fff; background:rgba(255,255,255,.14); }
+.ep-bf .exit-popup .success-state p{ color:#B9B9C2; }
+.ep-bf .exit-popup .error-msg{ color:#FF8A8A; }
