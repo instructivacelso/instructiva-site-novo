@@ -1,51 +1,50 @@
-ATUALIZAÇÃO DO SITE — BLACK FRIDAY INSTRUCTIVA
-==============================================
+ATUALIZAÇÃO DO SITE — BLACK FRIDAY 2.0 (visual novo + preços "de/por")
+=====================================================================
 
 O QUE MUDOU
-- Capa da home: saiu o banner do curso de Inversores Solares e entrou a capa da
-  Black Friday: letreiro de LED "BLACK FRIDAY", cronômetro digital até o fim da
-  Black, fita de LED, faíscas, trilhas de circuito e os botões "Ver as ofertas"
-  (vai pro catálogo) e "Entrar na lista VIP" (abre o popup).
-- Home na Black (volta ao normal sozinha quando a Black acaba):
-  - Saíram da home: a barrinha de categorias, o lançamento do Tecnologias
-    Inverter, a grade de trilhas e o final com a arte do Inverter.
-  - Entraram: faixas de LED cruzadas "BLACK FRIDAY ✦ INSTRUCTIVA", a "Vitrine
-    da Black" com 8 cursos (Inversores Solares, Televisores, Fontes, Placas,
-    Amplificadores, Softstarter, Esteira e Odonto) e a "Última chamada" com
-    cronômetro no final da página.
-  - A Loja desceu pra depois dos depoimentos.
-- Faixa de LED no topo de TODAS as páginas: letreiro correndo + "acaba em ..."
-  com a contagem regressiva. Clicar leva pro catálogo de cursos.
-- Menu: item "Black Friday" com luz piscando (no celular também).
-- Catálogo (cursos.html): faixa da Black com cronômetro + etiqueta "Black Friday"
-  em todos os cards de curso.
-- Páginas de curso: etiqueta "Oferta Black Friday" com a contagem em cima do
-  quadro de preço.
-- Loja: etiqueta "Black Friday" no banner (home e loja).
-- Popup: durante a Black vira "Lista VIP da Black Friday" (visual escuro com LED,
-  textos próprios e contagem). Os leads entram no painel com origem
-  "black_friday_...".
-- Barra fixa de baixo da home: "Black Friday Instructiva — acaba em ..." + "Ver ofertas".
-- Prévia de link da home (WhatsApp/Facebook): imagem e título da Black Friday
-  (assets/img/og/black-friday.jpg).
+- Menos escuro: o preto ficou só na capa e na "Última chamada". A vitrine da
+  Black agora é clara (cards brancos), e o resto da home segue o site normal.
+- Faixa do topo (todas as páginas): agora é laranja, com o cronômetro num
+  quadrinho preto. Clicar leva pra vitrine da Black na home.
+- Capa da home: letreiro de LED + 4 pôsteres de cursos flutuando dos lados
+  (no computador), selo amarelo "ATÉ X% OFF" e os números da escola
+  (35 mil+ alunos, 38 anos, 12x, 7 dias). A faixa de números que ficava
+  embaixo da capa some durante a Black.
+- Vitrine da Black: abas "Especialistas", "Pra começar" e "Livros técnicos"
+  (17 cursos, sem o Inverter) + atalho pra loja. Cada card mostra
+  "de R$ ..." riscado, o preço da Black em laranja e um selo "-XX% OFF".
+- Catálogo (cursos.html): faixa da Black virou um bloco laranja com
+  "ATÉ X% OFF"; os cards mostram o preço riscado e o selo de desconto.
+- Página de cada curso: "de R$ ... -XX% OFF" no quadro de preço, preço novo
+  em laranja, e os preços do topo, da chamada final e da barra fixa trocam
+  sozinhos. Se a Black tiver link de pagamento próprio, todos os botões
+  "comprar" da página passam a usar o link novo.
+- Loja: livros, camisetas e canecas também mostram "de/por" e o selo, se
+  tiverem preço de Black.
 
-LIGA / DESLIGA (arquivo js/black-friday.js)
+PREÇOS DA BLACK (arquivo js/black-friday.js, lista "precos")
+- Cada curso tem uma linha:  { de: 2497, por: 0, parcela: 0, link: '' }
+    de      = preço normal à vista (já preenchido)
+    por     = preço da Black à vista (com PONTO: 1997 ou 1997.90)
+    parcela = valor de cada parcela no 12x da Black, como no checkout (208.98)
+    link    = link de pagamento da Black ('' = continua o mesmo link)
+- Enquanto "por" estiver 0, o curso fica com o preço normal (é assim que este
+  zip vai: todos com 0). O "ATÉ X% OFF" e os selos só aparecem quando houver
+  preço de Black.
+- Quando os preços chegarem, só esse arquivo muda: suba só o
+  js/black-friday.js.
+- Quando a Black acaba (data "fim"), os preços voltam sozinhos pro normal.
+
+LIGA / DESLIGA (mesmo arquivo js/black-friday.js)
 - Data final: fim: '2026-11-30T23:59:59-03:00' (horário de Brasília).
-  Quando passa essa data, o site volta SOZINHO pro normal (capa do curso,
-  popup normal, sem faixa nem etiquetas).
 - Pra desligar antes: troque ativo: true por ativo: false e suba só esse arquivo.
-- Frases da faixa de LED: lista "faixa" no mesmo arquivo.
 - Depois da Black, no index.html, volte a prévia de link (tem um comentário
   explicando: og:title e og:image -> assets/img/og/home.jpg).
-
-ATENÇÃO
-- Os preços dos cursos ainda são os normais. A etiqueta "Oferta Black Friday"
-  aparece nas páginas de curso; o ideal é subir junto com os preços da Black.
 
 COMO SUBIR NO GITHUB (pelo site)
 1. Descompacte este zip.
 2. No repositório (logado como instructivacelso), clique em "Add file" > "Upload files".
-3. Arraste TUDO que está dentro da pasta descompactada (pastas assets, css, js,
-   cursos e os arquivos index.html, cursos.html e loja.html).
-4. Em "Commit changes", escreva "Black Friday" e confirme.
+3. Arraste TUDO que está dentro da pasta descompactada (pastas css e js e os
+   arquivos index.html e cursos.html). Ele substitui os arquivos antigos.
+4. Em "Commit changes", escreva "Black Friday 2.0" e confirme.
    O Railway atualiza o site sozinho em ~1 minuto.

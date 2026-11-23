@@ -133,14 +133,23 @@
     <span class="bf-floor"></span>
   </div>
   <div class="bf-ledstrip" aria-hidden="true"></div>
+  <div class="bf-hero-posters" aria-hidden="true">
+    <span class="bf-hp bf-hp--1" data-bf="especialista-em-manutencao-de-inversores-solares"><img src="assets/img/cursos/inversores-solares.jpg" alt="" width="820" height="1025" loading="lazy"><span class="bf-hp-tag">Black Friday</span><span data-bf-selo></span></span>
+    <span class="bf-hp bf-hp--2" data-bf="especialista-em-manutencao-em-televisores-led-e-lcd"><img src="assets/img/cursos/televisores.jpg" alt="" width="820" height="1025" loading="lazy"><span class="bf-hp-tag">Black Friday</span><span data-bf-selo></span></span>
+    <span class="bf-hp bf-hp--3" data-bf="especialista-em-manutencao-em-amplificadores-de-audio"><img src="assets/img/cursos/amplificadores-de-audio.jpg" alt="" width="820" height="1025" loading="lazy"><span class="bf-hp-tag">Black Friday</span><span data-bf-selo></span></span>
+    <span class="bf-hp bf-hp--4" data-bf="livro-fontes-chaveadas-topologia-flyback-videoaulas"><img src="assets/img/cursos/flyback.jpg" alt="" width="820" height="1025" loading="lazy"><span class="bf-hp-tag">Black Friday</span><span data-bf-selo></span></span>
+  </div>
   <div class="wrap bf-hero-in">
     <div class="bf-kicker"><span class="bf-dot"></span>A Escola Instructiva apresenta</div>
-    <h1 class="bf-sign">
-      <span class="bf-sign-row bf-sign-row--1">Black</span>
-      <span class="bf-sign-row bf-sign-row--2">Friday</span>
-    </h1>
+    <div class="bf-sign-wrap">
+      <h1 class="bf-sign">
+        <span class="bf-sign-row bf-sign-row--1">Black</span>
+        <span class="bf-sign-row bf-sign-row--2">Friday</span>
+      </h1>
+      <div class="bf-ate bf-se-off" aria-hidden="true"><small>até</small><b data-bf-ate>0%</b><small>off</small></div>
+    </div>
     <div class="bf-neon"><img src="assets/img/logo-instructiva-light.png" alt="" width="36" height="36">Instructiva</div>
-    <p class="bf-lead">Ofertas especiais em cursos, livros técnicos e na loja. Corre que o tempo tá contando.</p>
+    <p class="bf-lead">Ofertas em cursos, livros técnicos e na loja<span class="bf-se-off">, com até <b><span data-bf-ate>0%</span> OFF</b></span>. Corre que o tempo tá contando.</p>
     <div class="bf-clock" data-bf-countdown role="timer" aria-label="Tempo até o fim da Black Friday">
       <div class="bf-seg"><b data-u="d">00</b><small>dias</small></div><span class="bf-colon" aria-hidden="true">:</span>
       <div class="bf-seg"><b data-u="h">00</b><small>horas</small></div><span class="bf-colon" aria-hidden="true">:</span>
@@ -151,15 +160,14 @@
       <a href="#ofertas" class="btn btn-cta bf-cta">Ver as ofertas <span class="arr">→</span></a>
       <a href="https://wa.me/5544920066945" class="btn bf-vip" data-bf-vip target="_blank" rel="noopener"><span class="bf-dot"></span>Entrar na lista VIP</a>
     </div>
-    <ul class="bf-cats">
-      <li><a href="cursos.html">Cursos</a></li>
-      <li><a href="loja.html#livros">Livros técnicos</a></li>
-      <li><a href="loja.html#camisetas">Camisetas</a></li>
-      <li><a href="loja.html#canecas">Canecas</a></li>
+    <ul class="bf-proof">
+      <li><b>35 mil+</b> alunos</li>
+      <li><b>38 anos</b> de bancada</li>
+      <li><b>12x</b> no cartão</li>
+      <li><b>7 dias</b> de garantia</li>
     </ul>
   </div>
   <div class="bf-ledstrip bf-ledstrip--bottom" aria-hidden="true"></div>
-  <a class="scroll-cue" href="#ofertas" aria-label="Ver mais"><span></span></a>
 </section>
 
 <section class="promo-mega-hero lancamento-hero bf-hide">
@@ -195,7 +203,7 @@
   <a class="scroll-cue" href="#beneficios" aria-label="Ver mais"><span></span></a>
 </section>
 
-<section class="stats-strip" aria-label="A Escola Instructiva em números">
+<section class="stats-strip bf-hide" aria-label="A Escola Instructiva em números">
   <div class="wrap stats-grid">
     <div class="stat"><div class="stat-n"><b data-count="35">35</b> mil+</div><div class="stat-l">alunos já passaram pela bancada</div></div>
     <div class="stat"><div class="stat-n"><b data-count="38">38</b> anos</div><div class="stat-l">de bancada do Prof. Celso Muniz</div></div>
@@ -213,88 +221,176 @@
   <div class="wrap">
     <div class="bf-offers-head">
       <div>
-        <span class="bf-kicker"><span class="bf-dot"></span>Vitrine da Black</span>
+        <span class="bf-kicker bf-kicker--ink"><span class="bf-dot"></span>Vitrine da Black</span>
         <h2>Escolha o seu curso <em>antes que o tempo acabe.</em></h2>
+        <p class="bf-offers-sub">Cursos completos, livros técnicos com videoaulas e certificado.<span class="bf-se-off"> Descontos de <b>até <span data-bf-ate>0%</span> OFF</b>.</span></p>
       </div>
       <div class="bf-offers-clock"><small>As ofertas acabam em</small><b data-bf-countdown-compact>--:--:--</b></div>
     </div>
+    <div class="bf-tabs" role="tablist" aria-label="Categorias da vitrine">
+      <button type="button" role="tab" data-bf-aba="especialista">Especialistas <span>8</span></button>
+      <button type="button" role="tab" data-bf-aba="comecar">Pra começar <span>2</span></button>
+      <button type="button" role="tab" data-bf-aba="livro">Livros técnicos <span>7</span></button>
+      <a class="bf-tab-link" href="loja.html">Camisetas e canecas <span class="arr">→</span></a>
+    </div>
     <div class="bf-grid">
-      <a class="bf-card" href="cursos/especialista-em-manutencao-de-inversores-solares.html">
-        <span class="bf-card-media"><img src="assets/img/cursos/inversores-solares.jpg" alt="Especialista em Inversores Solares" width="820" height="1025" loading="lazy"></span>
-        <span class="bf-card-tag"><i></i>Mais procurado</span>
+      <a class="bf-card" href="cursos/especialista-em-manutencao-de-inversores-solares.html" data-bf="especialista-em-manutencao-de-inversores-solares" data-grupo="especialista">
+        <span class="bf-card-media"><img src="assets/img/cursos/inversores-solares.jpg" alt="Especialista em Inversores Solares" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Mais procurado</span></span>
         <span class="bf-card-body">
           <small>Especialista em</small>
           <strong>Inversores Solares</strong>
-          <span class="bf-card-buy"><span class="bf-card-price"><small>12x de</small>R$ 261,30</span><span class="bf-card-go">Ver oferta <span class="arr">→</span></span></span>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 261,30</span><span class="bf-card-vista">ou R$ 2.497,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
         </span>
       </a>
-      <a class="bf-card" href="cursos/especialista-em-manutencao-em-televisores-led-e-lcd.html">
-        <span class="bf-card-media"><img src="assets/img/cursos/televisores.jpg" alt="Especialista em Televisores LED e LCD" width="820" height="1025" loading="lazy"></span>
-        <span class="bf-card-tag"><i></i>Black Friday</span>
+      <a class="bf-card" href="cursos/especialista-em-manutencao-em-televisores-led-e-lcd.html" data-bf="especialista-em-manutencao-em-televisores-led-e-lcd" data-grupo="especialista">
+        <span class="bf-card-media"><img src="assets/img/cursos/televisores.jpg" alt="Especialista em Televisores LED e LCD" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Black Friday</span></span>
         <span class="bf-card-body">
           <small>Especialista em</small>
           <strong>Televisores LED e LCD</strong>
-          <span class="bf-card-buy"><span class="bf-card-price"><small>12x de</small>R$ 177,58</span><span class="bf-card-go">Ver oferta <span class="arr">→</span></span></span>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 177,58</span><span class="bf-card-vista">ou R$ 1.697,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
         </span>
       </a>
-      <a class="bf-card" href="cursos/especialista-em-manutencao-em-fontes-chaveadas.html">
-        <span class="bf-card-media"><img src="assets/img/cursos/fontes-chaveadas.jpg" alt="Especialista em Fontes Chaveadas" width="820" height="1025" loading="lazy"></span>
-        <span class="bf-card-tag"><i></i>Black Friday</span>
+      <a class="bf-card" href="cursos/especialista-em-manutencao-em-fontes-chaveadas.html" data-bf="especialista-em-manutencao-em-fontes-chaveadas" data-grupo="especialista">
+        <span class="bf-card-media"><img src="assets/img/cursos/fontes-chaveadas.jpg" alt="Especialista em Fontes Chaveadas" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Black Friday</span></span>
         <span class="bf-card-body">
           <small>Especialista em</small>
           <strong>Fontes Chaveadas</strong>
-          <span class="bf-card-buy"><span class="bf-card-price"><small>12x de</small>R$ 177,58</span><span class="bf-card-go">Ver oferta <span class="arr">→</span></span></span>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 177,58</span><span class="bf-card-vista">ou R$ 1.697,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
         </span>
       </a>
-      <a class="bf-card" href="cursos/especialista-em-reparo-em-placas-eletronicas-emac.html">
-        <span class="bf-card-media"><img src="assets/img/cursos/emac.jpg" alt="Especialista em Placas Eletrônicas (EMAC)" width="820" height="1025" loading="lazy"></span>
-        <span class="bf-card-tag"><i></i>Black Friday</span>
+      <a class="bf-card" href="cursos/especialista-em-reparo-em-placas-eletronicas-emac.html" data-bf="especialista-em-reparo-em-placas-eletronicas-emac" data-grupo="especialista">
+        <span class="bf-card-media"><img src="assets/img/cursos/emac.jpg" alt="Especialista em Placas Eletrônicas (EMAC)" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Black Friday</span></span>
         <span class="bf-card-body">
           <small>Especialista em</small>
           <strong>Placas Eletrônicas (EMAC)</strong>
-          <span class="bf-card-buy"><span class="bf-card-price"><small>12x de</small>R$ 177,58</span><span class="bf-card-go">Ver oferta <span class="arr">→</span></span></span>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 177,58</span><span class="bf-card-vista">ou R$ 1.697,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
         </span>
       </a>
-      <a class="bf-card" href="cursos/especialista-em-manutencao-em-amplificadores-de-audio.html">
-        <span class="bf-card-media"><img src="assets/img/cursos/amplificadores-de-audio.jpg" alt="Especialista em Amplificadores de Áudio" width="820" height="1025" loading="lazy"></span>
-        <span class="bf-card-tag"><i></i>Black Friday</span>
+      <a class="bf-card" href="cursos/especialista-em-manutencao-em-amplificadores-de-audio.html" data-bf="especialista-em-manutencao-em-amplificadores-de-audio" data-grupo="especialista">
+        <span class="bf-card-media"><img src="assets/img/cursos/amplificadores-de-audio.jpg" alt="Especialista em Amplificadores de Áudio" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Black Friday</span></span>
         <span class="bf-card-body">
           <small>Especialista em</small>
           <strong>Amplificadores de Áudio</strong>
-          <span class="bf-card-buy"><span class="bf-card-price"><small>12x de</small>R$ 177,58</span><span class="bf-card-go">Ver oferta <span class="arr">→</span></span></span>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 177,58</span><span class="bf-card-vista">ou R$ 1.697,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
         </span>
       </a>
-      <a class="bf-card" href="cursos/especialista-em-manutencao-em-inversores-de-frequencia-e-softstarter.html">
-        <span class="bf-card-media"><img src="assets/img/cursos/softstarter.jpg" alt="Especialista em Inversores de Frequência e Softstarter" width="820" height="1025" loading="lazy"></span>
-        <span class="bf-card-tag"><i></i>Black Friday</span>
+      <a class="bf-card" href="cursos/especialista-em-manutencao-em-inversores-de-frequencia-e-softstarter.html" data-bf="especialista-em-manutencao-em-inversores-de-frequencia-e-softstarter" data-grupo="especialista">
+        <span class="bf-card-media"><img src="assets/img/cursos/softstarter.jpg" alt="Especialista em Inversores de Frequência e Softstarter" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Black Friday</span></span>
         <span class="bf-card-body">
           <small>Especialista em</small>
           <strong>Inversores de Frequência e Softstarter</strong>
-          <span class="bf-card-buy"><span class="bf-card-price"><small>12x de</small>R$ 177,58</span><span class="bf-card-go">Ver oferta <span class="arr">→</span></span></span>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 177,58</span><span class="bf-card-vista">ou R$ 1.697,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
         </span>
       </a>
-      <a class="bf-card" href="cursos/especialista-em-manutencao-em-esteira-de-academias.html">
-        <span class="bf-card-media"><img src="assets/img/cursos/esteira-de-academias.jpg" alt="Especialista em Esteira de Academias" width="820" height="1025" loading="lazy"></span>
-        <span class="bf-card-tag"><i></i>Black Friday</span>
+      <a class="bf-card" href="cursos/especialista-em-manutencao-em-esteira-de-academias.html" data-bf="especialista-em-manutencao-em-esteira-de-academias" data-grupo="especialista">
+        <span class="bf-card-media"><img src="assets/img/cursos/esteira-de-academias.jpg" alt="Especialista em Esteira de Academias" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Black Friday</span></span>
         <span class="bf-card-body">
           <small>Especialista em</small>
           <strong>Esteira de Academias</strong>
-          <span class="bf-card-buy"><span class="bf-card-price"><small>12x de</small>R$ 177,58</span><span class="bf-card-go">Ver oferta <span class="arr">→</span></span></span>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 177,58</span><span class="bf-card-vista">ou R$ 1.697,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
         </span>
       </a>
-      <a class="bf-card" href="cursos/especialista-em-equipamentos-odontologicos-esteticos.html">
-        <span class="bf-card-media"><img src="assets/img/cursos/odonto-esteticos.jpg" alt="Especialista em Equipamentos Odontológicos" width="820" height="1025" loading="lazy"></span>
-        <span class="bf-card-tag"><i></i>Black Friday</span>
+      <a class="bf-card" href="cursos/especialista-em-equipamentos-odontologicos-esteticos.html" data-bf="especialista-em-equipamentos-odontologicos-esteticos" data-grupo="especialista">
+        <span class="bf-card-media"><img src="assets/img/cursos/odonto-esteticos.jpg" alt="Especialista em Equipamentos Odontológicos" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Black Friday</span></span>
         <span class="bf-card-body">
           <small>Especialista em</small>
           <strong>Equipamentos Odontológicos</strong>
-          <span class="bf-card-buy"><span class="bf-card-price"><small>12x de</small>R$ 261,30</span><span class="bf-card-go">Ver oferta <span class="arr">→</span></span></span>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 261,30</span><span class="bf-card-vista">ou R$ 2.497,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
+        </span>
+      </a>
+      <a class="bf-card" href="cursos/eletronica-inicial-analogica.html" data-bf="eletronica-inicial-analogica" data-grupo="comecar">
+        <span class="bf-card-media"><img src="assets/img/cursos/eletronica-inicial.jpg" alt="Eletrônica Inicial — Analógica" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Pra começar</span></span>
+        <span class="bf-card-body">
+          <small>Curso</small>
+          <strong>Eletrônica Inicial — Analógica</strong>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 72,94</span><span class="bf-card-vista">ou R$ 697,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
+        </span>
+      </a>
+      <a class="bf-card" href="cursos/manuseio-de-osciloscopio.html" data-bf="manuseio-de-osciloscopio" data-grupo="comecar">
+        <span class="bf-card-media"><img src="assets/img/cursos/manuseio-de-osciloscopio.jpg" alt="Manuseio de Osciloscópio" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Black Friday</span></span>
+        <span class="bf-card-body">
+          <small>Curso</small>
+          <strong>Manuseio de Osciloscópio</strong>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 72,94</span><span class="bf-card-vista">ou R$ 697,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
+        </span>
+      </a>
+      <a class="bf-card" href="cursos/livro-analise-e-procedimentos-videoaulas.html" data-bf="livro-analise-e-procedimentos-videoaulas" data-grupo="livro">
+        <span class="bf-card-media"><img src="assets/img/cursos/livro-analise-e-procedimentos.jpg" alt="Fontes Chaveadas: Análise e Procedimentos" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Black Friday</span></span>
+        <span class="bf-card-body">
+          <small>Livro + videoaulas</small>
+          <strong>Fontes Chaveadas: Análise e Procedimentos</strong>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 41,54</span><span class="bf-card-vista">ou R$ 397,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
+        </span>
+      </a>
+      <a class="bf-card" href="cursos/livro-fontes-chaveadas-topologia-flyback-videoaulas.html" data-bf="livro-fontes-chaveadas-topologia-flyback-videoaulas" data-grupo="livro">
+        <span class="bf-card-media"><img src="assets/img/cursos/flyback.jpg" alt="Fontes Chaveadas: Topologia Flyback" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Black Friday</span></span>
+        <span class="bf-card-body">
+          <small>Livro + videoaulas</small>
+          <strong>Fontes Chaveadas: Topologia Flyback</strong>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 41,54</span><span class="bf-card-vista">ou R$ 397,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
+        </span>
+      </a>
+      <a class="bf-card" href="cursos/livro-retificador-pfc-monofasico-videoaulas.html" data-bf="livro-retificador-pfc-monofasico-videoaulas" data-grupo="livro">
+        <span class="bf-card-media"><img src="assets/img/cursos/retificador-pfc.jpg" alt="Retificador PFC Monofásico" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Black Friday</span></span>
+        <span class="bf-card-body">
+          <small>Livro + videoaulas</small>
+          <strong>Retificador PFC Monofásico</strong>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 41,54</span><span class="bf-card-vista">ou R$ 397,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
+        </span>
+      </a>
+      <a class="bf-card" href="cursos/livro-eletronica-de-potencia-semicondutores.html" data-bf="livro-eletronica-de-potencia-semicondutores" data-grupo="livro">
+        <span class="bf-card-media"><img src="assets/img/cursos/livro-semicondutores.jpg" alt="Eletrônica de Potência: Semicondutores" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Black Friday</span></span>
+        <span class="bf-card-body">
+          <small>Livro técnico</small>
+          <strong>Eletrônica de Potência: Semicondutores</strong>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 41,54</span><span class="bf-card-vista">ou R$ 397,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
+        </span>
+      </a>
+      <a class="bf-card" href="cursos/livro-eletronica-de-potencia-retificadores.html" data-bf="livro-eletronica-de-potencia-retificadores" data-grupo="livro">
+        <span class="bf-card-media"><img src="assets/img/cursos/livro-retificadores.jpg" alt="Eletrônica de Potência: Retificadores" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Black Friday</span></span>
+        <span class="bf-card-body">
+          <small>Livro técnico</small>
+          <strong>Eletrônica de Potência: Retificadores</strong>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 41,54</span><span class="bf-card-vista">ou R$ 397,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
+        </span>
+      </a>
+      <a class="bf-card" href="cursos/livro-eletronica-de-potencia-conversores-cc-cc.html" data-bf="livro-eletronica-de-potencia-conversores-cc-cc" data-grupo="livro">
+        <span class="bf-card-media"><img src="assets/img/cursos/livro-cc-cc.jpg" alt="Eletrônica de Potência: Conversores CC-CC" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Black Friday</span></span>
+        <span class="bf-card-body">
+          <small>Livro técnico</small>
+          <strong>Eletrônica de Potência: Conversores CC-CC</strong>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 41,54</span><span class="bf-card-vista">ou R$ 397,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
+        </span>
+      </a>
+      <a class="bf-card" href="cursos/livro-de-exercicios-analise-de-circuitos-e-defeitos.html" data-bf="livro-de-exercicios-analise-de-circuitos-e-defeitos" data-grupo="livro">
+        <span class="bf-card-media"><img src="assets/img/cursos/livro-exercicios.jpg" alt="Análise de Circuitos: Livro de Exercícios" width="820" height="1025" loading="lazy"><span class="bf-card-tag"><i></i>Black Friday</span></span>
+        <span class="bf-card-body">
+          <small>Livro técnico</small>
+          <strong>Análise de Circuitos: Livro de Exercícios</strong>
+          <span class="bf-card-prices"><span class="bf-card-selo" data-bf-selo></span><s class="bf-card-de"></s><span class="bf-card-price"><small>12x de</small>R$ 41,54</span><span class="bf-card-vista">ou R$ 397,00 à vista</span></span>
+          <span class="bf-card-go">Ver oferta <span class="arr">→</span></span>
         </span>
       </a>
     </div>
     <div class="bf-offers-foot">
-      <a href="cursos.html" class="btn bf-vip">Ver todos os 18 cursos <span class="arr">→</span></a>
-      <a href="loja.html#livros" class="bf-offers-link">Livros técnicos, camisetas e canecas na Loja Instructiva <span class="arr">→</span></a>
+      <a href="cursos.html" class="btn bf-ink-btn">Ver todos os 18 cursos <span class="arr">→</span></a>
+      <a href="loja.html" class="bf-offers-link">Livros físicos, camisetas e canecas na Loja Instructiva <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -712,11 +808,12 @@
   </div>
 </section>
 
-<section class="bf-final bf-only">
+<section class="bf-final bf-only" id="ultima-chamada">
   <div class="wrap">
     <div class="bf-final-card">
       <div class="bf-ledstrip" aria-hidden="true"></div>
       <span class="bf-kicker"><span class="bf-dot"></span>Última chamada</span>
+      <div class="bf-final-ate bf-se-off">Até <b data-bf-ate>0%</b> OFF</div>
       <h2>A Black Friday acaba em</h2>
       <div class="bf-clock" data-bf-countdown role="timer" aria-label="Tempo até o fim da Black Friday">
         <div class="bf-seg"><b data-u="d">00</b><small>dias</small></div><span class="bf-colon" aria-hidden="true">:</span>
@@ -796,7 +893,7 @@
     <span class="sticky-copy bf-hide"><strong>Especialista em Inversores Solares</strong><span class="sticky-dash"> — </span><span class="sticky-price">12x de R$ 261,30</span></span>
     <a href="https://instructiva.co/795159" class="btn btn-cta btn-sm bf-hide" target="_blank" rel="noopener">Garantir vaga</a>
     <span class="sticky-copy bf-only"><strong>Black Friday Instructiva</strong><span class="sticky-dash"> — </span><span class="sticky-price">acaba em <b data-bf-countdown-compact>--:--:--</b></span></span>
-    <a href="cursos.html" class="btn btn-cta btn-sm bf-only">Ver ofertas</a>
+    <a href="#ofertas" class="btn btn-cta btn-sm bf-only">Ver ofertas</a>
   </div>
 </div>
 <script>

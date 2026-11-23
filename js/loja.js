@@ -30,7 +30,25 @@
   function $$(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
   function isLivro(p) { return p.tipo === 'livro'; }
 
+  // Black Friday: preço "de/por" vem de js/black-friday.js (lista "precos")
+  function bfOferta(p) {
+    var BF = window.INSTRUCTIVA_BF;
+    if (!BF || !BF.ativo || typeof BF.oferta !== 'function') return null;
+    var m = /([^\/]+)\.html/.exec(p.pagina || '');
+    return (m && BF.oferta(m[1])) || BF.oferta(p.tipo);
+  }
+  function seloBF(p) {
+    var o = bfOferta(p);
+    return o ? '<span class="bf-sticker" aria-label="' + o.off + '% de desconto"><b>-' + o.off + '%</b><small>off</small></span>' : '';
+  }
+
   function precoHTML(p) {
+    var o = bfOferta(p);
+    if (o) {
+      var de = '<s class="prod-de">de ' + brl(o.de) + '</s>';
+      if (!o.parcela) return de + '<strong>' + brl(o.por) + '</strong>';
+      return de + '<small>12x de</small><strong>' + brl(o.parcela) + '</strong><em>ou ' + brl(o.por) + ' à vista</em>';
+    }
     if (!p.parcelas) return '<strong>' + brl(p.preco) + '</strong>';
     return '<small>' + p.parcelas + 'x de</small><strong>' + brl(p.parcela) + '</strong>' +
       '<em>ou ' + brl(p.preco) + ' à vista</em>';
@@ -41,7 +59,9 @@
     }).join('');
   }
   function comprarHTML(p, cls, texto) {
-    return '<a class="btn btn-cta ' + cls + '" href="' + esc(p.checkout) + '" target="_blank" rel="noopener" data-produto="' + esc(p.nome) + '">' + texto + '</a>';
+    var o = bfOferta(p);
+    var link = (o && o.link) || p.checkout;
+    return '<a class="btn btn-cta ' + cls + '" href="' + esc(link) + '" target="_blank" rel="noopener" data-produto="' + esc(p.nome) + '">' + texto + '</a>';
   }
 
   // ------------------------------------------------------------------ vitrine
@@ -50,7 +70,7 @@
     return '<article class="prod-card" id="p-' + esc(p.id) + '" data-id="' + esc(p.id) + '" data-tipo="' + esc(p.tipo) + '">' +
       '<button type="button" class="prod-media" data-qv aria-label="Ver detalhes: ' + esc(p.nome) + '">' +
         '<img src="' + esc(p.foto) + '" alt="' + esc(p.nome) + '" width="1254" height="1254" loading="lazy" decoding="async">' +
-        (selos ? '<span class="prod-tags">' + selos + '</span>' : '') +
+        (selos ? '<span class="prod-tags">' + selos + '</span>' : '') + seloBF(p) +
         '<span class="prod-spy">' + ICO.olho + 'Espiar</span>' +
       '</button>' +
       '<div class="prod-body">' +
@@ -132,7 +152,7 @@
       : 'Pagamento seguro · em até ' + p.parcelas + 'x · ' + (p.opcoes ? 'cor, tamanho, ' : '') + 'quantidade e frete você escolhe no pagamento';
     qvBox.innerHTML =
       '<button type="button" class="qv-x" data-qv-close aria-label="Fechar">&times;</button>' +
-      '<div class="qv-media"><img src="' + esc(p.foto) + '" alt="' + esc(p.nome) + '" width="1254" height="1254">' + (selos ? '<span class="prod-tags">' + selos + '</span>' : '') + '</div>' +
+      '<div class="qv-media"><img src="' + esc(p.foto) + '" alt="' + esc(p.nome) + '" width="1254" height="1254">' + (selos ? '<span class="prod-tags">' + selos + '</span>' : '') + seloBF(p) + '</div>' +
       '<div class="qv-info">' +
         '<span class="prod-cat">' + esc(p.categoria) + '</span>' +
         '<h2 id="qvNome">' + esc(p.nome) + '</h2>' +
