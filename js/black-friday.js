@@ -11,7 +11,7 @@
 var INSTRUCTIVA_BF = {
   ativo: true,
   fim: '2026-11-30T23:59:59-03:00',
-  faixa: ['Black Friday Instructiva', 'Ofertas em cursos, livros e na loja', 'Só enquanto o cronômetro estiver rodando', 'Parcele em até 12x'],
+  faixa: ['Black Friday Instructiva', 'Ofertas nos cursos da Instructiva', 'Só enquanto o cronômetro estiver rodando', 'Parcele em até 12x'],
   whatsapp: '5544920066945',
 
   /* ---------------------------------------------------------------------
@@ -25,21 +25,21 @@ var INSTRUCTIVA_BF = {
      --------------------------------------------------------------------- */
   precos: {
     // Especialistas — hoje R$ 2.497 à vista ou 12x R$ 261,30
-    'especialista-em-manutencao-de-inversores-solares':                   { de: 2497, por: 0, parcela: 0, link: '' },
-    'especialista-em-equipamentos-odontologicos-esteticos':               { de: 2497, por: 0, parcela: 0, link: '' },
+    'especialista-em-manutencao-de-inversores-solares':                   { de: 2497, por: 1197, parcela: 125.26, link: 'https://instructiva.co/588902' },
+    'especialista-em-equipamentos-odontologicos-esteticos':               { de: 2497, por: 1697, parcela: 177.58, link: 'https://instructiva.co/2852094' },
     // Especialista Tecnologias Inverter — hoje R$ 1.897 ou 12x R$ 198,51
-    'especialista-em-manutencao-em-tecnologias-inverter':                 { de: 1897, por: 0, parcela: 0, link: '' },
+    'especialista-em-manutencao-em-tecnologias-inverter':                 { de: 1897, por: 1197, parcela: 125.26, link: 'https://instructiva.co/3070516' },
     // Especialistas — hoje R$ 1.697 à vista ou 12x R$ 177,58
-    'especialista-em-manutencao-em-televisores-led-e-lcd':                { de: 1697, por: 0, parcela: 0, link: '' },
-    'especialista-em-manutencao-em-fontes-chaveadas':                     { de: 1697, por: 0, parcela: 0, link: '' },
-    'especialista-em-reparo-em-placas-eletronicas-emac':                  { de: 1697, por: 0, parcela: 0, link: '' },
-    'especialista-em-manutencao-em-amplificadores-de-audio':              { de: 1697, por: 0, parcela: 0, link: '' },
-    'especialista-em-manutencao-em-inversores-de-frequencia-e-softstarter': { de: 1697, por: 0, parcela: 0, link: '' },
-    'especialista-em-manutencao-em-esteira-de-academias':                 { de: 1697, por: 0, parcela: 0, link: '' },
+    'especialista-em-manutencao-em-televisores-led-e-lcd':                { de: 1697, por: 1197, parcela: 125.26, link: 'https://instructiva.co/60428821' },
+    'especialista-em-manutencao-em-fontes-chaveadas':                     { de: 1697, por: 1197, parcela: 125.26, link: 'https://instructiva.co/313886' },
+    'especialista-em-reparo-em-placas-eletronicas-emac':                  { de: 1697, por: 1197, parcela: 125.26, link: 'https://instructiva.co/235641' },
+    'especialista-em-manutencao-em-amplificadores-de-audio':              { de: 1697, por: 1197, parcela: 125.26, link: 'https://instructiva.co/980211956' },
+    'especialista-em-manutencao-em-inversores-de-frequencia-e-softstarter': { de: 1697, por: 1197, parcela: 125.26, link: 'https://instructiva.co/2027354' },
+    'especialista-em-manutencao-em-esteira-de-academias':                 { de: 1697, por: 1197, parcela: 125.26, link: 'https://instructiva.co/2964570' },
     // Pra começar — hoje R$ 697 à vista ou 12x R$ 72,94
-    'eletronica-inicial-analogica':                                       { de: 697, por: 0, parcela: 0, link: '' },
-    'manuseio-de-osciloscopio':                                           { de: 697, por: 0, parcela: 0, link: '' },
-    // Livros + videoaulas — hoje R$ 397 à vista ou 12x R$ 41,54 (vale pro site e pra loja)
+    'eletronica-inicial-analogica':                                       { de: 697, por: 497, parcela: 52.01, link: 'https://instructiva.co/5223723' },
+    'manuseio-de-osciloscopio':                                           { de: 697, por: 497, parcela: 52.01, link: 'https://instructiva.co/4157442' },
+    // Livros + videoaulas — FORA da Black (preço normal: R$ 397 ou 12x R$ 41,54). Vale pro site e pra loja.
     'livro-analise-e-procedimentos-videoaulas':                           { de: 397, por: 0, parcela: 0, link: '' },
     'livro-fontes-chaveadas-topologia-flyback-videoaulas':                { de: 397, por: 0, parcela: 0, link: '' },
     'livro-retificador-pfc-monofasico-videoaulas':                        { de: 397, por: 0, parcela: 0, link: '' },
@@ -47,7 +47,7 @@ var INSTRUCTIVA_BF = {
     'livro-eletronica-de-potencia-retificadores':                         { de: 397, por: 0, parcela: 0, link: '' },
     'livro-eletronica-de-potencia-conversores-cc-cc':                     { de: 397, por: 0, parcela: 0, link: '' },
     'livro-de-exercicios-analise-de-circuitos-e-defeitos':                { de: 397, por: 0, parcela: 0, link: '' },
-    // Loja — vale pra todas as camisetas / todas as canecas
+    // Loja — FORA da Black. Vale pra todas as camisetas / todas as canecas
     'camiseta':                                                           { de: 119, por: 0, parcela: 0 },
     'caneca':                                                             { de: 79.9, por: 0, parcela: 0 }
   }
@@ -89,6 +89,8 @@ var INSTRUCTIVA_BF = {
     };
   }
   BF.oferta = oferta;
+  // link de pagamento da Black (vale mesmo quando o preço é igual ao normal)
+  BF.linkDe = function (chave) { var p = (BF.precos || {})[chave]; return p && p.link ? p.link : ''; };
   BF.brl = brl;
   BF.maxOff = 0;
   for (var k in BF.precos) { var o = oferta(k); if (o && o.off > BF.maxOff) BF.maxOff = o.off; }
@@ -142,7 +144,14 @@ var INSTRUCTIVA_BF = {
   function aplicarPaginaCurso() {
     var panel = document.querySelector('.price-panel');
     if (!panel) return;
-    var o = oferta(slugDe(location.pathname));
+    var slug = slugDe(location.pathname);
+    // link de pagamento da Black (troca todos os botões que levam pro link antigo)
+    var linkNovo = BF.linkDe(slug), cta = panel.querySelector('a.btn[href^="http"]');
+    if (linkNovo && cta) {
+      var velho = cta.getAttribute('href');
+      $$('a[href="' + velho + '"]').forEach(function (a) { a.setAttribute('href', linkNovo); });
+    }
+    var o = oferta(slug);
     if (!o) return;
     html.classList.add('bf-curso-oferta');
     var pv = panel.querySelector('.p-value');
@@ -173,12 +182,6 @@ var INSTRUCTIVA_BF = {
       h = h.split(vistaVelha).join(vistaNova);
       el.innerHTML = h;
     });
-    // link de pagamento da Black (troca todos os botões que levam pro link antigo)
-    var cta = panel.querySelector('a.btn[href^="http"]');
-    if (o.link && cta) {
-      var velho = cta.getAttribute('href');
-      $$('a[href="' + velho + '"]').forEach(function (a) { a.setAttribute('href', o.link); });
-    }
   }
 
   // "ATÉ X% OFF" (capa, vitrine, última chamada, catálogo)
@@ -252,6 +255,7 @@ var INSTRUCTIVA_BF = {
   function etiquetaPreco() {
     var panel = document.querySelector('.price-panel');
     if (!panel || panel.querySelector('.bf-panel-tag')) return;
+    if (!oferta(slugDe(location.pathname))) return;
     var tag = document.createElement('div');
     tag.className = 'bf-panel-tag';
     tag.innerHTML = '<span><i></i>Oferta Black Friday</span><small>acaba em <b data-bf-countdown-compact>--:--:--</b></small>';

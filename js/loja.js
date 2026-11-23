@@ -31,11 +31,20 @@
   function isLivro(p) { return p.tipo === 'livro'; }
 
   // Black Friday: preço "de/por" vem de js/black-friday.js (lista "precos")
-  function bfOferta(p) {
+  function bfAtiva() {
     var BF = window.INSTRUCTIVA_BF;
-    if (!BF || !BF.ativo || typeof BF.oferta !== 'function') return null;
-    var m = /([^\/]+)\.html/.exec(p.pagina || '');
-    return (m && BF.oferta(m[1])) || BF.oferta(p.tipo);
+    return BF && BF.ativo && typeof BF.oferta === 'function' ? BF : null;
+  }
+  function bfChave(p) { var m = /([^\/]+)\.html/.exec(p.pagina || ''); return m ? m[1] : ''; }
+  function bfOferta(p) {
+    var BF = bfAtiva();
+    if (!BF) return null;
+    var chave = bfChave(p);
+    return (chave && BF.oferta(chave)) || BF.oferta(p.tipo);
+  }
+  function bfLink(p) {
+    var BF = bfAtiva(), chave = bfChave(p);
+    return (BF && chave && BF.linkDe && BF.linkDe(chave)) || '';
   }
   function seloBF(p) {
     var o = bfOferta(p);
@@ -59,8 +68,7 @@
     }).join('');
   }
   function comprarHTML(p, cls, texto) {
-    var o = bfOferta(p);
-    var link = (o && o.link) || p.checkout;
+    var link = bfLink(p) || p.checkout;
     return '<a class="btn btn-cta ' + cls + '" href="' + esc(link) + '" target="_blank" rel="noopener" data-produto="' + esc(p.nome) + '">' + texto + '</a>';
   }
 
