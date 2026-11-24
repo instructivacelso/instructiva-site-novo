@@ -48,8 +48,8 @@ var INSTRUCTIVA_BF = {
     'livro-eletronica-de-potencia-conversores-cc-cc':                     { de: 397, por: 0, parcela: 0, link: '' },
     'livro-de-exercicios-analise-de-circuitos-e-defeitos':                { de: 397, por: 0, parcela: 0, link: '' },
     // Loja — FORA da Black. Vale pra todas as camisetas / todas as canecas
-    'camiseta':                                                           { de: 119, por: 0, parcela: 0 },
-    'caneca':                                                             { de: 79.9, por: 0, parcela: 0 }
+    'camiseta':                                                           { de: 117.9, por: 0, parcela: 0 },
+    'caneca':                                                             { de: 87.9, por: 0, parcela: 0 }
   }
 };
 

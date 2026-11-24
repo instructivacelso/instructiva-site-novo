@@ -1,5 +1,20 @@
-ATUALIZAÇÃO DO SITE — BLACK FRIDAY FINAL (visual novo + preços da Black)
+ATUALIZAÇÃO DO SITE — LOJA (bonés, copo, preços novos) + BLACK FRIDAY
 =======================================================================
+
+LOJA (o que mudou agora)
+- Preços novos: camisetas R$ 117,90 (12x R$ 12,34) e canecas R$ 87,90
+  (12x R$ 9,20). Links das camisetas e canecas continuam os mesmos.
+- Já CADASTRADOS mas ESCONDIDOS (esperando foto), em js/loja-produtos.js:
+  - 5 bonés (Escola Instructiva, Quem Aprende Não Depende, Nunca Foi Sorte,
+    Mais Procedimento, Dicas Escravizam): R$ 99,90 ou 12x R$ 10,45
+  - Copo térmico Nunca Foi Sorte: R$ 149,90 ou 12x R$ 15,69
+  - Camiseta Dica Prende, Conhecimento Liberta: R$ 117,90 ou 12x R$ 12,34
+  Pra mostrar: coloque a foto em assets/img/loja/ com o nome que está em
+  "foto" (ex.: bone-escola-instructiva.jpg) e troque oculto: true por
+  oculto: false. As abas e categorias "Bonés" e "Copos" aparecem sozinhas
+  quando tiver produto visível.
+
+BLACK FRIDAY (igual ao último envio)
 
 O QUE MUDOU
 - Menos escuro: o preto ficou só na capa e na "Última chamada". A vitrine da
@@ -43,6 +58,6 @@ COMO SUBIR NO GITHUB (pelo site)
 1. Descompacte este zip.
 2. No repositório (logado como instructivacelso), clique em "Add file" > "Upload files".
 3. Arraste TUDO que está dentro da pasta descompactada (pastas assets, css e js
-   e os arquivos index.html e cursos.html). Ele substitui os arquivos antigos.
-4. Em "Commit changes", escreva "Black Friday - precos" e confirme.
+   e os arquivos index.html, cursos.html e loja.html). Ele substitui os antigos.
+4. Em "Commit changes", escreva "Loja: precos novos" e confirme.
    O Railway atualiza o site sozinho em ~1 minuto.

@@ -3,7 +3,8 @@
    Todo botão "Comprar" leva direto pro link de pagamento do produto:
    cor, tamanho, quantidade e frete a pessoa escolhe lá no pagamento. */
 (function () {
-  var PRODUTOS = window.LOJA_PRODUTOS || [];
+  // produtos com oculto: true ficam fora da loja (ex.: esperando foto)
+  var PRODUTOS = (window.LOJA_PRODUTOS || []).filter(function (p) { return !p.oculto; });
   var grid = document.getElementById('lojaGrid');
   if (!grid || !PRODUTOS.length) return;
 
@@ -102,6 +103,11 @@
     var n = conta(el.getAttribute('data-conta'));
     el.textContent = el.hasAttribute('data-conta-texto') ? n + (n === 1 ? ' produto' : ' produtos') : n;
   });
+  // aba ou categoria sem nenhum produto visível fica escondida (e aparece sozinha quando tiver)
+  $$('.loja-tabs [data-filtro], .loja-cat[data-filtro]').forEach(function (el) {
+    var t = el.getAttribute('data-filtro');
+    if (t !== 'todos') el.style.display = conta(t) ? '' : 'none';
+  });
 
   function filtrar(tipo, anima) {
     tabs.forEach(function (t) { t.setAttribute('aria-pressed', t.getAttribute('data-filtro') === tipo ? 'true' : 'false'); });
@@ -131,10 +137,11 @@
     }
   });
 
-  // loja.html#livros, #camisetas ou #canecas já abre filtrado
-  var HASH = { '#livros': 'livro', '#camisetas': 'camiseta', '#canecas': 'caneca' };
-  filtrar(HASH[location.hash] || 'todos', false);
-  if (HASH[location.hash]) {
+  // loja.html#livros, #camisetas, #bones, #canecas ou #copos já abre filtrado
+  var HASH = { '#livros': 'livro', '#camisetas': 'camiseta', '#bones': 'bone', '#canecas': 'caneca', '#copos': 'copo' };
+  var inicial = HASH[location.hash] && conta(HASH[location.hash]) ? HASH[location.hash] : 'todos';
+  filtrar(inicial, false);
+  if (inicial !== 'todos') {
     setTimeout(function () { var a = document.getElementById('produtos'); if (a) a.scrollIntoView(); }, 60);
   }
 
