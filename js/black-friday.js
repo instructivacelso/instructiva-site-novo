@@ -25,7 +25,7 @@ var INSTRUCTIVA_BF = {
      --------------------------------------------------------------------- */
   precos: {
     // Especialistas — hoje R$ 2.497 à vista ou 12x R$ 261,30
-    'especialista-em-manutencao-de-inversores-solares':                   { de: 2497, por: 1197, parcela: 125.26, link: 'https://instructiva.co/588902' },
+    'especialista-em-manutencao-de-inversores-solares':                   { de: 2497, por: 1697, parcela: 177.58, link: 'https://instructiva.co/6584485031' },
     'especialista-em-equipamentos-odontologicos-esteticos':               { de: 2497, por: 1697, parcela: 177.58, link: 'https://instructiva.co/2852094' },
     // Especialista Tecnologias Inverter — hoje R$ 1.897 ou 12x R$ 198,51
     'especialista-em-manutencao-em-tecnologias-inverter':                 { de: 1897, por: 1197, parcela: 125.26, link: 'https://instructiva.co/3070516' },
